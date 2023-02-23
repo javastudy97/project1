@@ -1,0 +1,69 @@
+/* header */
+.header{
+  width: 100%;
+  height: auto;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background-color: white;
+}
+
+.header .top-header{
+  border: 1px solid red;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px 30px;
+}
+
+.header .top-header .gnb1 > ul{
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.header .top-header .gnb1>ul>li img{
+  width: 16px;
+  height: 16px;
+  font-weight: bold;
+  line-height: 100%;
+}
+
+.header .bottom-header{
+  width: 100%;
+  height: 50px;
+  border: 1px solid red;
+  padding: 5px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header .bottom-header a{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header .bottom-header a img{
+  width: 40px;
+  height: 40px;
+}
+
+.header .bottom-header .gnb2>ul{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header .bottom-header .gnb2>ul>li{
+  
+}

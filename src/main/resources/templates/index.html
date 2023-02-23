@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script th:src="@{/js/index.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+<div class="container">
+    <div class="section">
+        <!-- 인기 노하우 (리뷰많은 순) -->
+        <div class="hot">
+            <h1>이달의 인기 노하우!</h1>
+            <div class="hot-con">
+                <div class="hot-left">
+                    <ul>
+                        <li><a th:href="@{#}">IT</a></li>
+                        <li><a th:href="@{#}">디자인</a></li>
+                        <li><a th:href="@{#}">예체능</a></li>
+                        <li><a th:href="@{#}">사무</a></li>
+                        <li><a th:href="@{#}">마케팅</a></li>
+                        <li><a th:href="@{#}">재테크</a></li>
+                    </ul>
+                </div>
+                <div class="hot-right">
+                    <div class="product">
+                        <div class="product-con">
+                            <img src="https://via.placeholder.com/200 " alt="img">
+                        </div>
+                        <div class="product-name">
+                            <h3>상품명</h3>
+                            <div class="price">
+                                00,000원
+                            </div>
+                            <div class="review-count">
+                                00개의 평가
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 자동갤러리 -->
+        <div class="gallery">
+            <div class="gallery-con">
+                <ul>
+                    <li class="fadeLi">gallery1</li>
+                    <li>gallery2</li>
+                    <li>gallery3</li>
+                </ul>
+            </div>
+            <div class="arrow-con">
+                <span class="arrow left"></span>
+                <span class="arrow right"></span>
+            </div>
+            <div class="item-con">
+                <ul>
+                    <li class="on"></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 카테고리 -->
+    <div class="category">
+        <div class="title">
+            <h1>카테고리</h1>
+        </div>
+        <div class="category-con">
+            <ul>
+                <li>
+                    <a href="#">
+                        <div class="img"><img th:src="@{#}" alt="it"></div>
+                        <span>IT</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img"><img th:src="@{#}" alt="design"></div>
+                        <span>디자인</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img"><img th:src="@{#}" alt="enter"></div>
+                        <span>예체능</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img"><img th:src="@{#}" alt="office"></div>
+                        <span>사무</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img"><img th:src="@{#}" alt="marketing"></div>
+                        <span>마케팅</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img"><img th:src="@{#}" alt="fund"></div>
+                        <span>재테크</span>
+                    </a>
+                </li>
+                <!-- <li><a href="#"><img th:src="@{#}" alt="design">디자인</a></li>
+                <li><a href="#"><img th:src="@{#}" alt="enter">예체능</a></li>
+                <li><a href="#"><img th:src="@{#}" alt="office">사무</a></li>
+                <li><a href="#"><img th:src="@{#}" alt="marketing">마케팅</a></li>
+                <li><a href="#"><img th:src="@{#}" alt="fund">재테크</a></li> -->
+            </ul>
+        </div>
+    </div>
+    <!-- 소개배너 -->
+    <div class="intro">
+        <p>
+            <h1>멘토존과 함께 다양한 전문가를 만나보세요</h1>
+        </p>
+        <div class="intro-con">
+            <div>
+                <h3>다양한 전문가!</h3>
+                <h4>asdasdasdsad</h4>
+            </div>
+            <div>
+                <h3>생생한 후기!</h3>
+                <h4>asdasdasdsad</h4>
+            </div>
+            <div>
+                <h3>실시간 문의!</h3>
+                <h4>asdasdasdsad</h4>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+
+<!-- 로그인 화면(팝업레이어) -->
+<div class="login-layer">
+    <div class="login-form">
+        <h1>Sign In</h1>     
+        <div class="login-con">
+            실제로그인폼
+        </div> 
+        <span class="close">X</span>
+    </div>
+</div>
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+</html>

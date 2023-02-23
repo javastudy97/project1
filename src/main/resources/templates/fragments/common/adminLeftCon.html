@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- adminLeftCon -->
+
+    <div class="left-con" th:fragment="adminLeftConFragment">
+        <div class="logo">
+            <a th:href="@{/}"><img th:src="@{/img/testlogo.png}" alt="logo"></a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a th:href="@{/admin/memberList}"><span>회원관리</span></a></li>
+                <li><a th:href="@{#}"><span>상품관리</span></a></li>
+                <li><a th:href="@{#}"><span>주문관리</span></a></li>
+                <li><a th:href="@{#}"><span>문의관리</span></a></li>
+            </ul>
+        </div>
+    </div>
+</html>

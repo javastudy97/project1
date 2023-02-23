@@ -1,0 +1,147 @@
+@import url(../common/adminHeader.css);
+@import url(../common/adminLeftCon.css);
+@import url(../common/reset.css);
+
+/* admin */
+
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* left-con */
+
+.container .left-con{
+  width: 250px;
+  height: 100%;
+  background-color: navy;
+}
+
+.container .left-con .logo{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  line-height: 100px;
+  border: 1px solid yellow;
+  box-sizing: border-box;
+}
+
+.container .left-con .logo a img{
+  width: 50px;
+  height: 50px;
+  line-height: 100px;
+}
+
+.container .left-con .menu{
+  padding-top: 200px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.container .left-con .menu > ul > li{
+  padding: 10px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid grey;
+  text-align: center;
+}
+
+.container .left-con .menu > ul > li span{
+  color: white;
+  font-weight: bold;
+}
+
+
+/* right-con */
+
+.container .right-con{
+  width: calc(100vw - 250px);
+  height: 100%;
+}
+
+.container .right-con .top-header{
+  width: 100%;
+  height: 50px;
+  border: 1px solid red;
+  box-sizing: border-box;
+}
+
+.container .right-con .top-header{
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.container .right-con .top-header .gnb > ul{
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.container .right-con .top-header .gnb > ul > li a img{
+  width: 16px;
+  height: 16px;
+  font-weight: bold;
+}
+
+.container .right-con .bottom-header{
+  width: 100%;
+  height: 100px;
+  border: 1px solid red;
+  box-sizing: border-box;
+}
+
+.container .right-con .bottom-header h1{
+  line-height: 100%;
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+
+/* 어드민 컨테이너 */
+
+.container .right-con .con{
+  height: calc(100vh - 150px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .right-con .con .memberUpdate{
+  border: 1px solid navy;
+  padding: 10px;
+}
+
+/* .container .right-con .con .memberUpdate > ul{
+} */
+
+.container .right-con .con .memberUpdate > form > ul > li{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+}
+
+.container .right-con .con .memberUpdate > form > ul > li:nth-child(7){
+  padding-top: 20px;
+}
+
+.container .right-con .con .memberUpdate > form >  ul > li label{
+  background-color: navy;
+  color: white;
+  flex: 2;
+  padding: 5px 10px;
+}
+
+.container .right-con .con .memberUpdate > form >  ul > li input{
+  border: 1px solid navy;
+  padding: 5px 10px;
+}
+
+.container .right-con .con .memberUpdate > form >  ul > li a{
+  border: 1px solid navy;
+  padding: 5px 10px;
+}
