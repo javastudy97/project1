@@ -2,6 +2,7 @@ package org.project.omwp.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.project.omwp.costant.Role;
 import org.project.omwp.dto.MemberDto;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-//@Builder
+@Builder
 @Entity
 @Table(name = "member")
 public class MemberEntity {
@@ -25,11 +26,11 @@ public class MemberEntity {
     private Long userId;
 
 //  닉네임
-    @Column(name = "user_name", nullable = false)
+    @Column(name = "user_name", nullable = false, unique = true)
     private String userName;
 
 //  이메일
-    @Column(name = "user_email", nullable = false)
+    @Column(name = "user_email", nullable = false, unique = true)
     private String userEmail;
 
 //  전화번호
@@ -41,8 +42,8 @@ public class MemberEntity {
     private String userPw;
 
 //  회원구분 : member(기본값), admin(관리자)
-    @Column(name = "user_role", nullable = false)
-    private String userRole;
+    @Enumerated(EnumType.STRING)
+    private Role userRole;
 
 //  가입일
     @CreationTimestamp

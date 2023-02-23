@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+        .error p a{
+            color:#ff0000;
+            font-size:12px;
+        }
+    </style>
+    <script th:src="@{/js/member/login.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/member/login.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+
+<div class="container">
+    <div class="login">
+        <div class="login-con">
+            <form th:action="@{/loginOk}" method="post" id="loginForm">
+                <div class="login-form">
+                    <ul>
+                        <li>login</li>
+                        <li class="s1">
+                            <label for="userEmail">이메일</label><br>
+                            <input type="text" name="userEmail" id="userEmail">
+                        </li>
+
+                        <li class="s1">
+                            <label for="userPw">비밀번호</label><br>
+                            <input type="password" name="userPw" id="userPw">
+                        </li>
+
+                        <div th:if="error" class="error">
+                            <p id="valid"><a th:text="${exception}"></a></p>
+                        </div>
+
+                        <li class="s2">
+                            <input type="submit" value="로그인" id="loginBtn">
+                        </li>
+                    </ul>
+                </div>
+            </form>
+
+            <div>
+                <a href="#">아이디 찾기</a><br>
+                <a href="#">GOOGLE</a><br>
+                <a th:href="@{/member/signUp}">회원가입</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+</html>
