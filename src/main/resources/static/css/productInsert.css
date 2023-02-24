@@ -1,0 +1,112 @@
+@import url(common/reset.css);
+@import url(common/header.css);
+@import url(common/footer.css);
+/*product insert*/
+
+.error{
+    color:#ff0000;
+    font-size:8px;
+    font-weight:bold;
+ }
+
+ .productInsert{
+    width: 100%;
+    height: auto;
+    background: url(../img/shop1.jpg) no-repeat 50%/cover;
+    /*흑백처리*/
+    filter: grayscale(80%);
+ }
+
+ .productInsert .productInsert-con{
+    width: auto;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .productInsert .productInsert-con .productInsert-form{
+    flex:0 1 500px;
+    border: 0px solid;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px #222222;
+    border-radius: 5px 20px 5px 2px;
+    background-color: #ffffff;
+ }
+
+ .productInsert .productInsert-con .productInsert-form ul{
+    border-radius: 5px 20px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    border: 0px solid #ff0000;
+    box-sizing: border-box;
+    gap: 10px;
+    background-color: rgb(194, 203, 255);
+    /* padding: 0 20px; */
+ }
+
+ .productInsert .productInsert-con .productInsert-form ul li{
+    border: 0px solid #faa453;
+ }
+
+ .productInsert .productInsert-con .productInsert-form ul li.s1{
+    border-radius: 5px 20px 0px 0px;
+    background-color: rgb(83, 83, 255);
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 20px;
+    box-sizing: border-box;
+ }
+
+ .productInsert .productInsert-con .productInsert-form ul li.s2{
+    padding: 5px 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+ }
+
+ .productInsert .productInsert-con .productInsert-form ul li.s2 label{
+    flex: 90px;
+    background-color: rgb(83, 83, 255);
+    color: #ffffff;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    line-height: 20px;
+ }
+
+ .productInsert .productInsert-con .productInsert-form ul li.s2 input{
+    flex: 4;
+    /* background-color: #ffffff; */
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    line-height: 20px;
+ }
+
+ .productInsert .productInsert-con .productInsert-form ul li.s3{
+    padding: 5px 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+ }
+
+ .productInsert .productInsert-con .productInsert-form ul li.s3 .s3Sub{
+    flex: 1;
+    text-align: center;
+    border: 0;
+    background-color: rgb(83, 83, 255);
+    color: #ffffff;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+ }
+
+ .productInsert .productInsert-con .productInsert-form ul li.s3 .s3Sub:hover{
+    background-color: rgb(41, 41, 248);
+    color: #ffffff;
+    font-weight: bold; 
+ }

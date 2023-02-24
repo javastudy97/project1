@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>productList</title>
+    <link rel="stylesheet" th:href="@{/css/productList.css}">
+</head>
+
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+</div>
+<div class="container">
+    <div class="productList">
+            <div class="left-menu">
+                <h2>사무</h2>
+                <ul>
+                    <img src="https://via.placeholder.com/200x100" alt="">
+
+                    <h3>UX 기획</h3>
+                    <li><a href="#">웹·모바일앱 기획</a></li>
+                    <li><a href="#">프로그램·기타 기획</a></li>
+
+                    <h3>웹</h3>
+                    <li><a href="#">홈페이지</a></li>
+                    <li><a href="#">프론트앤드·퍼블리싱</a></li>
+
+                    <h3>커머스</h3>
+                    <li><a href="#">쇼핑몰</a></li>
+                    <li><a href="#">쇼핑몰 수정·유지보수</a></li>
+
+                    <h3>모바일</h3>
+                    <li><a href="#">앱</a></li>
+                    <li><a href="#">앱 수정·유지보수</a></li>
+                </ul>
+            </div>
+        <div class="productList-con">
+            <div class="top-menu">
+                <h1 class="title">Office</h1>
+                <div class="search-menu">
+                    <ul>
+                        <li>가격순</li>
+                        <li>시간순</li>
+                        <li>조회순</li>
+                        <li class="search">
+                            <form th:action="@{/product/product/search}" method="get">
+                                <input type="text" name="search" id="search">
+                                <input type="submit" value="검색">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="shop-menu">
+                <div class="shop-menu-con">
+                    <ul>
+                        <th:block th:each="product: ${productList}">
+                            <li>
+                                <div class="top-con">
+                                    <img th:src="@{|/upload/${product.imgNewName}|}" alt="">
+                                </div>
+                                <div class="bottom-con">
+                                    <ul>
+                                        <li>
+                                            <span>번호 :</span>
+                                            <span th:text="${product.productId}"></span>
+                                        </li>
+                                        <li>
+                                            <span>카테고리 :</span>
+                                            <span th:text="${product.productType}"></span>
+                                        </li>
+                                        <li>
+                                            <span>상품명 :</span>
+                                            <span th:text="${product.productName}"></span>
+                                        </li>
+                                        <li>
+                                            <span>상품설명 :</span>
+                                            <span th:text="${product.productDesc}"></span>
+                                        </li>
+                                        <li>
+                                            <span>상품가격 :</span>
+                                            <span th:text="${product.productPrice}"></span>
+                                            <span>원</span>
+                                        </li>
+                                        <!-- <li>
+                                            <span>상품등록시간 :</span>
+                                            <span
+                                                th:text="${#temporals.format(product.productCreate, 'yyyy년MM월dd일 HH시mm분ss초')}"></span>
+                                        </li> -->
+                                        <li>
+                                            <span>리뷰 수</span>
+                                            <span th:text="${product.reviewCount}"></span>
+                                        </li>
+                                        <li><a th:href="@{|/product/detail/${product.productId}|}">상세보기</a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                        </th:block>
+                    </ul>
+                </div>
+                <!--                    <div>-->
+                <!--                        <ul>-->
+                <!--                            <li>-->
+                <!--                                <a th:href="${productList.first} ? '#' : @{/product/productList(page=${productList.number-1})}">이전</a>-->
+
+                <!--                                <th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">-->
+                <!--                                    <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1"></span>-->
+                <!--                                    <span th:unless="${page == nowPage}">-->
+                <!--                                        <a th:href="@{/product/productList(page=${page-1})}" th:text="${page}"></a>-->
+                <!--                                    </span>-->
+                <!--                                </th:block>-->
+
+                <!--                                <a th:href="${productList.last} ? '#' : @{/product/productList(page=${productList.number+1})}">다음</a>-->
+                <!--                            </li>-->
+                <!--                        </ul>-->
+                <!--                    </div>-->
+                <div>
+                    <ul>
+                        <li class="insert">
+                            <a th:href="@{|/product/productInsert|}">상품등록</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+
+</html>
