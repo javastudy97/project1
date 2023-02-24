@@ -37,12 +37,12 @@
         <a href="#"><img src="" alt="logo"></a>
         <div class="gnb2">
             <ul>
-                <li><a href="#">IT</a></li>
-                <li><a href="#">디자인</a></li>
-                <li><a href="#">예체능</a></li>
-                <li><a href="#">사무</a></li>
-                <li><a href="#">마케팅</a></li>
-                <li><a href="#">재테크</a></li>
+                <li><a th:href="@{/product/productList(productType=It)}">IT</a></li>
+                <li><a th:href="@{/product/productList(productType=Design)}">디자인</a></li>
+                <li><a th:href="@{/product/productList(productType=Enter)}">예체능</a></li>
+                <li><a th:href="@{/product/productList(productType=Office)}">사무</a></li>
+                <li><a th:href="@{/product/productList(productType=Marketing)}">마케팅</a></li>
+                <li><a th:href="@{/product/productList(productType=Invest)}">재테크</a></li>
             </ul>
         </div>
         <form action="#" th:action="@{#}">

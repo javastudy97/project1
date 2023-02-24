@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Update</title>
+    <link rel="stylesheet" th:href="@{/css/product/productUpdateView.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+<div class="productUpdateView">
+    <div class="productUpdateView-con">
+        <div class="productUpdateView-form">
+            <form th:action="@{/product/update}" method="POST" >
+                <ul>
+                    <li class="s1">상품수정</li>
+                    <li class="s2 sub">
+                        <label th:for="productType">카테고리</label>
+                        <select name="productType" id="productType">
+                            <option value="It">아이티</option>
+                            <option value="Enter">예체능</option>
+                            <option value="Design">디자인</option>
+                            <option value="Office">사무</option>
+                            <option value="Marketing">마케팅</option>
+                            <option value="Invest">재태크</option>
+                        </select>
+                    </li>
+                    <li class="s2">
+                        <label th:for="productName">상품명</label>
+                        <input type="text" name="productName" th:value="${product.productName}">
+                        <input type="hidden" name="productId" th:value="${product.productId}">
+                    </li>
+                    <li class="s2">
+                        <label th:for="productPrice">상품가격</label>
+                        <input type="text" name="productPrice" th:value="${product.productPrice}">
+                    </li>
+                    <li class="s3">
+                        <label th:for="productDesc">상품설명</label>
+                        <input type="text" name="productDesc" th:value="${product.productDesc}">
+                    </li>
+
+                    <li class="s4">
+                        <input type="submit" value="회원수정" class="s4Sub">
+                        <a th:href="@{/}" class="s4Sub">HOME</a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+</html>
