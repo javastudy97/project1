@@ -48,6 +48,7 @@
                       <li>
                         <a th:href="@{/admin/memberList}">회원목록</a>
                         <a th:href="@{|/admin/wishList/${memberDto.userId}|}">찜목록</a>
+                        <a th:href="@{|/admin/orderDetail/${memberDto.userId}|}">주문내역</a>
                         <a th:href="@{|/admin/memberUpdate/${memberDto.userId}|}">회원수정</a>
                         <a th:href="@{|/admin/memberDelete/${memberDto.userId}|}">회원삭제</a>
                       </li>

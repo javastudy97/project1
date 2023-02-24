@@ -2,6 +2,7 @@ package org.project.omwp.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.project.omwp.dto.MemberDto;
+import org.project.omwp.dto.OrderlistDto;
 import org.project.omwp.dto.WishDto;
 import org.project.omwp.entity.MemberEntity;
 import org.project.omwp.service.MemberService;
@@ -128,48 +129,55 @@ public class AdminController {
         return "redirect:/admin/memberList";
     }
 //  찜 목록
-//    @GetMapping("/wishList/{userId}")
-//    public String wishList(@PageableDefault(page = 0, size = 5, sort = "userId",
-//                            direction = Sort.Direction.DESC)
-//                            Pageable pageable,
-//                           @PathVariable(value = "userId") Long userId, Model model) {
-//
-//        int blockNum;
-//        int nowPage;
-//        int startPage;
-//        int endPage;
-//
-//        Page<WishDto> wishDtoList = wishService.selectWishes(userId,pageable);
-//
-//        if (wishDtoList==null){
-//            System.out.println("wishList null");
-//        }
-////
-//        blockNum = 100;
-//        nowPage = wishDtoList.getNumber()+1;
-//        startPage = Math.max(1,wishDtoList.getNumber()-blockNum);   // bockNum은 총 페이지수다 큰 값
-//        endPage = wishDtoList.getTotalPages();
-//
-//        model.addAttribute("nowPage",nowPage);
-//        model.addAttribute("startPage",startPage);
-//        model.addAttribute("endPage",endPage);
-//        model.addAttribute("wishDtoList",wishDtoList);
-//
-//        return "admin/adminWishList";
-//    }
+    @GetMapping("/wishList/{userId}")
+    public String wishList(@PageableDefault(page = 0, size = 5, sort = "user_id",
+                            direction = Sort.Direction.DESC)
+                            Pageable pageable,
+                           @PathVariable(value = "userId") Long userId, Model model) {
 
-@GetMapping("/wishList/{userId}")
-    public String wishList(@PathVariable(value = "userId") Long userId, Model model) {
+        int blockNum;
+        int nowPage;
+        int startPage;
+        int endPage;
 
-        List<WishDto> wishDtoList = wishService.selectWishes(userId);
+        Page<WishDto> wishDtoList = wishService.selectWishes(userId,pageable);
 
         if (wishDtoList==null){
             System.out.println("wishList null");
         }
+//
+        blockNum = 100;
+        nowPage = wishDtoList.getNumber()+1;
+        startPage = Math.max(1,wishDtoList.getNumber()-blockNum);   // bockNum은 총 페이지수다 큰 값
+        endPage = wishDtoList.getTotalPages();
 
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
         model.addAttribute("wishDtoList",wishDtoList);
 
         return "admin/adminWishList";
     }
+
+//    @GetMapping("/wishList/{userId}")
+//    public String wishList(@PathVariable(value = "userId") Long userId, Model model) {
+//
+//        List<WishDto> wishDtoList = wishService.selectWishes(userId);
+//
+//        if (wishDtoList==null){
+//            System.out.println("wishList null");
+//        }
+//
+//        model.addAttribute("wishDtoList",wishDtoList);
+//
+//        return "admin/adminWishList";
+//    }
+//  주문처리
+//    @PostMapping("/orderDetail")
+//    public String orderInsert(@RequestParam()) {
+//
+//        return "redirect:admin/orderDetail"+ OrderlistDto;
+//
+//    }
 
 }

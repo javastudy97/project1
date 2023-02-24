@@ -1,25 +1,3 @@
-// 팝업레이어
-
-const loginOpen = document.querySelector('.login_open a');
-const loginLayer = document.querySelector('.login-layer');
-const loginForm = document.querySelector('.login_form');
-const spanClose = document.querySelector('span.close');
-
-loginOpen.addEventListener('click',(e)=>{
-    // a, submit -> 기본이벤트 적용하지 않을 시
-    // 반드시 기본이벤트를 중지
-    e.preventDefault();
-
-    // 최상위 부모 요소를 보이게
-    loginLayer.style.display="flex";
-
-})
-
-
-spanClose.addEventListener('click', function(){
-    loginLayer.style.display="none";
-})
-
 
 // 자동갤러리
 

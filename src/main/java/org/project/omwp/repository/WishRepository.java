@@ -12,16 +12,16 @@ import java.util.List;
 
 @Repository
 public interface WishRepository extends JpaRepository<WishEntity, Long> {
-//    @Query(value = "select w.wish_id,w.user_id, p.product_id, p.product_type, p.product_name, p.product_price " +
-//            "from wish w " +
-//            "inner join member m on w.user_id=m.user_id " +
-//            "inner join product p on w.product_id=p.product_id " +
-//            "where w.user_id=:userId ",nativeQuery = true)
-//    Page<WishEntity> findByUserId(Long userId, Pageable pageable);
-
+//    @Query(value = "select w.wish_id,w.user_id, p.product_id, p.product_type, p.product_name, p.product_price "
     @Query(value = "select * from wish w " +
             "inner join member m on w.user_id=m.user_id " +
             "inner join product p on w.product_id=p.product_id " +
-            "where w.user_id=:userId",nativeQuery = true)
-    List<WishEntity> findByUserId(@Param("userId") Long userId);
+            "where w.user_id=:userId ",nativeQuery = true)
+    Page<WishEntity> findByUserId(@Param("userId") Long userId, Pageable pageable);
+
+//    @Query(value = "select * from wish w " +
+//            "inner join member m on w.user_id=m.user_id " +
+//            "inner join product p on w.product_id=p.product_id " +
+//            "where w.user_id=:userId",nativeQuery = true)
+//    List<WishEntity> findByUserId(@Param("userId") Long userId);
 }

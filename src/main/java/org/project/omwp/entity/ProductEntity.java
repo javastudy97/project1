@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-//@Builder
+@Builder
 @Entity
 @Table(name = "product")
 public class ProductEntity {
@@ -50,15 +50,19 @@ public class ProductEntity {
     private int reviewCount;
 
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @Builder.Default
     private List<WishEntity> wishEntities = new ArrayList<>();
 
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @Builder.Default
     private List<OrderlistEntity> orderlistEntities = new ArrayList<>();
 
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @Builder.Default
     private List<ReviewEntity> reviewEntities = new ArrayList<>();
 
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @Builder.Default
     private List<ImgEntity> imgEntities = new ArrayList<>();
 
 

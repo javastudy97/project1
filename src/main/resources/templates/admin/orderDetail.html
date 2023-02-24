@@ -45,7 +45,7 @@
                             </tr>
                         </th:block>
                             <!-- 페이징 -->
-                            <tr>
+                            <!-- <tr>
                                 <td colspan="76">
                                     <a th:href="${wishDtoList.first} ? '#' : @{/admin/WishList(page=${wishDtoList.number-1})}">이전</a>
                                     <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
@@ -56,7 +56,7 @@
                                     </th:block>
                                     <a th:href="${wishDtoList.last} ? '#' : @{/admin/WishList(page=${wishDtoList.number+1})}">다음</a>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </form>
                 </div>

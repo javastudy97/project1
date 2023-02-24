@@ -17,22 +17,22 @@ public class WishService {
 
     private final WishRepository wishRepository;
 
-//    public Page<WishDto> selectWishes(Long userId,Pageable pageable) {
-//
-//        Page<WishEntity> wishEntityList = wishRepository.findByUserId(userId, pageable);
-//
-//        return wishEntityList.map(WishDto::toWishDto);
-//    }
+    public Page<WishDto> selectWishes(Long userId,Pageable pageable) {
 
-    public List<WishDto> selectWishes(Long userId) {
-        List<WishDto> wishDtoList = new ArrayList<>();
+        Page<WishEntity> wishEntityList = wishRepository.findByUserId(userId, pageable);
 
-        List<WishEntity> wishEntityList = wishRepository.findByUserId(userId);
-
-        for(WishEntity wishEntity : wishEntityList) {
-            wishDtoList.add(WishDto.toWishDto(wishEntity));
-        }
-
-        return wishDtoList;
+        return wishEntityList.map(WishDto::toWishDto);
     }
+
+//    public List<WishDto> selectWishes(Long userId) {
+//        List<WishDto> wishDtoList = new ArrayList<>();
+//
+//        List<WishEntity> wishEntityList = wishRepository.findByUserId(userId);
+//
+//        for(WishEntity wishEntity : wishEntityList) {
+//            wishDtoList.add(WishDto.toWishDto(wishEntity));
+//        }
+//
+//        return wishDtoList;
+//    }
 }

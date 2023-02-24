@@ -1,11 +1,13 @@
 package org.project.omwp.service;
 
 import lombok.RequiredArgsConstructor;
+import org.project.omwp.costant.Role;
 import org.project.omwp.dto.MemberDto;
 import org.project.omwp.entity.MemberEntity;
 import org.project.omwp.repository.MemberRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,6 +17,7 @@ import javax.transaction.Transactional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public Page<MemberDto> selectMembers(Pageable pageable) {
 
@@ -74,5 +77,17 @@ public class MemberService {
 
        memberRepository.delete(memberEntity);
        return 1;
+    }
+
+
+    public void memberInsert(MemberDto memberDto) {
+        MemberEntity memberEntity = MemberEntity.builder()
+                .userEmail(memberDto.getUserEmail())
+                .userPw(passwordEncoder.encode(memberDto.getUserPw()))
+                .userPhone(memberDto.getUserPhone())
+                .userName(memberDto.getUserName())
+                .userRole(Role.MEMBER)
+                .build();
+        memberRepository.save(memberEntity);
     }
 }
