@@ -1,6 +1,6 @@
-@import url(common/reset.css);
-@import url(common/header.css);
-@import url(common/footer.css);
+@import url(../common/reset.css);
+@import url(../common/header.css);
+@import url(../common/footer.css);
 /*memberDetail*/
 .header{
   position: static; /*포지션 기본*/
