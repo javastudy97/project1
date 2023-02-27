@@ -4,15 +4,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.project.omwp.dto.MemberDto;
 import org.project.omwp.service.MemberService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Log4j2
 @Controller
@@ -21,6 +22,8 @@ import javax.validation.Valid;
 public class MemberController {
 
     private final MemberService memberService;
+
+    private final PasswordEncoder passwordEncoder;
 
 
     // 회원가입 페이지 이동
@@ -54,5 +57,77 @@ public class MemberController {
 
         return "member/login";
     }
+
+    @GetMapping("/detail")
+    public String detail(Principal principal,Model model){
+
+        String userEmail = principal.getName();
+
+        MemberDto memberDto = memberService.findById(userEmail);
+
+        model.addAttribute("memberDto",memberDto);
+
+        return "member/detail";
+    }
+
+    @GetMapping("/update")
+    public String update(Principal principal,Model model){
+
+        String userEmail = principal.getName();
+
+        MemberDto memberDto = memberService.findById(userEmail);
+
+        model.addAttribute("memberDto",memberDto);
+
+        return "member/memberUpdateView";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDto memberDto){
+
+        int rs =  memberService.memberUpdateDo2(memberDto);
+        if (rs!=1){
+            return null;
+        }
+        return "member/detail";
+    }
+
+
+    @GetMapping("/delete")
+    public String delete(Principal principal,Model model){
+
+        String userEmail = principal.getName();
+
+        MemberDto memberDto = memberService.findById(userEmail);
+
+        model.addAttribute("memberDto",memberDto);
+
+        return "member/delete";
+    }
+
+    @PostMapping("/delete")
+    public String delete(@ModelAttribute MemberDto memberDto){
+
+        Long id = memberDto.getUserId();
+        String pw = memberDto.getUserPw();
+
+        String userEmail = memberDto.getUserEmail();
+
+        MemberDto memberDto2 = memberService.findById(userEmail);
+
+
+        boolean bl = passwordEncoder.matches(pw, memberDto2.getUserPw());
+
+        if(bl== false){
+
+            return "/member/detail";
+        }
+
+        memberService.memberDeleteDo2(id);
+
+        return "redirect:/logout";
+    }
+
+
 
 }

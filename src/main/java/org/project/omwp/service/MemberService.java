@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -71,6 +72,7 @@ public class MemberService {
     @Transactional
     public int memberDeleteDo(Long id, String pw) {
        MemberEntity memberEntity = memberRepository.findById(id).get();
+
        if(!pw.equals(memberEntity.getUserPw())) {
            return 0;
        }
@@ -89,5 +91,42 @@ public class MemberService {
                 .userRole(Role.MEMBER)
                 .build();
         memberRepository.save(memberEntity);
+    }
+
+
+    public MemberDto findById(String userEmail) {
+
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByUserEmail(userEmail);
+
+        if(!optionalMemberEntity.isPresent()){
+            return null;
+        }
+
+        MemberDto memberDto = MemberDto.toMemberDto(optionalMemberEntity.get());
+
+        return memberDto;
+    }
+
+    @Transactional
+    public int memberUpdateDo2(MemberDto memberDto) {
+
+
+
+        Long id =
+                memberRepository.save(MemberEntity.toMemberEntityUpdate(memberDto,passwordEncoder)).getUserId();
+
+        if (id==null) {
+            return 0;
+        }
+        return 1;
+    }
+
+    @Transactional
+    public void memberDeleteDo2(Long id) {
+
+        MemberEntity memberEntity = memberRepository.findById(id).get();
+
+        memberRepository.delete(memberEntity);
+
     }
 }

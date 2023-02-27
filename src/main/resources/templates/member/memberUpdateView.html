@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>updateView</title>
+    <link rel="stylesheet" th:href="@{/css/member/memberUpdateView.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+<div class="container">
+    <div class="detail">
+
+        <div th:replace="~{fragments/common/wishLeftDetail :: wishLeftFragment}"></div>
+
+
+        <div class="right-menu">
+        <div class="detail-form">
+            <form th:action="@{/member/update}" method="post" th:object="${memberDto}">
+                <ul>
+                    <li class="s1">회원수정</li>
+                    <label for="userId"></label>
+                    <input type="hidden" name="userId" id="userId" th:value="${memberDto.userId}">
+                    <li class="s2">
+                        <label for="userEmail">email</label>
+                        <input type="email" name="userEmail" id="userEmail" th:value="${memberDto.userEmail}" readonly>
+                    </li>
+                    <li class="s2">
+                        <span>이름</span>
+                        <input type="text" name="userName" id="userName">
+                    </li>
+                    <li class="s2">
+                        <span>전화번호</span>
+                        <input type="text" name="userPhone" id="userPhone">
+                    </li>
+                    <li class="s2">
+                        <span>비밀번호</span>
+                        <input type="password" name="userPw" id="userPw">
+                    </li>
+                    <li class="s3">
+                        <input type="submit" value="수정하기" class="s3Sub">  <!--class="s3Sub"-->
+                    </li>
+                </ul>
+            </form>
+
+
+        </div>
+    </div>
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+</html>

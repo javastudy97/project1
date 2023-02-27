@@ -106,9 +106,10 @@ public class ProductService {
 
 
     // 상품 목록 상세 페이지 가져오기
-    public ProductDto findByProduct(Long productId) {
+    public ProductDto findByProduct(Long id) {
 
-        Optional<ProductEntity> optionalProductEntity = productRepository.findById(productId);
+        Optional<ProductEntity> optionalProductEntity = productRepository.findById(id);
+
 
         if (optionalProductEntity.isPresent()) {
             return ProductDto.toProductDto(optionalProductEntity.get());
@@ -200,12 +201,35 @@ public class ProductService {
 
     }
 
+    public ProductDto orderProduct(Long id) {
 
-//    public List<ProductDto> searchProduct(String search) {
-//        List<ProductDto> productDtoList = new ArrayList<>();
-//        List<ProductEntity> productEntityList = productRepository.findByProductNameContaining(search);
-//
-//        for ()
-//
-//    }
+        Optional<ProductEntity> optionalProductEntity = productRepository.findById(id);
+
+        if(!optionalProductEntity.isPresent()){
+            return null;
+        }
+
+        ProductDto productDto = ProductDto.toProductDto2(optionalProductEntity.get());
+
+        return productDto;
+
+    }
+
+    public List<ProductDto> findAllProduct() {
+
+        List<ProductDto> productDtoList = new ArrayList<>();
+
+        List<ProductEntity> productEntityList = productRepository.findAll();
+
+        for(ProductEntity productEntity : productEntityList){
+
+            productDtoList.add(ProductDto.toProductDto2(productEntity));
+
+        }
+
+       return productDtoList;
+
+    }
+
+
 }

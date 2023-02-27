@@ -41,4 +41,20 @@ public class OrderlistDto {
         return orderlistDto;
     }
 
+    public static OrderlistDto toOrderlistDto(OrderlistEntity orderlistEntity) {
+        OrderlistDto orderlistDto = new OrderlistDto();
+
+        orderlistDto.setOrderlistId(orderlistEntity.getOrderlistId());
+        orderlistDto.setOrderlistCount(orderlistEntity.getOrderlistCount());
+        orderlistDto.setOrderlistDate(orderlistEntity.getOrderlistDate());
+        orderlistDto.setOrderlistStatus(orderlistEntity.getOrderlistStatus());
+        orderlistDto.setUserId(orderlistEntity.getMemberEntity().getUserId());
+        orderlistDto.setProductId(orderlistEntity.getProductEntity().getProductId());
+        orderlistDto.setProductType(orderlistEntity.getProductEntity().getProductType());
+        orderlistDto.setProductName(orderlistEntity.getProductEntity().getProductName());
+        orderlistDto.setProductPrice(orderlistEntity.getProductEntity().getProductPrice());
+
+        return orderlistDto;
+    }
+
 }

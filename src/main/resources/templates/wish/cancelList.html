@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/wish/cancelList.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+
+<div class="container">
+  <div class="detail">
+    <div th:replace="~{fragments/common/wishLeftDetail :: wishLeftFragment}"></div>
+    <div class="right-menu">
+
+      <table border="1">
+        <tr>
+          <th>상품명</th>
+          <th>상품타입</th>
+          <th>상품가격</th>
+          <th>구매날짜</th>
+          <th></th>
+
+        </tr>
+        <tr th:each="orderlist:${orderlistDtoList}">
+          <form th:action="@{deleteCancel}" method="post" th:object="${orderlistDto}">
+            <input type="text" id="orderlistId" name="orderlistId" th:value="${orderlist.orderlistId}" hidden="hidden">
+            <td th:text="${orderlist.productName}"></td>
+            <td th:text="${orderlist.productType}"></td>
+            <td th:text="${orderlist.productPrice}"></td>
+            <td th:text="${#temporals.format(orderlist.orderlistDate, 'yyyy년MM월dd일 HH시mm분')}" ></td>
+            <td>   <input type="submit" value="취소내역 삭제"> </td>
+<!--            <span th:if="${#temporals.format(calendars.createNow(), 'yyyyMMddHHmm') - #temporals.format(orderlist.orderlistDate, 'yyyyMMddHHmm') < -10}">10분지남</span>-->
+          </form>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+
+</body>
+</html>
