@@ -78,4 +78,18 @@ public class ProductDto {
         return  productDto;
     }
 
+    public static ProductDto toProductDto2(ProductEntity productEntity) {
+        ProductDto productDto = new ProductDto();
+        productDto.setProductId(productEntity.getProductId());
+        productDto.setProductType(productEntity.getProductType());
+        productDto.setProductName(productEntity.getProductName());
+        productDto.setProductDesc(productEntity.getProductDesc());
+        productDto.setReviewCount(productEntity.getReviewCount());
+        productDto.setProductPrice(productEntity.getProductPrice());
+
+        productDto.setProductCreate(productEntity.getProductCreate());
+        // 나중에 Role 추가
+
+        return  productDto;
+    }
 }

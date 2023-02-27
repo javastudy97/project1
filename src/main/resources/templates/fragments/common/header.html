@@ -19,7 +19,7 @@
                 </li>
 
                 <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{#}"><img th:src="@{/img/icon/member.png}" alt="member">회원정보</a>
+                    <a th:href="@{member/detail}"><img th:src="@{/img/icon/member.png}" alt="member">회원정보</a>
                 </li>
 
                 <li sec:authorize="hasRole('ADMIN')">
