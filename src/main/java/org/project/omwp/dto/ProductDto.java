@@ -35,6 +35,22 @@ public class ProductDto {
     private String imgNewName;
     private int attachImg; //이미지 유무(1,0)
 
+
+//    public ProductDto(Long id, String type,
+//                      String name, String desc,
+//                      int price, int reviewCount){
+//
+//        this.productId =id;
+//        this.productType=type;
+//        this.productName=name;
+//        this.productDesc=desc;
+//        this.productPrice=price;
+//        this.reviewCount=reviewCount;
+//
+//        //나중에 Role 추가
+//    }
+
+    // Entity -> Dto
     public static ProductDto toProductDto(ProductEntity productEntity){
         ProductDto productDto = new ProductDto();
         productDto.setProductId(productEntity.getProductId());
@@ -61,7 +77,6 @@ public class ProductDto {
 
         return  productDto;
     }
-
 
     public static ProductDto toProductDto2(ProductEntity productEntity) {
         ProductDto productDto = new ProductDto();

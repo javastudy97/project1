@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>memberUpdate</title>
+    <link rel="stylesheet" th:href="@{/css/admin/adminMemberUpdate.css}">
+</head>
+<body>
+    <div class="container">
+        <!-- 레프트메뉴 -->
+        <div th:replace="~{fragments/common/adminLeftCon :: adminLeftConFragment}"></div>
+        <div class="right-con">
+            <!-- 어드민 헤더 -->
+            <div th:replace="~{fragments/common/adminHeader :: adminHeaderFragment}"></div>
+            <div class="bottom-header">
+                <h1>회원수정</h1>
+            </div>
+            <!-- 어드민 컨테이너 -->
+            <div class="con">
+                <!-- 회원상세 -->
+                <div class="memberUpdate">
+                  <!-- 회원수정 -->
+                  <form th:action="@{/admin/memberUpdate}" method="post">
+                    <ul>
+                      <li>
+                        <label th:for="userId">ID</label>
+                        <input type="text" name="userId" id="userId" th:value="${memberDto.userId}" readonly>
+                      </li>
+                      <li>
+                        <label th:for="userName">Name</label>
+                        <input type="text" name="userName" th:value="${memberDto.userName}">
+                      </li>
+                      <li>
+                        <label th:for="userEmail">Email</label>
+                        <input type="email" name="userEmail" th:value="${memberDto.userEmail}">
+                      </li>
+                      <li>
+                        <label th:for="userPhone">Phone</label>
+                        <input type="text" name="userPhone" th:value="${memberDto.userPhone}">
+                      </li>
+                      <li>
+                        <label th:for="userRole">role</label>
+                        <select name="userRole" id="userRole">
+                          <option value="MEMBER" selected>MEMBER</option>
+                          <option value="ADMIN">ADMIN</option>
+                        </select>
+                      </li>
+                      <li>
+                        <label th:for="userPw">pw초기화(pw: 0000)</label>
+                        <input type="radio" name="userPw" th:value="${memberDto.userPw}">No<br>
+                        <input type="radio" name="userPw" value="0000">Yes
+                      </li>
+                      <li>
+                        <input type="submit" value="수정완료">
+                        <a th:href="@{|/admin/memberDetail/${memberDto.userId}|}">취소</a>
+                      </li>
+                    </ul>
+                  </form>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

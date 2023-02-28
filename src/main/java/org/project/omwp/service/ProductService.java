@@ -231,17 +231,5 @@ public class ProductService {
 
     }
 
-    public List<ProductDto> searchDo(String productType,String search) {
-        List<ProductDto> productDtoList = new ArrayList<>();
-//        List<ProductEntity> productEntityList = productRepository.findByProductNameContaining(search);
-        List<ProductEntity> productEntityList = productRepository.findByProductNameContainingAndProductTypeContaining(search,productType);
-
-        for (ProductEntity productEntity :  productEntityList){
-            productDtoList.add(ProductDto.toProductDto(productEntity));
-        }
-        return productDtoList;
-
-    }
-
 
 }

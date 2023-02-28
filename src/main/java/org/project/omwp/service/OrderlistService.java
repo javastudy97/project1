@@ -1,6 +1,7 @@
 package org.project.omwp.service;
 
 import lombok.RequiredArgsConstructor;
+import org.project.omwp.dto.MemberDto;
 import org.project.omwp.entity.OrderlistEntity;
 import org.project.omwp.entity.WishEntity;
 import org.project.omwp.dto.OrderlistDto;
@@ -10,6 +11,8 @@ import org.project.omwp.repository.MemberRepository;
 import org.project.omwp.repository.OrderlistRepository;
 import org.project.omwp.repository.ProductRepository;
 import org.project.omwp.repository.WishRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -79,6 +82,13 @@ public class OrderlistService {
         return orderlistDtoList;
     }
 
+    public Page<OrderlistDto> selectAllOrder2(Long userId, Pageable pageable) {
+        Page<OrderlistEntity> orderlistEntities =
+                orderlistRepository.findAllByuserId2(userId,pageable);
+
+        return orderlistEntities.map(OrderlistDto::toOrderlistDto);
+    }
+
     @Transactional
     public void cancelOrder(Long id) {
 
@@ -120,5 +130,43 @@ public class OrderlistService {
 
         orderlistRepository.delete(orderlistEntity);
 
+    }
+
+
+    public Page<OrderlistDto> searchOrderlistDo(Long orderlistId, Pageable pageable) {
+        Page<OrderlistEntity> orderlistEntity =
+                orderlistRepository.findAllByOrderlistId(orderlistId,pageable);
+
+        return orderlistEntity.map(OrderlistDto::orderlistDto);
+    }
+
+//    주문내역 조회
+    public Page<OrderlistDto> searchListDo(String type, String keyword, Pageable pageable) {
+        if(type.equals("productId")) {
+            Page<OrderlistEntity> orderlistEntity =
+                    orderlistRepository.findAllByProductId(keyword,pageable);
+            return orderlistEntity.map(OrderlistDto::orderlistDto);
+        } else if(type.equals("productName")) {
+            Page<OrderlistEntity> orderlistEntity =
+                    orderlistRepository.findByProductNameContaining(keyword,pageable);
+            return orderlistEntity.map(OrderlistDto::orderlistDto);
+        } else if(type.equals("userName")) {
+            Page<OrderlistEntity> orderlistEntity =
+                    orderlistRepository.findByUserNameContaining(keyword,pageable);
+            return orderlistEntity.map(OrderlistDto::orderlistDto);
+        } else if(type.equals("email")) {
+            Page<OrderlistEntity> orderlistEntity =
+                    orderlistRepository.findByUserEmailContaining(keyword,pageable);
+            return orderlistEntity.map(OrderlistDto::orderlistDto);
+        }
+
+        return null;
+    }
+
+    public Page<OrderlistDto> selectOrderlist(Pageable pageable) {
+        Page<OrderlistEntity> orderlistEntity =
+                orderlistRepository.findAllOrders(pageable);
+
+        return orderlistEntity.map(OrderlistDto::orderlistDto);
     }
 }

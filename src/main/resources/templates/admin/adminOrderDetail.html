@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WishList</title>
+    <link rel="stylesheet" th:href="@{/css/admin/orderDetail.css}">
+</head>
+<body>
+    <div class="container">
+        <!-- 레프트메뉴 -->
+        <div th:replace="~{fragments/common/adminLeftCon :: adminLeftConFragment}"></div>
+        <div class="right-con">
+            <!-- 어드민 헤더 -->
+            <div th:replace="~{fragments/common/adminHeader :: adminHeaderFragment}"></div>
+            <div class="bottom-header">
+                <h1>주문내역</h1>
+            </div>
+            <!-- 어드민 컨테이너 -->
+            <div class="con">
+                <!-- 주문목록 -->
+                <div class="WishList">
+                        <table border="1">
+                            <tr>
+                                <th>주문일자</th>
+                                <th>상품번호</th>
+                                <th>카테고리</th>
+                                <th>상품명</th>
+                                <th>금액</th>
+                            </tr>
+                        <th:block th:each="order : ${orderlistDtoList}">
+                            <tr>
+                                <td th:text="${#temporals.format(order.orderlistDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td th:text="${order.productId}"></td>
+                                <td th:text="${order.productType}"></td>
+                                <!-- 상품명 클릭시 해당 상품상세 페이지로 이동 -->
+                                <td><a th:href="@{#}" th:text="${order.productName}"></a></td>
+                                <td th:text="${order.productPrice}"></td>
+                            </tr>
+                        </th:block>
+                            <!-- 페이징 -->
+                            <tr>
+                                <td colspan="76">
+                                    <a th:href="${orderlistDtoList.first} ? '#' : @{/admin/orderDetail(page=${orderlistDtoList.number-1})}">이전</a>
+                                    <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
+                                        <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
+                                        <span th:unless="${page == nowPage}">
+                                            <a th:href="@{/admin/orderDetail(page=${page-1})}" th:text="${page}"></a>
+                                        </span>
+                                    </th:block>
+                                    <a th:href="${orderlistDtoList.last} ? '#' : @{/admin/orderDetail(page=${orderlistDtoList.number+1})}">다음</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <a th:href="@{|/admin/memberDetail/${memberDto.userId}|}">회원정보</a>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

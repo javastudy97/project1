@@ -62,7 +62,6 @@ public class AdminController {
 
         } else {
             memberDtoList = memberService.selectMembers(pageable);
-            System.out.println("memberlist null");
         }
 
 
@@ -79,7 +78,7 @@ public class AdminController {
         return "admin/adminMemberList";
     }
 //  회원검색
-    @GetMapping("/search")
+    @GetMapping("/memberSearch")
     public String memberSearch() {
 
         return "redirect:/admin/memberList";
@@ -179,7 +178,7 @@ public class AdminController {
         return "redirect:/admin/wishList/"+userId;
     }
 
-//  주문처리 => Ajax
+//  주문처리
     @GetMapping("/addOrderList/{userId}/{wishId}")
     public String addOrder(@PathVariable(value = "wishId") Long wishId,
                            @PathVariable(value = "userId") Long userId,
@@ -199,6 +198,89 @@ public class AdminController {
         }
             return "redirect:/admin/wishList/"+userId;
 
+    }
+
+//    주문내역
+    @GetMapping("/orderDetail/{userId}")
+    public String orderDetail(@PathVariable(value = "userId") Long userId, Model model,
+                              @PageableDefault(page = 0, size = 5, sort = "orderlist_id",
+                                      direction = Sort.Direction.DESC)
+                              Pageable pageable) {
+
+        int blockNum;
+        int nowPage;
+        int startPage;
+        int endPage;
+
+         Page<OrderlistDto> orderlistDtoList =
+                 orderlistService.selectAllOrder2(userId,pageable);
+
+         if (orderlistDtoList==null) {
+             System.out.println("orderlist null");
+             return null;
+         }
+
+        blockNum = 100;
+        nowPage = orderlistDtoList.getNumber()+1;
+        startPage = Math.max(1,orderlistDtoList.getNumber()-blockNum);   // bockNum은 총 페이지수다 큰 값
+        endPage = orderlistDtoList.getTotalPages();
+
+        MemberDto memberDto = memberService.memberDetailDo(userId);
+
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+        model.addAttribute("memberDto",memberDto);
+        model.addAttribute("orderlistDtoList",orderlistDtoList);
+
+         return "admin/adminOrderDetail";
+    }
+
+//    전체 주문내역
+@GetMapping("/orderList")
+public String orderList(Model model, @PageableDefault(page = 0, size = 5, sort = "orderlist_date",
+                         direction = Sort.Direction.DESC) Pageable pageable,
+                         @RequestParam(value = "type", required = false) String type,
+                         @RequestParam(value = "keyword", required = false) String keyword){
+
+    int blockNum;
+    int nowPage;
+    int startPage;
+    int endPage;
+
+    Page<OrderlistDto> orderlistDto;
+
+    if(type!=null && keyword!=null){
+        if(type.equals("orderlistId")) {
+//            주문번호(ID)로 검색할 경우
+            Long orderlistId = Long.parseLong(keyword);
+            orderlistDto = orderlistService.searchOrderlistDo(orderlistId,pageable);
+        } else {
+            orderlistDto = orderlistService.searchListDo(type,keyword,pageable);
+        }
+
+    } else {
+        orderlistDto = orderlistService.selectOrderlist(pageable);
+    }
+
+
+    blockNum = 100;
+    nowPage = orderlistDto.getNumber()+1;
+    startPage = Math.max(1,orderlistDto.getNumber()-blockNum);   // bockNum은 총 페이지수다 큰 값
+    endPage = orderlistDto.getTotalPages();
+
+    model.addAttribute("nowPage",nowPage);
+    model.addAttribute("startPage",startPage);
+    model.addAttribute("endPage",endPage);
+    model.addAttribute("orderlistDto",orderlistDto);
+
+    return "admin/adminOrderList";
+}
+
+// 주문내역 검색
+    @GetMapping("/orderSearch")
+    public String orderSearch(){
+        return "redirect:/admin/orderList";
     }
 
 }

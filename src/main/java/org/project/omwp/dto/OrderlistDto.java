@@ -19,7 +19,12 @@ public class OrderlistDto {
 //    private int orderlistPrice;
     private LocalDateTime orderlistDate;
     private int orderlistStatus;
+
     private Long userId;
+    private String userName;
+    private String userEmail;
+    private String userPhone;
+
     private Long productId;
     private String productType;
     private String productName;
@@ -33,6 +38,9 @@ public class OrderlistDto {
         orderlistDto.setOrderlistDate(orderlistEntity.getOrderlistDate());
         orderlistDto.setOrderlistStatus(orderlistEntity.getOrderlistStatus());
         orderlistDto.setUserId(orderlistEntity.getMemberEntity().getUserId());
+        orderlistDto.setUserName(orderlistEntity.getMemberEntity().getUserName());
+        orderlistDto.setUserEmail(orderlistEntity.getMemberEntity().getUserEmail());
+        orderlistDto.setUserPhone(orderlistEntity.getMemberEntity().getUserPhone());
         orderlistDto.setProductId(orderlistEntity.getProductEntity().getProductId());
         orderlistDto.setProductType(orderlistEntity.getProductEntity().getProductType());
         orderlistDto.setProductName(orderlistEntity.getProductEntity().getProductName());

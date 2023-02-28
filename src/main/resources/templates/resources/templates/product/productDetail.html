@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <link rel="stylesheet" th:href="@{/css/product/productDetail.css}">
+</head>
+
+<body>
+    <div th:replace="~{fragments/common/header :: headerFragment}"></div>
+    <div class="container">
+        <div class="productDetail">
+            <div class="productDetail-con">
+                <div class="productDetail-form">
+                    <div class="left-menu1" th:lf="${product.attachImg==1}">
+                        <img th:src="@{|/upload/${product.imgNewName}|}" alt="">
+                    </div>
+                    <div class="left-menu2" th:unless="${product.attachImg==1}">
+                        <img src="https://via.placeholder.com/300x600" alt="">
+                    </div>
+                    <div class="right-menu">
+                        <ul>
+                            <li class="s1">상품정보</li>
+
+                            <li class="s2">
+                                <span>상품번호</span>
+                                <span th:text="${product.productId}"></span>
+                            </li>
+                            <li class="s2">
+                                <span>카테고리</span>
+                                <span th:text="${product.productType}"></span>
+                            </li>
+                            <li class="s2">
+                                <span>상품명</span>
+                                <span th:text="${product.productName}"></span>
+                            </li>
+                            <li class="s2">
+                                <span>상품설명</span>
+                                <span th:text="${product.productDesc}"></span>
+                            </li>
+                            <li class="s2">
+                                <span>상품가격</span>
+                                <span th:text="${product.productPrice}"></span>
+                                <span>원</span>
+                            </li>
+                            <li class="s2">
+                                <span>가입일</span>
+                                <span th:text="*{#temporals.format(product.productCreate, 'yyyy년 MM월 dd일')}"></span>
+                            </li>
+                            <li class="s2">
+                                <span>리뷰 수</span>
+                                <span th:text="${product.reviewCount}"></span>
+                            </li>
+                            <li class="btn1">
+                                <a th:href="@{|/product/update/${product.productId}|}">Update</a>
+<!--                                <a href="@{|/product/delete/${product.id}|}">Delete</a>-->
+                                <a href="/product/cart/${product.id">장바구니</a>
+                                <a href="/product/buy/${product.id">구매하기</a>
+                                <a href="/product/productList">List</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="Desc">
+                <ul>
+                    <span>상품설명</span>
+                    <span th:text="${product.productDesc}"></span>
+                    <li>
+                        <img src="https://via.placeholder.com/600x1600" alt="상품설명">
+                    </li>
+                    <li class="btn2">
+                        <a href="/product/buy/${product.id">구매하기</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="review">
+            <div class="review-con">
+                <h2>리뷰</h2>
+                <div class="review-list">
+                    <table>
+                        <tr>
+                            <th>번호</th>
+                            <th>작성자번호</th>
+                            <th>내용</th>
+                            <th>작성시간</th>
+                        </tr>
+                        <tr th:each="review: ${reviewDtoList}">
+                            <td th:text="${review.reviewId}"></td>
+                            <td th:text="${review.userId}"></td>
+                            <td th:text="${review.reviewContent}"></td>
+                            <td th:text="${review.reviewDate}"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="review-write">
+                    <form th:action="@{/review/reviewWrite}" method="POST">
+
+                        <input type="hidden" readonly name="productId" th:value="${product.productId}">
+                        <ul>
+                            <li class="class2">
+                                <input style="line-height:20px;padding:10px; box-sizing: border-box;" type="text" name="userId" id="userId" placeholder="작성자">
+                            </li>
+                            <li>
+                                <textarea style="line-height:20px;padding:10px; box-sizing: border-box;" name="reviewContent" id="reviewContent" cols="30" rows="1" placeholder="내용을 입력해주세요."></textarea>
+                            </li>
+                            <li>
+                                <input type="submit" value="리뷰작성">
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/wish/wishList.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+
+<div class="container">
+  <div class="detail">
+      <div th:replace="~{fragments/common/wishLeftDetail :: wishLeftFragment}"></div>
+
+          <div class="right-menu">
+      <div class="orderbox">
+
+
+          <table border="1">
+              <tr>
+                  <th>상품번호</th>
+                  <th>상품명</th>
+                  <th>상품타입</th>
+                  <th>상품가격</th>
+                  <th></th>
+
+              </tr>
+              <tr th:each="wishDto:${wishDtoList}">
+                  <form th:action="@{order}" method="post" th:object="${wishDto}">
+<!--                  <td><input type="checkbox" id="check" class="check" checked="checked"></td>-->
+                      <input type="text" id="wishId" name="wishId" th:value="${wishDto.wishId}" hidden="hidden">
+                      <input type="text" id="productId" name="productId" th:value="${wishDto.productId}" hidden="hidden">
+                      <input type="text" id="productType" name="productType" th:value="${wishDto.productType}" hidden="hidden">
+                      <input type="text" id="productName" name="productName" th:value="${wishDto.productName}" hidden="hidden">
+                     <input type="text" id="productPrice" name="productPrice" th:value="${wishDto.productPrice}" hidden="hidden">
+                      <td th:text="${wishDto.productId}" ></td>
+                  <td th:text="${wishDto.productName}"></td>
+                  <td th:text="${wishDto.productType}"></td>
+                  <td th:text="${wishDto.productPrice}"></td>
+                   <td>   <input type="submit" value="구매하기"> </td>
+                      <td><a th:href="@{|/wish/deleteWish/${wishDto.wishId}|}">장바구니 제거</a></td>
+
+                  </form>
+              </tr>
+
+
+          </table>
+
+
+      </div>
+
+
+</div>
+
+
+</div>
+</div>
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+
+</body>
+</html>
