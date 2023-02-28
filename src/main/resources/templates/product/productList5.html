@@ -43,8 +43,9 @@
                         <li>시간순</li>
                         <li>조회순</li>
                         <li class="search">
-                            <form th:action="@{/product/product/search}" method="get">
-                                <input type="text" name="search" id="search">
+                            <form th:action="@{/product/productList/search5}" method="get">
+                                <input type="hidden" name="Marketing" id="Marketing" value="Marketing" readonly>
+                                <input type="text" name="search5" id="search5">
                                 <input type="submit" value="검색">
                             </form>
                         </li>

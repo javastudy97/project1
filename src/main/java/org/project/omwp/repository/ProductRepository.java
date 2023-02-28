@@ -5,21 +5,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
-
-
     List<ProductEntity> findByProductType(String productType);
 
     List<ProductEntity> findByProductNameContaining(String search);
 
-    // 페이징 진행 중
-//    @Query
-//    Page<ProductEntity> findAllByType(Pageable pageable);
+    @Query(value = " select p.* from product p where p.product_type = :product_type and p.product_name like '%:search%' ", nativeQuery = true)
+    List<ProductEntity> findByProductTypeAndProductNameContaining(@Param("product_type") String productType, @Param("search") String search);
+
+    List<ProductEntity> findByProductNameContainingAndProductTypeContaining(String search, String productType);
+
 }
