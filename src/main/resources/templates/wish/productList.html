@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/wish/productList.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+
+<div class="container">
+  <div class="detail">
+    <div th:replace="~{fragments/common/wishLeftDetail :: wishLeftFragment}"></div>
+    <div class="right-menu">
+      <tr th:each="product : ${productDtoList}">
+        <td th:text="${product.productId}"></td> <br>
+        <td th:text="${product.productType}"></td> <br>
+        <td th:text="${product.productName}"></td> <br>
+        <td th:text="${product.productDesc}"></td> <br>
+        <td th:text="${product.productPrice}"></td> <br>
+        <td th:text="${product.reviewCount}"></td> <br>
+        <td th:text="${#temporals.format(product.productCreate, 'yyyy-MM-dd HH:mm:ss')}"></td> <br>
+        <a th:href="@{|/wish/putCart/${product.productId}|}">장바구니 담기</a></td> <br>
+      </tr>
+    </div>
+  </div>
+</div>
+
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+
+</body>
+</html>

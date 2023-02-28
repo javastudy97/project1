@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.project.omwp.costant.Role;
 import org.project.omwp.dto.MemberDto;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -82,6 +83,19 @@ public class MemberEntity {
         memberEntity.setUserName(memberDto.getUserName());
         memberEntity.setUserEmail(memberDto.getUserEmail());
         memberEntity.setUserPw(memberDto.getUserPw());
+        memberEntity.setUserPhone(memberDto.getUserPhone());
+        memberEntity.setUserRole(memberDto.getUserRole());
+
+        return memberEntity;
+    }
+
+    public static MemberEntity toMemberEntityUpdate(MemberDto memberDto, PasswordEncoder passwordEncoder){
+        MemberEntity memberEntity = new MemberEntity();
+
+        memberEntity.setUserId(memberDto.getUserId());
+        memberEntity.setUserName(memberDto.getUserName());
+        memberEntity.setUserEmail(memberDto.getUserEmail());
+        memberEntity.setUserPw(passwordEncoder.encode(memberDto.getUserPw()));
         memberEntity.setUserPhone(memberDto.getUserPhone());
         memberEntity.setUserRole(memberDto.getUserRole());
 

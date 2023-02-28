@@ -193,10 +193,4 @@ public class ProductController {
         return "redirect:/product/productList";
     }
 
-//    @GetMapping("/productList/search")
-//    public String productsearch(@RequestParam(value = "search" , required = false) String search,
-//                                Model model){
-//        List<ProductDto> productDtoList = productService.searchProduct(search);
-//
-//    }
 }
