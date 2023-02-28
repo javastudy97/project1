@@ -44,6 +44,7 @@
                         <li>조회순</li>
                         <li class="search">
                             <form th:action="@{/product/productList/search}" method="get">
+                                <input type="hidden" name="It" id="It" value="It" readonly>
                                 <input type="text" name="search" id="search">
                                 <input type="submit" value="검색">
                             </form>
@@ -99,23 +100,23 @@
                         </th:block>
                     </ul>
                 </div>
-                <div>
-                    <ul>
-                        <li>
-                            <a th:href="${productList.first} ? '#' : @{/product/productList(page=${productList.number-1})}">이전</a>
+<!--                <div>-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <a th:href="${productList.first} ? '#' : @{/product/productList(page=${productList.number-1})}">이전</a>-->
 
-                            <th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">
-                                <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1"></span>
-                                <span th:unless="${page == nowPage}">
-                                                        <a th:href="@{/product/productList(page=${page-1})}"
-                                                           th:text="${page}"></a>
-                                                    </span>
-                            </th:block>
+<!--                            <th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">-->
+<!--                                <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1"></span>-->
+<!--                                <span th:unless="${page == nowPage}">-->
+<!--                                                        <a th:href="@{/product/productList(page=${page-1})}"-->
+<!--                                                           th:text="${page}"></a>-->
+<!--                                                    </span>-->
+<!--                            </th:block>-->
 
-                            <a th:href="${productList.last} ? '#' : @{/product/productList(page=${productList.number+1})}">다음</a>
-                        </li>
-                    </ul>
-                </div>
+<!--                            <a th:href="${productList.last} ? '#' : @{/product/productList(page=${productList.number+1})}">다음</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
                 <div>
                     <ul>
                         <li class="insert">

@@ -71,22 +71,22 @@ public class ProductController {
         if(productType.equals("IT")||productType.equals("It")){
             List<ProductDto> productDtoList = productService.ItProductListDo(productType);
             model.addAttribute("productList",productDtoList);
-
-            Page<ProductDto> productList=productService.ITProductPagingList(pageable);
-
-            Long total=productList.getTotalElements();
-            int bockNum=4;
-            int nowPage=productList.getNumber()+1;
-            int startPage=Math.max(1,productList.getNumber()-bockNum);
-            int endPage=productList.getTotalPages();
-
-            model.addAttribute("total",total);
-            model.addAttribute("productList",productList);
-            model.addAttribute("nowPage",nowPage);
-            model.addAttribute("startPage",startPage);
-            model.addAttribute("endPage",endPage);
-
-            return "product/productList";
+//
+//            Page<ProductDto> productList=productService.ITProductPagingList(pageable);
+//
+//            Long total=productList.getTotalElements();
+//            int bockNum=4;
+//            int nowPage=productList.getNumber()+1;
+//            int startPage=Math.max(1,productList.getNumber()-bockNum);
+//            int endPage=productList.getTotalPages();
+//
+//            model.addAttribute("total",total);
+//            model.addAttribute("productList",productList);
+//            model.addAttribute("nowPage",nowPage);
+//            model.addAttribute("startPage",startPage);
+//            model.addAttribute("endPage",endPage);
+//
+//            return "product/productList";
         }
         if(productType.equals("Design")||productType.equals("design")){
             List<ProductDto> productDtoList = productService.DesignProductListDo(productType);
@@ -191,6 +191,62 @@ public class ProductController {
         productService.productUpdate(productDto);
 
         return "redirect:/product/productList";
+    }
+
+    //각 카테고리 당 검색기능
+    @GetMapping("/productList/search")
+    public String productSearch(@RequestParam(value = "It", required = false) String productType, @RequestParam(value = "search" ,required = false) String search, Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search);
+
+        model.addAttribute("productList", productDtoList);
+
+        return "product/productList";
+    }
+    @GetMapping("/productList/search2")
+    public String productSearch2(@RequestParam(value = "Design", required = false) String productType, @RequestParam(value = "search2" ,required = false) String search2, Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search2);
+
+        model.addAttribute("productList", productDtoList);
+
+        return "product/productList2";
+    }
+    @GetMapping("/productList/search3")
+    public String productSearch3(@RequestParam(value = "Enter", required = false) String productType, @RequestParam(value = "search3" ,required = false) String search3, Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search3);
+
+        model.addAttribute("productList", productDtoList);
+
+        return "product/productList3";
+    }
+    @GetMapping("/productList/search4")
+    public String productSearch4(@RequestParam(value = "Office", required = false) String productType, @RequestParam(value = "search4" ,required = false) String search4, Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search4);
+
+        model.addAttribute("productList", productDtoList);
+
+        return "product/productList4";
+    }
+    @GetMapping("/productList/search5")
+    public String productSearch5(@RequestParam(value = "Marketing", required = false) String productType, @RequestParam(value = "search5" ,required = false) String search5, Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search5);
+
+        model.addAttribute("productList", productDtoList);
+
+        return "product/productList5";
+    }
+    @GetMapping("/productList/search6")
+    public String productSearch6(@RequestParam(value = "Invest", required = false) String productType, @RequestParam(value = "search6" ,required = false) String search6, Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search6);
+
+        model.addAttribute("productList", productDtoList);
+
+        return "product/productList6";
     }
 
 }
