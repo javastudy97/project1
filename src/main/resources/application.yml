@@ -1,7 +1,6 @@
 server:
   port: 8099
 
-
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,3 +17,13 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+  thymeleaf:
+    cache: false
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
+
+  profiles:
+    include: oauth

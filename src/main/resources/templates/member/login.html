@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
-    <style>
-        .error p a{
-            color:#ff0000;
-            font-size:12px;
-        }
-    </style>
     <script th:src="@{/js/member/login.js}" defer></script>
     <link rel="stylesheet" th:href="@{/css/member/login.css}">
 </head>
@@ -21,15 +15,15 @@
             <form th:action="@{/loginOk}" method="post" id="loginForm">
                 <div class="login-form">
                     <ul>
-                        <li>login</li>
+                        <li>로그인</li>
                         <li class="s1">
-                            <label for="userEmail">이메일</label><br>
-                            <input type="text" name="userEmail" id="userEmail">
+                            <h4>이메일</h4>
+                            <input type="text" name="userEmail" id="userEmail" placeholder="example@naver.com">
                         </li>
 
                         <li class="s1">
-                            <label for="userPw">비밀번호</label><br>
-                            <input type="password" name="userPw" id="userPw">
+                            <h4>비밀번호</h4>
+                            <input type="password" name="userPw" id="userPw" placeholder="비밀번호를 입력해주세요">
                         </li>
 
                         <div th:if="error" class="error">
@@ -39,15 +33,23 @@
                         <li class="s2">
                             <input type="submit" value="로그인" id="loginBtn">
                         </li>
+
+                        <div class="sideMenu">
+                            <a th:href="@{/member/findEmail}">아이디 찾기</a><br>
+                            <div class="line"></div>
+                            <a th:href="@{/member/signUp}">회원가입</a>
+                        </div>
                     </ul>
+                </div>
+
+                <br>
+                
+                <div class="google">
+                        <img th:src=@{/img/google.png} alt="google" class="img">
+                        <a th:href="@{/oauth2/authorization/google}">Google로 시작하기</a><br>
                 </div>
             </form>
 
-            <div>
-                <a href="#">아이디 찾기</a><br>
-                <a href="#">GOOGLE</a><br>
-                <a th:href="@{/member/signUp}">회원가입</a>
-            </div>
         </div>
     </div>
 </div>

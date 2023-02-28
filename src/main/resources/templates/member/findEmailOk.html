@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <script th:src="@{/js/member/findEmail.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/member/findEmail.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+
+<div class="container">
+    <div class="findEmail">
+        <div class="findEmail-con">
+            <form th:action="@{/findEmailOk}" method="get" id="findEmailForm">
+                <div class="findEmail-form">
+                    <ul>
+                        <li>이메일 찾기 결과</li>
+
+                        <tr th:each="memberDto : ${dto}">
+                            <td th:text="${dto.userEmail}"></td>
+                        </tr>
+
+                        <li>
+                            <a th:href="@{/member/findEmail}">아이디 찾기</a>
+                            <a th:href="@{/member/login}">로그인</a>
+                            <a th:href="@{/member/signUp}">회원가입</a>
+                            <a th:href="@{/}">HOME</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+</html>

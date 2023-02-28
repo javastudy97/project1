@@ -2,6 +2,8 @@ package org.project.omwp.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.project.omwp.checked.CheckUserEmail;
+import org.project.omwp.checked.CheckUserName;
 import org.project.omwp.dto.MemberDto;
 import org.project.omwp.service.MemberService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -24,6 +28,8 @@ public class MemberController {
     private final MemberService memberService;
 
     private final PasswordEncoder passwordEncoder;
+    private final CheckUserEmail checkUserEmail;
+    private final CheckUserName checkUserName;
 
 
     // 회원가입 페이지 이동
@@ -126,6 +132,28 @@ public class MemberController {
         memberService.memberDeleteDo2(id);
 
         return "redirect:/logout";
+    }
+
+    // 커스텀 유효성 검사
+    @InitBinder
+    public void validatorBinder(WebDataBinder binder){
+        binder.addValidators((Validator) checkUserEmail);
+        binder.addValidators((Validator) checkUserName);
+    }
+
+    // 이메일 찾기(페이지 아동)
+    @GetMapping("/findEmail")
+    public String findEmail(){
+
+        return "member/findEmail";
+    }
+
+    // 이메일 찾기 실행
+    @GetMapping("/findEmailOk")
+    public String findEmailOk(){
+
+        return "member/findEmailOk";
+
     }
 
 

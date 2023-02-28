@@ -129,4 +129,22 @@ public class MemberService {
         memberRepository.delete(memberEntity);
 
     }
+
+    /* 중복 체크 */
+    @Transactional
+    public void checkUserEmail(MemberDto dto){
+        boolean emailCheck = memberRepository.existsByUserEmail(dto.getUserEmail());
+        if(emailCheck){
+            throw new IllegalStateException("이미 사용중인 이메일 입니다.");
+        }
+    }
+
+    @Transactional
+    public void checkUserName(MemberDto dto){
+        boolean nameCheck = memberRepository.existsByUserName(dto.getUserName());
+        if(nameCheck){
+            throw new IllegalStateException("이미 사용중인 닉네임 입니다.");
+        }
+    }
+
 }

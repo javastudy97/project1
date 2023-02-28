@@ -1,0 +1,68 @@
+@import url(../common/header.css);
+@import url(../common/footer.css);
+@import url(../common/reset.css);
+
+/* 이메일 찾기 폼 */
+.container{
+  background-color: #cccccc;
+}
+
+.container .findEmail{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .findEmail .findEmail-con{
+  width: 350px;
+  padding: 10px;
+  box-sizing: border-box;
+  padding: 30px 20px;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 3px #555555;
+}
+
+.container .findEmail .findEmail-con .findEmail-form{
+  background-color: #ffffff;
+}
+
+.container .findEmail .findEmail-con .findEmail-form ul{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container .findEmail .findEmail-con .findEmail-form ul li{
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+.container .findEmail .findEmail-con .findEmail-form ul li:nth-child(1){
+  font-size: 30px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.container .findEmail .findEmail-con .findEmail-form ul.s1{
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  line-height: 20px;
+}
+
+.container .findEmail .findEmail-con .findEmail-form ul.s1 input{
+  height: auto;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  line-height: 20px;
+}
+
+.container .findEmail .findEmail-con .findEmail-form ul.s2{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+

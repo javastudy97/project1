@@ -16,35 +16,38 @@
             <form th:action="@{/member/signUp}" method="post" th:object="${memberDto}">
                 <div class="signUp-form">
                     <ul>
-                        <li>
-                            <a th:href="@{/}">MZ</a>
-                        </li>
+                        <div class="logo">
+                            <li>
+                                <a th:href="@{/}"><img th:src="@{/img/logo4.png}" alt="logo"></a>
+                            </li>
+                        </div>
+                        
                         <li>
                             <h4>이메일</h4>
                             <input type="text" th:field="*{userEmail}" placeholder="example@naver.com">
+                            <p th:if="${#fields.hasErrors('userEmail')}" th:errorclass="error" th:errors="*{userEmail}" />
                         </li>
-                        <p th:if="${#fields.hasErrors('userEmail')}" th:errorclass="error" th:errors="*{userEmail}" />
 
                         <li>
                             <h4>비밀번호</h4>
                             <input type="password" th:field="*{userPw}" placeholder="비밀번호를 입력해주세요">
+                            <p th:if="${#fields.hasErrors('userPw')}" th:errorclass="error" th:errors="*{userPw}" />
                         </li>
-                        <p th:if="${#fields.hasErrors('userPw')}" th:errorclass="error" th:errors="*{userPw}" />
 
                         <li>
                             <h4>닉네임</h4>
                             <input type="text" th:field="*{userName}" placeholder="닉네임">
+                            <p th:if="${#fields.hasErrors('userName')}" th:errorclass="error" th:errors="*{userName}" />
                         </li>
-                        <p th:if="${#fields.hasErrors('userName')}" th:errorclass="error" th:errors="*{userName}" />
 
                         <li>
                             <h4>핸드폰</h4>
                             <input type="text" th:field="*{userPhone}" maxlength="13" oninput="autoHyphen(this)" placeholder="-빼고 입력해주세요">
+                            <p th:if="${#fields.hasErrors('userPhone')}" th:errorclass="error" th:errors="*{userPhone}" />
                         </li>
-                        <p th:if="${#fields.hasErrors('userPhone')}" th:errorclass="error" th:errors="*{userPhone}" />
                         <li>
-                            <input type="submit" value="회원가입">
-                            <a th:href="@{/}">HOME</a>
+                            <input type="submit" value="회원가입" class="signUpBtn">
+                            <a th:href="@{/}" class="homeBtn">HOME</a>
                         </li>
                     </ul>
                 </div>
