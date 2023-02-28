@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,19 +21,26 @@ public class WishService {
     public Page<WishDto> selectWishes(Long userId,Pageable pageable) {
 
         Page<WishEntity> wishEntityList = wishRepository.findByUserId(userId, pageable);
-
         return wishEntityList.map(WishDto::toWishDto);
     }
+    @Transactional
+    public int wishDelete(Long wishId) {
+        WishEntity wishEntity = wishRepository.findById(wishId).get();
+        if (wishEntity==null){
+            return 0;
+        } else {
+            wishRepository.delete(wishEntity);
+            return 1;
+        }
+    }
+    public List<WishEntity> wishOrderUpdate(List<Long> wishIdList) {
+        List<WishEntity> wishEntityList = new ArrayList<>();
 
-//    public List<WishDto> selectWishes(Long userId) {
-//        List<WishDto> wishDtoList = new ArrayList<>();
-//
-//        List<WishEntity> wishEntityList = wishRepository.findByUserId(userId);
-//
-//        for(WishEntity wishEntity : wishEntityList) {
-//            wishDtoList.add(WishDto.toWishDto(wishEntity));
-//        }
-//
-//        return wishDtoList;
-//    }
+        for (Long wishId : wishIdList){
+            WishEntity wishEntity = wishRepository.findById(wishId).get();
+            wishEntity.setWishOrder(1);
+            wishEntityList.add(wishEntity);
+        }
+        return wishEntityList;
+    }
 }

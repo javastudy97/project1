@@ -20,28 +20,24 @@
                 <!-- 회원목록 -->
                 <div class="WishList">
                     <!-- 주문처리 form -->
-                    <form th:action="@{#}" method="post">
                         <table border="1">
                             <tr>
-                                <th>선택</th>
                                 <th>상품번호</th>
                                 <th>카테고리</th>
                                 <th>상품명</th>
                                 <th>금액</th>
+                                <th>상품구매</th>
                                 <th>상품삭제</th>
                             </tr>
                         <th:block th:each="wish : ${wishDtoList}">
                             <tr>
-                                <td>
-                                    <input type="checkbox">
-                                    <input type="hidden" name="">
-                                </td>
                                 <td th:text="${wish.productId}"></td>
                                 <td th:text="${wish.productType}"></td>
                                 <!-- 상품명 클릭시 해당 상품상세 페이지로 이동 -->
                                 <td th:text="${wish.productName}"><a th:href="@{#}"></a></td> 
                                 <td th:text="${wish.productPrice}"></td>
-                                <td><a th:href="@{#}">삭제</a></td>
+                                <button style="display: block;"><a th:href="@{|/admin/addOrderList/${memberDto.userId}/${wish.wishId}|}">구매하기</a></button>
+                                <button><a th:href="@{|/admin/wishDelete/${memberDto.userId}/${wish.wishId}|}">삭제</a></button>
                             </tr>
                         </th:block>
                             <!-- 페이징 -->
@@ -57,8 +53,8 @@
                                     <a th:href="${wishDtoList.last} ? '#' : @{/admin/WishList(page=${wishDtoList.number+1})}">다음</a>
                                 </td>
                             </tr>
+                            <a th:href="@{|/admin/memberDetail/${memberDto.userId}|}">회원정보</a>
                         </table>
-                    </form>
                 </div>
             </div>
         </div>

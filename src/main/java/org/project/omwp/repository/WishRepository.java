@@ -19,9 +19,4 @@ public interface WishRepository extends JpaRepository<WishEntity, Long> {
             "where w.user_id=:userId ",nativeQuery = true)
     Page<WishEntity> findByUserId(@Param("userId") Long userId, Pageable pageable);
 
-//    @Query(value = "select * from wish w " +
-//            "inner join member m on w.user_id=m.user_id " +
-//            "inner join product p on w.product_id=p.product_id " +
-//            "where w.user_id=:userId",nativeQuery = true)
-//    List<WishEntity> findByUserId(@Param("userId") Long userId);
 }

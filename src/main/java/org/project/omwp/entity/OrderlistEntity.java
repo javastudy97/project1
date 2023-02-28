@@ -47,8 +47,8 @@ public class OrderlistEntity {
     @JoinColumn(name = "product_id")
     private ProductEntity productEntity;
 
-    public static OrderlistEntity toOrderlistEntity(OrderlistDto orderlistDto,
-                                                    MemberEntity memberEntity,
+//    찜목록에서 주문처리
+    public static OrderlistEntity toOrderlistEntity(MemberEntity memberEntity,
                                                     ProductEntity productEntity){
 
         OrderlistEntity orderlistEntity = new OrderlistEntity();

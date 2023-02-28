@@ -4,7 +4,7 @@
 /*ProductList(It)*/
 .header{
   position: static; /*포지션 기본*/
-  background-color: rgb(76, 76, 201);
+  /* background-color: rgb(76, 76, 201); */
 }
 
 .container{

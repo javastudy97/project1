@@ -5,7 +5,9 @@ import org.project.omwp.dto.MemberDto;
 import org.project.omwp.dto.OrderlistDto;
 import org.project.omwp.dto.WishDto;
 import org.project.omwp.entity.MemberEntity;
+import org.project.omwp.entity.WishEntity;
 import org.project.omwp.service.MemberService;
+import org.project.omwp.service.OrderlistService;
 import org.project.omwp.service.ProductService;
 import org.project.omwp.service.WishService;
 import org.springframework.data.domain.Page;
@@ -27,6 +29,7 @@ public class AdminController {
     private final MemberService memberService;
     private final WishService wishService;
     private final ProductService productService;
+    private final OrderlistService orderlistService;
 
     @GetMapping({"","/"})
     public String admin(){
@@ -131,8 +134,8 @@ public class AdminController {
 //  찜 목록
     @GetMapping("/wishList/{userId}")
     public String wishList(@PageableDefault(page = 0, size = 5, sort = "user_id",
-                            direction = Sort.Direction.DESC)
-                            Pageable pageable,
+            direction = Sort.Direction.DESC)
+                           Pageable pageable,
                            @PathVariable(value = "userId") Long userId, Model model) {
 
         int blockNum;
@@ -141,11 +144,12 @@ public class AdminController {
         int endPage;
 
         Page<WishDto> wishDtoList = wishService.selectWishes(userId,pageable);
+        MemberDto memberDto = memberService.memberDetailDo(userId);
 
         if (wishDtoList==null){
             System.out.println("wishList null");
         }
-//
+
         blockNum = 100;
         nowPage = wishDtoList.getNumber()+1;
         startPage = Math.max(1,wishDtoList.getNumber()-blockNum);   // bockNum은 총 페이지수다 큰 값
@@ -155,29 +159,46 @@ public class AdminController {
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("wishDtoList",wishDtoList);
+        model.addAttribute("memberDto",memberDto);
 
         return "admin/adminWishList";
     }
 
-//    @GetMapping("/wishList/{userId}")
-//    public String wishList(@PathVariable(value = "userId") Long userId, Model model) {
-//
-//        List<WishDto> wishDtoList = wishService.selectWishes(userId);
-//
-//        if (wishDtoList==null){
-//            System.out.println("wishList null");
-//        }
-//
-//        model.addAttribute("wishDtoList",wishDtoList);
-//
-//        return "admin/adminWishList";
-//    }
-//  주문처리
-//    @PostMapping("/orderDetail")
-//    public String orderInsert(@RequestParam()) {
-//
-//        return "redirect:admin/orderDetail"+ OrderlistDto;
-//
-//    }
+// 찜 삭제
+    @GetMapping("/wishDelete/{userId}/{wishId}")
+    public String wishDelete(@PathVariable(value = "wishId") Long wishId,
+                             @PathVariable(value = "userId") Long userId,
+                             Model model) {
+        int rs = wishService.wishDelete(wishId);
+        if(rs!=1){
+            System.out.println("wishDelete fail!");
+            return null;
+        }
+        MemberDto memberDto = memberService.memberDetailDo(userId);
+        model.addAttribute("memberDto",memberDto);
+        return "redirect:/admin/wishList/"+userId;
+    }
+
+//  주문처리 => Ajax
+    @GetMapping("/addOrderList/{userId}/{wishId}")
+    public String addOrder(@PathVariable(value = "wishId") Long wishId,
+                           @PathVariable(value = "userId") Long userId,
+                           Model model){
+
+        int rs = orderlistService.addOrder(wishId);
+
+        if (rs==1){
+//            주문처리 성공시 해당 찜목록 삭제
+            wishService.wishDelete(wishId);
+
+            MemberDto memberDto = memberService.memberDetailDo(userId);
+            model.addAttribute("memberDto",memberDto);
+            System.out.println("addOrder success");
+        } else{
+            System.out.println("addOrder fail");
+        }
+            return "redirect:/admin/wishList/"+userId;
+
+    }
 
 }

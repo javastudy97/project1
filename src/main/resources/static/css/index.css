@@ -11,12 +11,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .container .section{
   display: flex;
   justify-content: center;
-  background-color: royalblue;
+  background-color: #2196f3;
   width: 100%;
   box-sizing: border-box;
 }
@@ -31,15 +32,17 @@
   position: relative;
   display: flex;
   justify-content: center;
-  background-color: bisque;
+  color: white;
+  font-weight: bold;
+  text-shadow: 5px;
 }
 
-.container .section .hot-con{
+.container .section .hot .hot-con{
   padding-top: 60px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 120px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -47,6 +50,11 @@
 
 .container .section .hot-con .hot-left>ul>li{
   padding: 5px;
+}
+
+.container .section .hot-con .hot-left>ul>li a{
+  color: white;
+  font-weight: bold;
 }
 
 .container .section .hot-con .hot-right .product .product-name{
@@ -61,24 +69,33 @@
 /* gallery */
 
 .container .section .gallery{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: relative;
-  width: 800px;
+  width: 600px;
   height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container .section .gallery .gallery-con{
+.container .section .gallery .con{
+  width: 540px;
+  height: 380px;
+}
+
+.container .section .gallery .con .gallery-con{
   position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.container .section .gallery .gallery-con > ul{
   width: inherit;
   height: inherit;
 }
 
-.container .section .gallery .gallery-con > ul > li{
+.container .section .gallery .con .gallery-con > ul{
+  width: inherit;
+  height: inherit;
+  
+}
+
+.container .section .gallery .con .gallery-con > ul > li{
   width: inherit;
   height: inherit;
   position: absolute;
@@ -86,20 +103,23 @@
   visibility: hidden;
   transition: all 0.5s;
   opacity: 0;
+  border-radius: 3%;
 }
 
-.container .section .gallery .gallery-con > ul > li:nth-child(1){
-  background: url(../img/index/model0.jpg) no-repeat 50%/cover;
+.container .section .gallery .con .gallery-con > ul > li:nth-child(1){
+  background: url(../img/index/gallery1.png) no-repeat 50%/cover;
 }
 
-.container .section .gallery .gallery-con > ul > li:nth-child(2){
-  background: url(../img/index/model1.jpg) no-repeat 50%/cover;
-
+.container .section .gallery .con .gallery-con > ul > li:nth-child(2){
+  background: url(../img/index/gallery2.png) no-repeat 50%/cover;
 }
 
-.container .section .gallery .gallery-con > ul > li:nth-child(3){
-  background: url(../img/index/model2.jpg) no-repeat 50%/cover;
+.container .section .gallery .con .gallery-con > ul > li:nth-child(3){
+  background: url(../img/index/gallery3.png) no-repeat 50%/cover;
+}
 
+.container .section .gallery .con .gallery-con > ul > li:nth-child(4){
+  background: url(../img/index/gallery4.png) no-repeat 50%/cover;
 }
 
 .fadeLi{
@@ -109,11 +129,11 @@
 
 /* arrow */
 
-.container .section .gallery .arrow-con{
+.container .section .gallery .con .arrow-con{
   /* border: 1px solid red; */
   box-sizing: border-box;
-  width: 100%;
-  height: auto;
+  width: 540px;
+  /* height: 380px; */
   position: absolute;
   display: flex;
   justify-content: space-between;
@@ -122,54 +142,64 @@
   padding: 0 10px;
 }
 
-.container .section .gallery .arrow-con span{
-  border: 1px solid red;
+.container .section .gallery .con .arrow-con span{
+  /* border: 1px solid red; */
   background-color: white;
   box-sizing: border-box;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   display: block;
   cursor: pointer;
   transition: all 0.3s;
+}
+
+#arrow-left{
+  background: url(../img/icon/arrow-left.png) no-repeat 50%/cover;
+}
+
+#arrow-right{
+  background: url(../img/icon/arrow-right.png) no-repeat 50%/cover;
 }
 
 /* item */
 
-.container .section .gallery .item-con{
-  width: 100%;
-  height: auto;
-  position: absolute;
-  bottom: 0;
+.container .section .gallery .con .item-con{
+  width: inherit;
+  height: inherit;
   /* border: 1px solid red; */
   box-sizing: border-box;
 }
 
-.container .section .gallery .item-con > ul{
+.container .section .gallery .con .item-con > ul{
   display: flex;
   justify-content: center;
   gap: 5px;
   padding-bottom: 5px;
+  position: absolute;
+  bottom: 5%;
+  padding-left: 400px;
 }
 
-.container .section .gallery .item-con > ul > li{
-  border: 1px solid red;
-  width: 30px;
-  height: 30px;
-  background-color: white;
+.container .section .gallery .con .item-con > ul > li{
+  /* border: 1px solid red; */
+  width: 25px;
+  height: 25px;
+  background-color: #ffffff30;
   cursor: pointer;
   transition: all 0.3s;
   display: block;
+  border-radius: 20%;
 }
 
-.container .section .gallery .item-con > ul > li.on{
-  background-color: yellow;
+.container .section .gallery .con .item-con > ul > li.on{
+  background-color: #ffffff90;
 }
 
 /* category */
 
 .container .category{
   padding: 30px 0;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   box-sizing: border-box;
   width: 100vw;
   height: 200px;
@@ -197,12 +227,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 }
 
 .container .category .category-con > ul > li a .img{
   width: 48px;
   height: 48px;
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 .container .category .category-con > ul > li a .img img{
@@ -213,15 +244,16 @@
 /* intro */
 
 .container .intro{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   box-sizing: border-box;
-  width: 1600px;
+  width: 100%;
   height: 500px;
-  background-color: aqua;
+  background-color: #f3f5fd;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 }
 
 .container .intro .intro-con{
@@ -235,9 +267,18 @@
 }
 
 .container .intro .intro-con div{
+  background-color: white;
+  box-shadow: rgb(48 52 65 / 5%) 0px 0px 20px 5px;;
   width: 300px;
   height: 200px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   box-sizing: border-box;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 0 45px;
 }
 

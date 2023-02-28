@@ -76,6 +76,7 @@ public class ProductEntity {
         productEntity.setProductDesc(productDto.getProductDesc());
         productEntity.setProductPrice(productDto.getProductPrice());
         productEntity.setAttachImg(0);
+        productEntity.setReviewCount(0);  // 기본 리뷰수 0으로 설정 (int 타입은 null 허용시 에러)
         System.out.println("ddddd1");
         return productEntity;
     }
