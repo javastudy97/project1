@@ -9,48 +9,48 @@
 <div th:replace="~{fragments/common/header :: headerFragment}"></div>
 
 <div class="container">
-<div class="detail">
+    <div class="detail">
 
-   <div th:replace="~{fragments/common/wishLeftDetail :: wishLeftFragment}"></div>
+        <div th:replace="~{fragments/common/wishLeftDetail :: wishLeftFragment}"></div>
 
 
-    <div class="right-menu">
-        <div class="detail-form">
-            <ul>
-                <li class="s1">회원정보</li>
-                <li class="s2">
-                    <span>이메일</span>
-                    <span th:text="${memberDto.userEmail}"></span>
-                </li>
-                <li class="s2">
-                    <span>이름</span>
-                    <span th:text="${memberDto.userName}"></span>
-                </li>
-                <li class="s2">
-                    <span>전화번호</span>
-                    <span th:text="${memberDto.userPhone}"></span>
-                </li>
-                <li class="s2">
-                    <span>가입날짜</span>
-                    <span th:text="${memberDto.userCreate}"> </span>
-                </li>
-<!--                <li th:if="${memberDto.updateTime != null}" class="s2">-->
-<!--                    <span>수정날짜</span>-->
-<!--                    <span th:text="${memberDto.updateTime}"></span>-->
-<!--                </li>-->
-                 <li class="s3">
-                    <a th:href="@{/member/update}">회원수정</a>
-                    <a th:href="@{/member/delete}">회원삭제</a>
-                </li>
-            </ul>
-    
-    
+        <div class="right-menu">
+            <div class="detail-form">
+                <ul>
+                    <li class="s1">회원정보</li>
+                    <li class="s2">
+                        <span>이메일</span>
+                        <span th:text="${memberDto.userEmail}"></span>
+                    </li>
+                    <li class="s2">
+                        <span>이름</span>
+                        <span th:text="${memberDto.userName}"></span>
+                    </li>
+                    <li class="s2">
+                        <span>전화번호</span>
+                        <span th:text="${memberDto.userPhone}"></span>
+                    </li>
+                    <li class="s2">
+                        <span>가입날짜</span>
+                        <span th:text="${memberDto.userCreate}"> </span>
+                    </li>
+                    <!--                <li th:if="${memberDto.updateTime != null}" class="s2">-->
+                    <!--                    <span>수정날짜</span>-->
+                    <!--                    <span th:text="${memberDto.updateTime}"></span>-->
+                    <!--                </li>-->
+                    <li class="s3">
+                        <button><a th:href="@{/member/update}">회원수정</a></button>
+                        <button><a th:href="@{/member/delete}">회원삭제</a></button>
+                    </li>
+                </ul>
+
+
+            </div>
         </div>
+
+
+
     </div>
-
-
-
-</div>
 
 </div>
 <div th:replace="~{fragments/common/footer :: footerFragment}"></div>

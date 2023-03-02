@@ -34,6 +34,7 @@ public class WebSecurityConfig {
                 .antMatchers("/css/**", "/js/**", "/img/**").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/member/**").hasAnyRole("ADMIN","MEMBER")
+                .antMatchers("/wish/**").hasAnyRole("ADMIN","MEMBER")
         ;
 
 

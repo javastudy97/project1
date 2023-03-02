@@ -29,6 +29,8 @@ public class OrderlistDto {
     private String productType;
     private String productName;
     private int productPrice;
+    private String productDesc;
+
 
     public static OrderlistDto orderlistDto(OrderlistEntity orderlistEntity) {
         OrderlistDto orderlistDto = new OrderlistDto();
@@ -61,6 +63,7 @@ public class OrderlistDto {
         orderlistDto.setProductType(orderlistEntity.getProductEntity().getProductType());
         orderlistDto.setProductName(orderlistEntity.getProductEntity().getProductName());
         orderlistDto.setProductPrice(orderlistEntity.getProductEntity().getProductPrice());
+        orderlistDto.setProductDesc(orderlistEntity.getProductEntity().getProductDesc());
 
         return orderlistDto;
     }

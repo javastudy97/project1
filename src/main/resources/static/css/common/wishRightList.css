@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+
+.container .detail .right-menu{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: white;
+
+}
+
+.container .detail .right-menu .listBox{
+
+    padding :10px;
+}
+
+.container .detail .right-menu .listBox .listTable{
+
+    width: 100%;
+
+    margin-top: 60px;
+
+    background-color: white;
+
+    /* border-bottom: 2px solid #000000; */
+
+    border-spacing: 50px 50px;
+    
+     border-collapse: collapse;
+    border-top: slateblue 2px solid; 
+
+
+    border-collapse: separate;
+    border-spacing: 20px 0;
+
+}
+
+.container .detail .right-menu .listBox .listTable .tHeader{
+
+    padding: 5px;
+    /* background-color: aqua; */
+    flex: auto;
+    justify-content: space-between;
+}
+
+.container .detail .right-menu .listBox .listTable .tHeader th{
+
+
+    margin-bottom: 30px;
+
+}
+
+.container .detail .right-menu .listBox .listTable .tHeader th:nth-child(1){
+
+    box-sizing: border-box;
+
+    background-color: white;
+    font-style: italic;
+    color: darkblue;
+
+    /* border-top: 2px solid slateblue;
+    border-left: 2px solid slateblue; */
+
+
+}
+.container .detail .right-menu .listBox .listTable .tHeader th:nth-child(2){
+
+
+
+
+}
+.container .detail .right-menu .listBox .listTable .tHeader th:nth-child(3){
+
+
+}
+.container .detail .right-menu .listBox .listTable .tHeader th:nth-child(4){
+
+
+}
+
+
+
+.container .detail .right-menu .listBox .listTable .tBody{
+
+    /* margin-top: 20px; */
+
+    /* background-color: beige; */
+
+    /* border-bottom: 2px solid #000000;
+    border-right: 2px solid #000000; */
+
+}
+
+.container .detail .right-menu .listBox .listTable .tBody td{
+
+    text-align: center;
+    font-size: 20px;
+    
+    border-collapse: collapse;
+    border-bottom: cornflowerblue 1px solid;
+
+}
+
+.container .detail .right-menu .listBox .listTable .tBody td:nth-child(2){
+
+    /* border-left: 2px solid slateblue; */
+
+
+}
+
+.container .detail .right-menu .listBox .listTable .tBody td:nth-last-child(){
+
+    /* border-collapse: collapse;
+    border-right: #0000dd 2px solid; */
+    /* border: 2px solid #000000;
+    border-collapse: collapse;
+    border-style: outset; */
+    
+
+}
+
+.container .detail .right-menu .listBox .listTable .tBody td input{
+
+    margin-right: 10px;
+    background-color: darkblue;
+    width: 100px;
+    height: 50px;
+    border: 0px;
+    color: white;
+
+}
+
+.container .detail .right-menu .listBox .listTable .tBody td button{
+
+margin-right: 10px;
+background-color: darkblue;
+width: 100px;
+height: 50px;
+border: 0px;
+
+}
+
+.container .detail .right-menu .listBox .listTable .tBody td button a{
+
+    color: white;
+
+}

@@ -52,6 +52,7 @@ public class ProductDto {
 
     // Entity -> Dto
     public static ProductDto toProductDto(ProductEntity productEntity){
+
         ProductDto productDto = new ProductDto();
         productDto.setProductId(productEntity.getProductId());
         productDto.setProductType(productEntity.getProductType());

@@ -2,6 +2,7 @@
 @import url(../common/header.css);
 @import url(../common/footer.css);
 @import url(../common/wishLeftDetail.css);
+@import url(../common/wishRightList.css);
 
 
 .container{
@@ -21,76 +22,3 @@
 
 
 
-
-
-
-.container .detail .right-menu{
-    width: 100%;
-    background-color: bisque;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
-}
-
-.container .detail .right-menu .detail-form{
-
-    width: 70%;
-
-    margin-top: 90px;
-
-    background-color: white;
-
-}
-
-.container .detail .right-menu .detail-form ul{
-
-    
-    margin-top: 10px;    
-    padding: 5px;
-
-}
-
-.container .detail .right-menu .detail-form ul li{
-
-    height: 60px;
-    background-color: brown;
-    gap: 10px;
-    
-}
-
-.container .detail .right-menu .detail-form ul li.s1{
-
-    margin-left: 30px;
-    font-size: 30px;
-}
-
-.container .detail .right-menu .detail-form ul li.s2{
-
-    background-color: blue;
-    font-size: 17px;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    margin-top: 10px;
-}
-
-.container .detail .right-menu .detail-form ul li.s2 span:nth-child(1){
-    flex: 2;
-    background-color: yellow;
-    text-align: center;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container .detail .right-menu .detail-form ul li.s2 span:nth-child(2){
-    flex: 3;
-    background-color: yellowgreen;
-    text-align: center;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
