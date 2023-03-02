@@ -72,7 +72,13 @@ public class ProductController {
             List<ProductDto> productDtoList = productService.ItProductListDo(productType);
             model.addAttribute("productList",productDtoList);
 
+
+
             Page<ProductDto> productList=productService.ITProductPagingList(pageable);
+
+            System.out.println("=====================");
+            System.out.println("here");
+            System.out.println("=====================");
 
             Long total=productList.getTotalElements();
             int bockNum=4;

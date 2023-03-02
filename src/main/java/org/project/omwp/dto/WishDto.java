@@ -24,6 +24,7 @@ public class WishDto {
     private Long productId;
     private String productType;
     private String productName;
+    private String productDesc;
     private int productPrice;
 
     public static WishDto toWishDto(WishEntity wishEntity) {
@@ -35,6 +36,7 @@ public class WishDto {
         wishDto.setProductId(wishEntity.getProductEntity().getProductId());
         wishDto.setProductType(wishEntity.getProductEntity().getProductType());
         wishDto.setProductName(wishEntity.getProductEntity().getProductName());
+        wishDto.setProductDesc(wishEntity.getProductEntity().getProductDesc());
         wishDto.setProductPrice(wishEntity.getProductEntity().getProductPrice());
 
         return wishDto;
