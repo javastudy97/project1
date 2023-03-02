@@ -7,7 +7,7 @@
     <div class="top-header">
         <div class="gnb">
             <ul>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{#}">
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/member/detail}">
                     <img th:src="@{/img/icon/member.png}" alt="member">회원정보
                 </a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">

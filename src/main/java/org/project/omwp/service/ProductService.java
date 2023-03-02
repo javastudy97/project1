@@ -143,6 +143,21 @@ public class ProductService {
 
     }
 
+    public List<ProductDto> ItProductListDo2(String productType) {
+        System.out.println(productType+"<<<<<<<< type");
+
+        List<ProductEntity> ItProductEntityList = productRepository.findByProductTypeDesc(productType);
+        List<ProductDto> ItProductDtoList = new ArrayList<>();
+
+        for(ProductEntity productEntity : ItProductEntityList){
+            ItProductDtoList.add(ProductDto.toProductDto3(productEntity));
+        }
+
+
+        return ItProductDtoList;
+
+    }
+
     // 상품 목록 상세 페이지 가져오기
     public List<ProductDto> DesignProductListDo(String productType) {
         List<ProductEntity> DesignProductEntityList = productRepository.findByProductType(productType);
@@ -232,4 +247,6 @@ public class ProductService {
     }
 
 
+    public void ItProductListDo2() {
+    }
 }

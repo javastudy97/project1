@@ -10,32 +10,39 @@
 <div th:replace="~{fragments/common/header :: headerFragment}"></div>
 <div class="container">
     <div class="section">
-        <!-- 인기 노하우 (리뷰많은 순) -->
+        <!-- 최신 노하우 -->
         <div class="hot">
-            <h1>이달의 인기 노하우!</h1>
+            <h1>이달의 최신 노하우</h1>
             <div class="hot-con">
                 <div class="hot-left">
                     <ul>
-                        <li><a th:href="@{#}">IT</a></li>
-                        <li><a th:href="@{#}">디자인</a></li>
-                        <li><a th:href="@{#}">예체능</a></li>
-                        <li><a th:href="@{#}">사무</a></li>
-                        <li><a th:href="@{#}">마케팅</a></li>
-                        <li><a th:href="@{#}">재테크</a></li>
+                        <li><a th:href="@{|/newProduct/it|}">IT</a></li>
+                        <li><a th:href="@{|/newProduct/design|}">디자인</a></li>
+                        <li><a th:href="@{|/newProduct/enter|}">예체능</a></li>
+                        <li><a th:href="@{|/newProduct/office|}">사무</a></li>
+                        <li><a th:href="@{|/newProduct/marketing|}">마케팅</a></li>
+                        <li><a th:href="@{|/newProduct/invest|}">재테크</a></li>
                     </ul>
                 </div>
                 <div class="hot-right">
                     <div class="product">
                         <div class="product-con">
-                            <img src="https://via.placeholder.com/200 " alt="img">
+                            <th:block>
+                                <span th:if="${productDto.attachImg == 0}">
+                                    <img src="https://via.placeholder.com/200 " alt="img">
+                                </span>
+                                <span th:if="${productDto.attachImg == 1}">
+                                    <img th:src="@{|/upload/${productDto.imgNewName}|}" alt="img">
+                                </span>
+                            </th:block>
                         </div>
                         <div class="product-name">
-                            <h3>상품명</h3>
+                            <h3 th:text="${productDto.productName}"></h3>
                             <div class="price">
-                                00,000원
+                                <span th:text="${productDto.productPrice}"></span>원
                             </div>
                             <div class="review-count">
-                                00개의 평가
+                                <span th:text="${productDto.reviewCount}"></span>개의 평가
                             </div>
                         </div>
                     </div>

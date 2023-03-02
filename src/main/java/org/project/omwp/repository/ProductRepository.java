@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 
@@ -18,6 +19,9 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     List<ProductEntity> findByProductType(String productType);
 
     List<ProductEntity> findByProductNameContaining(String search);
+
+    @Query(value = "select * from product where product_type =:type order by product_create desc",nativeQuery = true)
+    List<ProductEntity> findByProductTypeDesc(@Param("type") String productType);
 
     // 페이징 진행 중
 //    @Query
