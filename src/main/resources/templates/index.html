@@ -25,27 +25,43 @@
                     </ul>
                 </div>
                 <div class="hot-right">
-                    <div class="product">
-                        <div class="product-con">
-                            <th:block>
-                                <span th:if="${productDto.attachImg == 0}">
+                    <th:block>
+                        <span th:if="${productDto == null}">
+                            <div class="product">
+                                <div class="product-con">
                                     <img src="https://via.placeholder.com/200 " alt="img">
-                                </span>
-                                <span th:if="${productDto.attachImg == 1}">
-                                    <img th:src="@{|/upload/${productDto.imgNewName}|}" alt="img">
-                                </span>
-                            </th:block>
-                        </div>
-                        <div class="product-name">
-                            <h3 th:text="${productDto.productName}"></h3>
-                            <div class="price">
-                                <span th:text="${productDto.productPrice}"></span>원
+                                </div>
+                                <div class="product-name">
+                                    <h3>상품 준비중</h3>
+                                    <div class="price">상품 준비중</div>
+                                    <div class="review-count">상품 준비중</div>
+                                </div>
                             </div>
-                            <div class="review-count">
-                                <span th:text="${productDto.reviewCount}"></span>개의 평가
+                        </span>
+                        <span th:unless="${productDto == null}">
+                            <div class="product">
+                                <div class="product-con">
+                                    <th:block>
+                                        <span th:if="${productDto.attachImg == 1}">
+                                            <img th:src="@{|/upload/${product.imgNewName}|}" alt="img">
+                                        </span>
+                                        <span th:unless="${productDto.attachImg == 1}">
+                                            <img src="https://via.placeholder.com/200 " alt="img">
+                                        </span>
+                                    </th:block>
+                                </div>
+                                <div class="product-name">
+                                    <h3 th:text="${productDto.productName}"></h3>
+                                    <div class="price">
+                                        <span th:text="${productDto.productPrice}"></span>원
+                                    </div>
+                                    <div class="review-count">
+                                        <span th:text="${productDto.reviewCount}"></span>개의 평가
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </span>
+                    </th:block>
                 </div>
             </div>
         </div>
