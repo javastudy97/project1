@@ -81,8 +81,11 @@ public class ProductService {
     // 상품 목록 페이지 페이징(It)
     public Page<ProductDto> ITProductPagingList(Pageable pageable) {
 
+
+
         //Page<ProductEntity> ItProductEntityList = productRepository.findAll(pageable);
         Page<ProductEntity> ItProductEntityList = productRepository.findAll(pageable);
+
         Page<ProductDto> ItProductDtoList = ItProductEntityList.map(ProductDto::toProductDto);
 
         return ItProductDtoList;

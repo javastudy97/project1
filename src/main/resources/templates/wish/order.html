@@ -3,47 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <link rel="stylesheet" th:href="@{/css/wish/order.css}">
+    <link rel="stylesheet" th:href="@{/css/wish/order.css}">
 </head>
 <body>
 <div th:replace="~{fragments/common/header :: headerFragment}"></div>
 
 
 <div class="container">
-  <div class="detail">
-      <div th:replace="~{fragments/common/wishLeftDetail :: wishLeftFragment}"></div>
+    <div class="detail">
+        <div th:replace="~{fragments/common/wishLeftDetail :: wishLeftFragment}"></div>
 
-      <form th:action="@{orderList}" method="post" th:object="${productDto}">
+        <div class="right-menu">
+            <div class="listBox">
 
-      <table border="1">
-          <tr>
-              <th>배송지</th>
-              <th>전화번호</th>
-              <th>주문상품</th>
-              <th>결제수단</th>
-              <th>가격</th>
-          </tr>
-          <tr>
-              <input type="text" id="productId" name="productId" th:value="${productDto.productId}" hidden="hidden">
-<!--              <input type="text" id="productEmail" name="productEmail" th:value="${productDto.productEmail}" hidden="hidden">-->
-              <input type="text" id="productName" name="productName" th:value="${productDto.productName}" hidden="hidden">
-              <input type="text" id="productPrice" name="productPrice" th:value="${productDto.productPrice}" hidden="hidden">
-              <td>member주소</td>
-              <td>member연락처</td>
-              <td th:text="${productDto.productName}"></td>
-              <td>dafaf</td>
-              <td th:text="${productDto.productPrice}"></td>
-              <td> <input type="submit" value="구매하기"> </td>
-          </tr>
+                <form th:action="@{orderList}" method="post" th:object="${productDto}">
 
-
-      </table>
-
-
-      </form>
+                    <table border="0" class="listTable">
+                        <tr class="tHeader">
+                            <th>상품</th>
+                            <th>상품명</th>
+                            <th>상품타입</th>
+                            <th>상품정보</th>
+                            <th>상품가격</th>
+                            <th>구매하기</th>
+                        </tr>
+                        <tr class="tBody">
+                            <input type="text" id="productId" name="productId" th:value="${productDto.productId}" hidden="hidden">
+                            <!--              <input type="text" id="productEmail" name="productEmail" th:value="${productDto.productEmail}" hidden="hidden">-->
+                            <input type="text" id="productName" name="productName" th:value="${productDto.productName}" hidden="hidden">
+                            <input type="text" id="productPrice" name="productPrice" th:value="${productDto.productPrice}" hidden="hidden">
+                            <td><a href="#"><img src="https://via.placeholder.com/150"></a></td>
+                            <td th:text="${productDto.productName}"></td>
+                            <td th:text="${productDto.productType}"></td>
+                            <td th:text="${productDto.productDesc}"></td>
+                            <td th:text="${productDto.productPrice}"></td>
+                            <td> <input type="submit" value="구매하기" class="buy"> </td>
+                        </tr>
 
 
-</div>
+                    </table>
+
+
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
 </div>
 
 <div th:replace="~{fragments/common/footer :: footerFragment}"></div>
