@@ -31,12 +31,12 @@ public class MainController {
         ProductDto productDto = new ProductDto();
 
         List<ProductDto> productDtoList = productService.ItProductListDo2("it");
-        if (productDtoList!=null){
+        if (productDtoList.isEmpty() == true ){
+            productDto = null;
+        } else {
             productDto = productDtoList.get(0);
         }
-
-        model.addAttribute("productDto",productDto);
-
+            model.addAttribute("productDto",productDto);
             return "index";
         }
 
@@ -46,7 +46,9 @@ public class MainController {
         ProductDto productDto = new ProductDto();
 
         List<ProductDto> productDtoList = productService.ItProductListDo2("it");
-        if (productDtoList!=null){
+        if (productDtoList.isEmpty() == true ){
+            productDto = null;
+        } else {
             productDto = productDtoList.get(0);
         }
 
@@ -59,7 +61,9 @@ public class MainController {
         ProductDto productDto = new ProductDto();
 
         List<ProductDto> productDtoList = productService.ItProductListDo2("design");
-        if (productDtoList!=null){
+        if (productDtoList.isEmpty() == true ){
+            productDto = null;
+        } else {
             productDto = productDtoList.get(0);
         }
 
@@ -72,7 +76,9 @@ public class MainController {
         ProductDto productDto = new ProductDto();
 
         List<ProductDto> productDtoList = productService.ItProductListDo2("enter");
-        if (productDtoList!=null){
+        if (productDtoList.isEmpty() == true ){
+            productDto = null;
+        } else {
             productDto = productDtoList.get(0);
         }
 
@@ -85,7 +91,9 @@ public class MainController {
         ProductDto productDto = new ProductDto();
 
         List<ProductDto> productDtoList = productService.ItProductListDo2("office");
-        if (productDtoList!=null){
+        if (productDtoList.isEmpty() == true ){
+            productDto = null;
+        } else {
             productDto = productDtoList.get(0);
         }
 
@@ -98,7 +106,9 @@ public class MainController {
         ProductDto productDto = new ProductDto();
 
         List<ProductDto> productDtoList = productService.ItProductListDo2("marketing");
-        if (productDtoList!=null){
+        if (productDtoList.isEmpty() == true ){
+            productDto = null;
+        } else {
             productDto = productDtoList.get(0);
         }
 
@@ -111,7 +121,9 @@ public class MainController {
         ProductDto productDto = new ProductDto();
 
         List<ProductDto> productDtoList = productService.ItProductListDo2("invest");
-        if (productDtoList!=null){
+        if (productDtoList.isEmpty() == true ){
+            productDto = null;
+        } else {
             productDto = productDtoList.get(0);
         }
 

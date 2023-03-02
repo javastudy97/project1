@@ -68,8 +68,9 @@ public class ProductController {
                              Model model){
 
 
-        if(productType.equals("IT")||productType.equals("It")){
+        if(productType.equals("It")||productType.equals("it")){
             List<ProductDto> productDtoList = productService.ItProductListDo(productType);
+            System.out.println(productDtoList.size()+"<<<< size");
             model.addAttribute("productList",productDtoList);
 
 
