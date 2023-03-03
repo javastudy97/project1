@@ -97,7 +97,6 @@ input{
 .container .login .login-con .login-form ul li input:focus{
   border: 1px solid #2196f3;
   box-sizing: border-box;
-  cursor: pointer;
 }
 
 /* 회원가입, 아이디 찾기 */
@@ -116,13 +115,13 @@ input{
 }
 
 /* google 로그인 */
-.img{
-  width: 20px;
-  height: 20px;
+.google-img{
+  width: 310px;
+  height: 50px;
   display: flex;
 }
 
-.google{
+/* .google{
   display: flex;
   justify-content: center;
   gap: 5px;
@@ -131,7 +130,26 @@ input{
   padding: 10px;
   box-sizing: border-box;
   align-items: center;
+} */
+
+/* naver 로그인 */
+.naver-img{
+  width: 310px;
+  height: 50px;
+  display: flex;
 }
+
+/* .naver{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  background-color: #03C75A;
+} */
 
 /* 로그인 버튼 */
 #loginBtn{

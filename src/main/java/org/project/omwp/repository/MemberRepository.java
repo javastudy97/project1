@@ -5,6 +5,8 @@ import org.project.omwp.entity.MemberEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -25,6 +27,7 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     boolean existsByUserEmail(String userEmail);
     boolean existsByUserName(String userName);
 
-    /* 이메일 찾기 */
-    Optional<MemberEntity> findByUserName(MemberDto memberDto);
+    // 이메일 찾기
+    @Query(value = "select * from member m where m.user_name=:userName and m.user_phone=:userPhone", nativeQuery = true)
+    MemberEntity findByUserNameUserPhone(@Param("userName") String userName, @Param("userPhone") String userPhone);
 }

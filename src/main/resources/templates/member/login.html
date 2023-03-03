@@ -43,10 +43,25 @@
                 </div>
 
                 <br>
-                
-                <div class="google">
-                        <img th:src=@{/img/google.png} alt="google" class="img">
-                        <a th:href="@{/oauth2/authorization/google}">Google로 시작하기</a><br>
+
+                <div class="snsLogin">
+                    <div class="google">
+                        <li>
+                            <a th:href="@{/oauth2/authorization/google}"><img th:src=@{/img/google.png} alt="google" class="google-img"></a>
+                        </li>
+                    </div>
+
+                    <div class="naver">
+                        <li>
+                            <a th:href="@{/oauth2/authorization/naver}"><img th:src=@{/img/naver.png} alt="naver" class="naver-img"></a>
+                        </li>
+                    </div>
+
+                    <div class="naver">
+                        <li>
+                            <a th:href="@{/oauth2/authorization/kakao}"><img th:src=@{/img/kakao.png} alt="naver" class="naver-img"></a>
+                        </li>
+                    </div>
                 </div>
             </form>
 

@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <title>login</title>
     <script th:src="@{/js/member/findEmail.js}" defer></script>
-    <link rel="stylesheet" th:href="@{/css/member/findEmail.css}">
+    <link rel="stylesheet" th:href="@{/css/member/findEmailOk.css}">
 </head>
 <body>
 <div th:replace="~{fragments/common/header :: headerFragment}"></div>
 
 <div class="container">
-    <div class="findEmail">
-        <div class="findEmail-con">
-            <form th:action="@{/findEmailOk}" method="get" id="findEmailForm">
-                <div class="findEmail-form">
+    <div class="findEmailOk">
+        <div class="findEmailOk-con">
+                <div class="findEmailOk-form">
                     <ul>
-                        <li>이메일 찾기 결과</li>
-
-                        <tr th:each="memberDto : ${dto}">
-                            <td th:text="${dto.userEmail}"></td>
-                        </tr>
-
                         <li>
-                            <a th:href="@{/member/findEmail}">아이디 찾기</a>
-                            <a th:href="@{/member/login}">로그인</a>
-                            <a th:href="@{/member/signUp}">회원가입</a>
-                            <a th:href="@{/}">HOME</a>
+                            <th:block>
+                                <span th:if="${memberDto}==null">등록된 사용자가 없습니다</span>
+                                <a th:if="${memberDto}==null" th:href="@{/member/findEmail}" class="findEmailBtn">아이디 찾기</a>
+                                <a th:if="${memberDto}==null" th:href="@{/member/signUp}" class="signUpBtn">회원가입</a>
+                            </th:block>
                         </li>
 
-
+                        <li>
+                            <th:block>
+                                <span th:unless="${memberDto}==null" th:text="${memberDto.userEmail}"></span>
+                                <a th:unless="${memberDto}==null" th:href="@{/member/login}" class="loginBtn">로그인</a>
+                                <a th:unless="${memberDto}==null" th:href="@{/}" class="homeBtn">HOME</a>
+                            </th:block>
+                        </li>
                     </ul>
                 </div>
-            </form>
         </div>
     </div>
 </div>
