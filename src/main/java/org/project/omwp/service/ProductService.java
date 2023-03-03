@@ -132,7 +132,7 @@ public class ProductService {
     // 상품 목록 상세 페이지 가져오기(It)
     public List<ProductDto> ItProductListDo(String productType) {
 
-        List<ProductEntity> ItProductEntityList = productRepository.findByProductType(productType);
+        List<ProductEntity> ItProductEntityList = productRepository.findByProductTypeDesc(productType);
         List<ProductDto> ItProductDtoList = new ArrayList<>();
 
         for(ProductEntity productEntity : ItProductEntityList){
@@ -146,7 +146,7 @@ public class ProductService {
 
     // 상품 목록 상세 페이지 가져오기(Design)
     public List<ProductDto> DesignProductListDo(String productType) {
-        List<ProductEntity> DesignProductEntityList = productRepository.findByProductType(productType);
+        List<ProductEntity> DesignProductEntityList = productRepository.findByProductTypeDesc(productType);
         List<ProductDto> DesignProductDtoList = new ArrayList<>();
 
         for (ProductEntity productEntity : DesignProductEntityList){
@@ -158,7 +158,7 @@ public class ProductService {
 
     // 상품 목록 상세 페이지 가져오기(Enter)
     public List<ProductDto> EnterProductListDo(String productType) {
-        List<ProductEntity> EnterProductEntityList = productRepository.findByProductType(productType);
+        List<ProductEntity> EnterProductEntityList = productRepository.findByProductTypeDesc(productType);
         List<ProductDto> EnterProductDtoList = new ArrayList<>();
 
         for (ProductEntity productEntity : EnterProductEntityList){
@@ -169,7 +169,7 @@ public class ProductService {
 
     // 상품 목록 상세 페이지 가져오기(Office)
     public List<ProductDto> OfficeProductListDo(String productType) {
-        List<ProductEntity> OfficeProductEntityList = productRepository.findByProductType(productType);
+        List<ProductEntity> OfficeProductEntityList = productRepository.findByProductTypeDesc(productType);
         List<ProductDto> OfficeProductDtoList = new ArrayList<>();
 
         for (ProductEntity productEntity : OfficeProductEntityList){
@@ -181,7 +181,7 @@ public class ProductService {
 
     // 상품 목록 상세 페이지 가져오기(Marketing)
     public List<ProductDto> MarketingProductListDo(String productType) {
-        List<ProductEntity> MarketingProductEntityList = productRepository.findByProductType(productType);
+        List<ProductEntity> MarketingProductEntityList = productRepository.findByProductTypeDesc(productType);
         List<ProductDto> MarketingProductDtoList = new ArrayList<>();
 
         for (ProductEntity productEntity : MarketingProductEntityList){
@@ -192,7 +192,7 @@ public class ProductService {
 
     // 상품 목록 상세 페이지 가져오기(Invest)
     public List<ProductDto> InvestProductListDo(String productType) {
-        List<ProductEntity> InvestProductEntityList = productRepository.findByProductType(productType);
+        List<ProductEntity> InvestProductEntityList = productRepository.findByProductTypeDesc(productType);
         List<ProductDto> InvestProductDtoList = new ArrayList<>();
 
         for (ProductEntity productEntity : InvestProductEntityList){

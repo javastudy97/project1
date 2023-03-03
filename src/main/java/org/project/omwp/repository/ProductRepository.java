@@ -25,6 +25,9 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     Page<ProductEntity> findAllByProductType(String productType, Pageable pageable);
 
+    @Query(value = "select * from product where product_type =:type order by product_create desc",nativeQuery = true)
+    List<ProductEntity> findByProductTypeDesc(@Param("type") String productType);
+
     @Modifying
     @Query(value = "update product p set p.review_count=p.review_count+1 " +
             "where p.product_id=:productId ",nativeQuery = true)

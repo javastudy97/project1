@@ -63,11 +63,16 @@
                     <ul>
                         <th:block th:each="product: ${productList}">
                             <li>
-                                <div class="top-con">
+                                <div class="top-con" th:if="${product.attachImg==1}">
                                     <!-- 그림 클릭시 상세페이지로 연결 -->
                                     <!-- <img th:src="@{|/upload/${product.imgNewName}|}" alt=""> -->
                                     <a th:href="@{|/product/detail/${product.productId}|}">
                                         <img th:src="@{|/upload/${product.imgNewName}|}" alt="">
+                                    </a>
+                                </div>
+                                <div class="top-con" th:if="${product.attachImg==0}">
+                                    <a th:href="@{|/product/detail/${product.productId}|}">
+                                        <img src="https://via.placeholder.com/200x200" alt="">
                                     </a>
                                 </div>
                                 <div class="bottom-con">

@@ -57,12 +57,14 @@
   font-weight: bold;
 }
 
-.container .section .hot-con .hot-right .product .product-name{
+.container .section .hot-con .hot-right .product a .product-name{
   padding-top: 10px;
   box-sizing: border-box;
+  color: white;
+  font-weight: bold;
 }
 
-.container .section .hot-con .hot-right .product .product-name h3{
+.container .section .hot-con .hot-right .product a .product-name h3{
   padding-bottom: 5px;
   box-sizing: border-box;
 }

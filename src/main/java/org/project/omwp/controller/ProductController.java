@@ -64,7 +64,7 @@ public class ProductController {
     @GetMapping("/productList")
     public String pagingList(@RequestParam("productType") String productType,
                              @PageableDefault(page = 0,size = 36, sort = "productId",
-                                     direction = Sort.Direction.ASC) Pageable pageable,
+                                     direction = Sort.Direction.DESC) Pageable pageable,
                              Model model){
 
 
@@ -266,7 +266,7 @@ public class ProductController {
     @GetMapping("/productList/search")
     public String productSearch(@RequestParam(value = "It", required = false) String productType, @RequestParam(value = "search" ,required = false) String search,
                                 @PageableDefault(page = 0,size = 36, sort = "productId",
-                                        direction = Sort.Direction.ASC) Pageable pageable,
+                                        direction = Sort.Direction.DESC) Pageable pageable,
                                 Model model){
         List<ProductDto> productDtoList = productService.searchDo(productType,search);
         model.addAttribute("productList",productDtoList);
@@ -290,7 +290,7 @@ public class ProductController {
     @GetMapping("/productList/search2")
     public String productSearch2(@RequestParam(value = "Design", required = false) String productType, @RequestParam(value = "search2" ,required = false) String search2,
                                  @PageableDefault(page = 0,size = 36, sort = "productId",
-                                         direction = Sort.Direction.ASC) Pageable pageable,
+                                         direction = Sort.Direction.DESC) Pageable pageable,
                                  Model model){
         List<ProductDto> productDtoList = productService.searchDo(productType,search2);
         model.addAttribute("productList",productDtoList);
@@ -314,7 +314,7 @@ public class ProductController {
     @GetMapping("/productList/search3")
     public String productSearch3(@RequestParam(value = "Enter", required = false) String productType, @RequestParam(value = "search3" ,required = false) String search3,
                                  @PageableDefault(page = 0,size = 36, sort = "productId",
-                                         direction = Sort.Direction.ASC) Pageable pageable,
+                                         direction = Sort.Direction.DESC) Pageable pageable,
                                  Model model){
 
         List<ProductDto> productDtoList = productService.searchDo(productType,search3);
@@ -339,7 +339,7 @@ public class ProductController {
     @GetMapping("/productList/search4")
     public String productSearch4(@RequestParam(value = "Office", required = false) String productType, @RequestParam(value = "search4" ,required = false) String search4,
                                  @PageableDefault(page = 0,size = 36, sort = "productId",
-                                         direction = Sort.Direction.ASC) Pageable pageable
+                                         direction = Sort.Direction.DESC) Pageable pageable
             ,Model model){
 
         List<ProductDto> productDtoList = productService.searchDo(productType,search4);
@@ -364,7 +364,7 @@ public class ProductController {
     @GetMapping("/productList/search5")
     public String productSearch5(@RequestParam(value = "Marketing", required = false) String productType, @RequestParam(value = "search5" ,required = false) String search5,
                                  @PageableDefault(page = 0,size = 36, sort = "productId",
-                                         direction = Sort.Direction.ASC) Pageable pageable
+                                         direction = Sort.Direction.DESC) Pageable pageable
             ,Model model){
 
         List<ProductDto> productDtoList = productService.searchDo(productType,search5);
@@ -389,7 +389,7 @@ public class ProductController {
     @GetMapping("/productList/search6")
     public String productSearch6(@RequestParam(value = "Invest", required = false) String productType, @RequestParam(value = "search6" ,required = false) String search6,
                                  @PageableDefault(page = 0,size = 36, sort = "productId",
-                                         direction = Sort.Direction.ASC) Pageable pageable
+                                         direction = Sort.Direction.DESC) Pageable pageable
             , Model model){
 
         List<ProductDto> productDtoList = productService.searchDo(productType,search6);
