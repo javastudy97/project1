@@ -17,18 +17,20 @@
                     <ul>
                         <li>이메일 찾기</li>
                         <li class="s1">
-                            <label for="userName">닉네임</label><br>
+                            <h4>닉네임</h4>
                             <input type="text" name="userName" id="userName">
                         </li>
 
-<!--                        <li class="s1">
-                            <label for="userPhone">전화번호</label><br>
+                        <li class="s1">
+                            <h4>핸드폰</h4>
                             <input type="text" name="userPhone" id="userPhone" maxlength="13" oninput="autoHyphen(this)">
-                        </li>-->
+                        </li>
+
+                        <br>
 
                         <li class="s2">
                             <input type="submit" value="찾기" id="findBtn">
-                            <a th:href="@{/member/login}">뒤로</a><br>
+                            <a th:href="@{/member/login}" class="cancelBtn">뒤로</a><br>
                         </li>
                     </ul>
                 </div>

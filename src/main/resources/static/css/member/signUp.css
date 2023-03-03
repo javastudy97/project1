@@ -83,7 +83,6 @@ img{
 .container .signUp .signUp-con .signUp-form ul li input:focus{
     border: 1px solid #2196f3;
     box-sizing: border-box;
-    cursor: pointer;
 }
 
 
@@ -111,6 +110,7 @@ img{
     background-color: #33e713;
     color: #ffffff;
     text-align: center;
+    cursor: pointer;
 }
 
 .homeBtn:hover{

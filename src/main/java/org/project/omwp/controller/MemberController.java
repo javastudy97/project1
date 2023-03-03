@@ -150,10 +150,13 @@ public class MemberController {
 
     // 이메일 찾기 실행
     @GetMapping("/findEmailOk")
-    public String findEmailOk(){
+    public String findEmailOk(Model model,@RequestParam(value = "userName") String userName,
+                              @RequestParam(value = "userPhone") String userPhone){
+
+        MemberDto memberDto = memberService.findEmail(userName, userPhone);
+        model.addAttribute("memberDto", memberDto);
 
         return "member/findEmailOk";
-
     }
 
 

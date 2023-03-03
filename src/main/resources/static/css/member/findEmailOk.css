@@ -1,0 +1,159 @@
+@import url(../common/header.css);
+@import url(../common/footer.css);
+@import url(../common/reset.css);
+
+
+/* 찾기 결과 폼 */
+.container{
+
+}
+
+.container .findEmailOk{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .findEmailOk .findEmailOk-con{
+  width: 350px;
+  box-sizing: border-box;
+  padding: 30px 20px;
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+}
+
+.container .findEmailOk .findEmailOk-con .findEmailOk-form{
+  background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+.container .findEmailOk .findEmailOk-con .findEmailOk-form ul{
+  display: flex;
+  flex-direction: column;
+}
+
+.container .findEmailOk .findEmailOk-con .findEmailOk-form ul li{
+    padding: 5px 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.container .findEmailOk .findEmailOk-con .findEmailOk-form ul.s1{
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  line-height: 20px;
+}
+
+.container .findEmailOk .findEmailOk-con .findEmailOk-form ul.s1 input{
+  height: auto;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  line-height: 20px;
+}
+
+.container .findEmailOk .findEmailOk-con .findEmailOk-form ul.s2{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* input 요소 */
+
+.container .findEmailOk .findEmailOk-con .findEmailOk-form ul li input{
+  width: 300px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+
+.container .findEmailOk .findEmailOk-con .findEmailOk-form ul li input:focus{
+  border: 1px solid #2196f3;
+  box-sizing: border-box;
+}
+
+/* 실패시 해당하는 아이디 찾기 버튼 */
+.findEmailBtn{
+  width: 300px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  background-color: #2196f3;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.findEmailBtn:hover{
+  background-color: #1970b7;
+}
+
+/* 회원가입 */
+.signUpBtn{
+  width: 300px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  background-color: #33e713;
+  color: #ffffff;
+  text-align: center;
+}
+
+.signUpBtn:hover{
+  background-color: #208c0c;
+}
+
+/* 성공시 해당하는 로그인버튼*/
+.loginBtn{
+  width: 300px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  background-color: #2196f3;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.loginBtn:hover{
+  background-color: #1970b7;
+}
+
+/* HOME 버튼 */
+.homeBtn{
+  width: 300px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  background-color: #33e713;
+  color: #ffffff;
+  text-align: center;
+}
+
+.homeBtn:hover{
+  background-color: #208c0c;
+}
+
+/* 검색결과 */
+
+span {
+    text-align: center;
+    padding: 30px;
+    font-weight: bold;
+}

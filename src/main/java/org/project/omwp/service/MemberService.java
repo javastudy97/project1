@@ -147,4 +147,14 @@ public class MemberService {
         }
     }
 
+    // 이메일 찾기
+    public MemberDto findEmail(String userName, String userPhone) {
+        MemberEntity memberEntity = memberRepository.findByUserNameUserPhone(userName,userPhone);
+
+        if(memberEntity!=null){
+            return MemberDto.toMemberDto(memberEntity);
+        }
+        return null;
+    }
+
 }
