@@ -4,15 +4,12 @@
 /*ProductList(It)*/
 .header{
   position: static; /*포지션 기본*/
-  /* background-color: rgb(76, 76, 201); */
 }
 
 .container{
   width: 100%;
   /* background-color: #cccccc; */
   text-align: center;
-  /*흑백처리*/
-      filter: grayscale(80%);
 }
 
 .container .productList{
@@ -28,7 +25,7 @@
 /* 옆 메뉴바 */
 .container .productList .left-menu{
   width: 250px;
-  border: 1px solid #ff0000;
+  border: 0px solid #ff0000;
   padding: 30px;
 }
 
@@ -36,17 +33,17 @@
   font-size: 22px;
   font-weight: 500;
 
-  border-bottom: 2px solid rgb(84, 132, 203);
+  border-bottom: 2px solid #2196f3;
     padding-bottom: 16px;
 }
 
 .container .productList .left-menu ul{
   padding: 20px;
-  text-align: center;
+  text-align: left;
 }
 
 .container .productList .left-menu ul h3{
-  padding: 20px;
+  padding: 10px;
 }
 
 .container .productList .left-menu ul li{
@@ -61,7 +58,7 @@
 }
 
 .container .productList .productList-con .top-menu h1.title{
-  background-color: #9ca7e4;
+  background-color: #2196f3;
   color: #ffffff;
   text-align: center;
   padding: 10px;
@@ -77,7 +74,7 @@
   flex: 0 1 auto;
   display: flex;
   justify-content: space-evenly;
-  background-color: rgb(88, 88, 255);
+  background-color: #263bfa;
   color: #ffffff;
   gap: 10px;
   padding: 10px;
@@ -107,14 +104,44 @@
   /* display: flex; */
   justify-content: space-evenly;
   text-align: center;
-  background-color: rgb(83, 83, 255);
+  background-color: rgb(255, 255, 255);
+  color: #000000;
   gap: 10px;
   /* padding: 8px; */
   box-sizing: border-box;
 }
 
+/*상품 이름*/
+.container .productList .productList-con .shop-menu ul li.name{
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+/*상품 가격*/
+.container .productList .productList-con .shop-menu ul li.price{
+  padding: 10px;
+  text-align: right;
+
+  font-size: 21px;
+  font-weight: bold;
+}
+
+/*상품 리뷰*/
+.container .productList .productList-con .shop-menu ul li.review{
+  text-align: right;
+  font-weight: normal;
+}
+
+/*상품 상세*/
+.container .productList .productList-con .shop-menu ul li.detail{
+  text-align: right;
+  font-weight: normal;
+}
+
 .container .productList .productList-con .shop-menu ul li a{
-  color: #ffffff;
+  color: #000000;
   text-align: center;
 }
 
@@ -123,6 +150,23 @@
   border: 0px solid #00ff00;
   box-sizing: border-box;
   padding: 20px;
+}
+
+/*이미지 부모*/
+.container .productList .productList-con .shop-menu .shop-menu-con .top-con{
+  width: 100%;
+  border: 0px solid #00ff00;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*이미지*/
+.container .productList .productList-con .shop-menu .shop-menu-con img{
+  border: 0px solid #ff0000;
+  width: 200px;
+  height: 200px;
 }
 
 /*Grid 4열*/
@@ -149,7 +193,18 @@
 }
 
 .container .productList .productList-con .shop-menu .shop-menu-con > ul >li .top-con img{
-   width: 70%;
+   width: 100%;
    display: block;
+   
+}
 
+.container .productList .productList-con .shop-menu .page ul li{
+  background-color: #2196f3;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+}
+
+.container .productList .productList-con .shop-menu .page ul li a{
+  color: #ffffff;
 }

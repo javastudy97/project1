@@ -37,6 +37,7 @@ public class ProductService {
         if (productDto.getImgFile().isEmpty()){
 
             ProductEntity productEntity = ProductEntity.toProductEntity(productDto);
+            productRepository.save(productEntity);
         }
         //이미지가 있을 때
         else {
@@ -79,16 +80,13 @@ public class ProductService {
 //    }
 
     // 상품 목록 페이지 페이징(It)
-    public Page<ProductDto> ITProductPagingList(Pageable pageable) {
-
-
+    public Page<ProductDto> ProductPagingList(String productType,Pageable pageable) {
 
         //Page<ProductEntity> ItProductEntityList = productRepository.findAll(pageable);
-        Page<ProductEntity> ItProductEntityList = productRepository.findAll(pageable);
+        Page<ProductEntity> ProductEntityList = productRepository.findAllByProductType(productType,pageable);
+        Page<ProductDto> ProductDtoList = ProductEntityList.map(ProductDto::toProductDto);
 
-        Page<ProductDto> ItProductDtoList = ItProductEntityList.map(ProductDto::toProductDto);
-
-        return ItProductDtoList;
+        return ProductDtoList;
     }
 
 //    public List<ProductDto> ItProductListDo(String productType) {
@@ -131,7 +129,7 @@ public class ProductService {
     }
 
     // 상품 상세페이지
-    // 상품 목록 상세 페이지 가져오기
+    // 상품 목록 상세 페이지 가져오기(It)
     public List<ProductDto> ItProductListDo(String productType) {
 
         List<ProductEntity> ItProductEntityList = productRepository.findByProductType(productType);
@@ -146,22 +144,7 @@ public class ProductService {
 
     }
 
-    public List<ProductDto> ItProductListDo2(String productType) {
-        System.out.println(productType+"<<<<<<<< type");
-
-        List<ProductEntity> ItProductEntityList = productRepository.findByProductTypeDesc(productType);
-        List<ProductDto> ItProductDtoList = new ArrayList<>();
-
-        for(ProductEntity productEntity : ItProductEntityList){
-            ItProductDtoList.add(ProductDto.toProductDto3(productEntity));
-        }
-
-
-        return ItProductDtoList;
-
-    }
-
-    // 상품 목록 상세 페이지 가져오기
+    // 상품 목록 상세 페이지 가져오기(Design)
     public List<ProductDto> DesignProductListDo(String productType) {
         List<ProductEntity> DesignProductEntityList = productRepository.findByProductType(productType);
         List<ProductDto> DesignProductDtoList = new ArrayList<>();
@@ -173,7 +156,7 @@ public class ProductService {
         return  DesignProductDtoList;
     }
 
-    // 상품 목록 상세 페이지 가져오기
+    // 상품 목록 상세 페이지 가져오기(Enter)
     public List<ProductDto> EnterProductListDo(String productType) {
         List<ProductEntity> EnterProductEntityList = productRepository.findByProductType(productType);
         List<ProductDto> EnterProductDtoList = new ArrayList<>();
@@ -184,7 +167,7 @@ public class ProductService {
         return EnterProductDtoList;
     }
 
-    // 상품 목록 상세 페이지 가져오기
+    // 상품 목록 상세 페이지 가져오기(Office)
     public List<ProductDto> OfficeProductListDo(String productType) {
         List<ProductEntity> OfficeProductEntityList = productRepository.findByProductType(productType);
         List<ProductDto> OfficeProductDtoList = new ArrayList<>();
@@ -196,7 +179,7 @@ public class ProductService {
 
     }
 
-    // 상품 목록 상세 페이지 가져오기
+    // 상품 목록 상세 페이지 가져오기(Marketing)
     public List<ProductDto> MarketingProductListDo(String productType) {
         List<ProductEntity> MarketingProductEntityList = productRepository.findByProductType(productType);
         List<ProductDto> MarketingProductDtoList = new ArrayList<>();
@@ -207,7 +190,7 @@ public class ProductService {
         return MarketingProductDtoList;
     }
 
-    // 상품 목록 상세 페이지 가져오기
+    // 상품 목록 상세 페이지 가져오기(Invest)
     public List<ProductDto> InvestProductListDo(String productType) {
         List<ProductEntity> InvestProductEntityList = productRepository.findByProductType(productType);
         List<ProductDto> InvestProductDtoList = new ArrayList<>();
@@ -245,11 +228,32 @@ public class ProductService {
 
         }
 
-       return productDtoList;
+        return productDtoList;
 
     }
 
+    public List<ProductDto>  searchDo(String productType,String search) {
+        List<ProductDto> productDtoList = new ArrayList<>();
 
-    public void ItProductListDo2() {
+        List<ProductEntity> productEntityList = productRepository.findByProductNameContainingAndProductTypeContaining(search,productType);
+
+        for (ProductEntity productEntity :  productEntityList){
+            productDtoList.add(ProductDto.toProductDto(productEntity));
+        }
+        return productDtoList;
+    }
+
+
+    public Page<ProductDto> PagingsearchDo(String productType, String search, Pageable pageable) {
+        //Page<ProductEntity> ItProductEntityList = productRepository.findAll(pageable);
+        Page<ProductEntity> ProductEntityList = productRepository.findByProductNameContainingAndProductTypeContaining(search,productType,pageable);
+        Page<ProductDto> ProductDtoList = ProductEntityList.map(ProductDto::toProductDto);
+
+        return ProductDtoList;
+    }
+
+    @Transactional
+    public void reviewCountUp(Long productId) {
+        productRepository.upReviewCount(productId);
     }
 }

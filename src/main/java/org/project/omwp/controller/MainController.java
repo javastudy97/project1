@@ -30,7 +30,7 @@ public class MainController {
 
         ProductDto productDto = new ProductDto();
 
-        List<ProductDto> productDtoList = productService.ItProductListDo2("it");
+        List<ProductDto> productDtoList = productService.ItProductListDo("it");
         if (productDtoList.isEmpty() == true ){
             productDto = null;
         } else {
@@ -45,7 +45,7 @@ public class MainController {
     public String newProduct1(Model model) {
         ProductDto productDto = new ProductDto();
 
-        List<ProductDto> productDtoList = productService.ItProductListDo2("it");
+        List<ProductDto> productDtoList = productService.ItProductListDo("it");
         if (productDtoList.isEmpty() == true ){
             productDto = null;
         } else {
@@ -60,7 +60,7 @@ public class MainController {
     public String newProduct2(Model model) {
         ProductDto productDto = new ProductDto();
 
-        List<ProductDto> productDtoList = productService.ItProductListDo2("design");
+        List<ProductDto> productDtoList = productService.DesignProductListDo("design");
         if (productDtoList.isEmpty() == true ){
             productDto = null;
         } else {
@@ -75,7 +75,7 @@ public class MainController {
     public String newProduct3(Model model) {
         ProductDto productDto = new ProductDto();
 
-        List<ProductDto> productDtoList = productService.ItProductListDo2("enter");
+        List<ProductDto> productDtoList = productService.EnterProductListDo("enter");
         if (productDtoList.isEmpty() == true ){
             productDto = null;
         } else {
@@ -90,7 +90,7 @@ public class MainController {
     public String newProduct4(Model model) {
         ProductDto productDto = new ProductDto();
 
-        List<ProductDto> productDtoList = productService.ItProductListDo2("office");
+        List<ProductDto> productDtoList = productService.OfficeProductListDo("office");
         if (productDtoList.isEmpty() == true ){
             productDto = null;
         } else {
@@ -105,7 +105,7 @@ public class MainController {
     public String newProduct5(Model model) {
         ProductDto productDto = new ProductDto();
 
-        List<ProductDto> productDtoList = productService.ItProductListDo2("marketing");
+        List<ProductDto> productDtoList = productService.MarketingProductListDo("marketing");
         if (productDtoList.isEmpty() == true ){
             productDto = null;
         } else {
@@ -120,7 +120,7 @@ public class MainController {
     public String newProduct6(Model model) {
         ProductDto productDto = new ProductDto();
 
-        List<ProductDto> productDtoList = productService.ItProductListDo2("invest");
+        List<ProductDto> productDtoList = productService.InvestProductListDo("invest");
         if (productDtoList.isEmpty() == true ){
             productDto = null;
         } else {

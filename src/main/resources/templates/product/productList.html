@@ -13,7 +13,7 @@
 <div class="container">
     <div class="productList">
             <div class="left-menu">
-                <h2>IT</h2>
+                <h2>아이티</h2>
                 <ul>
                     <img src="https://via.placeholder.com/200x100" alt="">
 
@@ -44,6 +44,7 @@
                         <li>조회순</li>
                         <li class="search">
                             <form th:action="@{/product/productList/search}" method="get">
+                                <input type="hidden" name="It" id="It" value="It" readonly>
                                 <input type="text" name="search" id="search">
                                 <input type="submit" value="검색">
                             </form>
@@ -56,29 +57,38 @@
                     <ul>
                         <th:block th:each="product: ${productList}">
                             <li>
-                                <div class="top-con">
-                                    <img th:src="@{|/upload/${product.imgNewName}|}" alt="img">
+                                <div class="top-con" th:if="${product.attachImg==1}">
+                                    <!-- 그림 클릭시 상세페이지로 연결 -->
+                                    <!-- <img th:src="@{|/upload/${product.imgNewName}|}" alt=""> -->
+                                    <a th:href="@{|/product/detail/${product.productId}|}">
+                                        <img th:src="@{|/upload/${product.imgNewName}|}" alt="">
+                                    </a>
+                                </div>
+                                <div class="top-con" th:if="${product.attachImg==0}">
+                                    <a th:href="@{|/product/detail/${product.productId}|}">
+                                        <img src="https://via.placeholder.com/200x200" alt="">
+                                    </a>
                                 </div>
                                 <div class="bottom-con">
                                     <ul>
-                                        <li>
+                                        <!-- <li>
                                             <span>번호 :</span>
                                             <span th:text="${product.productId}"></span>
-                                        </li>
-                                        <li>
+                                        </li> -->
+                                        <!-- <li>
                                             <span>카테고리 :</span>
                                             <span th:text="${product.productType}"></span>
-                                        </li>
-                                        <li>
-                                            <span>상품명 :</span>
+                                        </li> -->
+                                        <li class="name">
+<!--                                             <span>상품명 :</span>-->
                                             <span th:text="${product.productName}"></span>
                                         </li>
-                                        <li>
-                                            <span>상품설명 :</span>
+                                        <!-- <li class="desc">
+                                            <span></span>
                                             <span th:text="${product.productDesc}"></span>
-                                        </li>
-                                        <li>
-                                            <span>상품가격 :</span>
+                                        </li> -->
+                                        <li class="price">
+                                            <span>₩</span>
                                             <span th:text="${product.productPrice}"></span>
                                             <span>원</span>
                                         </li>
@@ -87,11 +97,13 @@
                                             <span
                                                 th:text="${#temporals.format(product.productCreate, 'yyyy년MM월dd일 HH시mm분ss초')}"></span>
                                         </li> -->
-                                        <li>
+                                        <li class="review">
                                             <span>리뷰 수</span>
                                             <span th:text="${product.reviewCount}"></span>
                                         </li>
-                                        <li><a th:href="@{|/product/detail/${product.productId}|}">상세보기</a></li>
+                                        <li class="detail">
+                                            <a th:href="@{|/product/detail/${product.productId}|}">상세보기</a>
+                                        </li>
 
                                     </ul>
                                 </div>
@@ -99,7 +111,7 @@
                         </th:block>
                     </ul>
                 </div>
-                <div>
+                <div class="page">
                     <ul>
                         <li>
                             <a th:href="${productList.first} ? '#' : @{/product/productList(page=${productList.number-1})}">이전</a>

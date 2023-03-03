@@ -43,7 +43,7 @@
                                 <div class="product-con">
                                     <th:block>
                                         <span th:if="${productDto.attachImg == 1}">
-                                            <img th:src="@{|/upload/${product.imgNewName}|}" alt="img">
+                                            <img th:src="@{|/upload/${productDto.imgNewName}|}" style="width: 200px; height: 200px;" alt="img">
                                         </span>
                                         <span th:unless="${productDto.attachImg == 1}">
                                             <img src="https://via.placeholder.com/200 " alt="img">

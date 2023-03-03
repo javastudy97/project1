@@ -70,16 +70,9 @@ public class ProductController {
 
         if(productType.equals("It")||productType.equals("it")){
             List<ProductDto> productDtoList = productService.ItProductListDo(productType);
-            System.out.println(productDtoList.size()+"<<<< size");
             model.addAttribute("productList",productDtoList);
-
-
-
-            Page<ProductDto> productList=productService.ITProductPagingList(pageable);
-
-            System.out.println("=====================");
-            System.out.println("here");
-            System.out.println("=====================");
+//
+            Page<ProductDto> productList=productService.ProductPagingList(productType,pageable);
 
             Long total=productList.getTotalElements();
             int bockNum=4;
@@ -99,11 +92,39 @@ public class ProductController {
             List<ProductDto> productDtoList = productService.DesignProductListDo(productType);
             model.addAttribute("productList",productDtoList);
 
+            Page<ProductDto> productList=productService.ProductPagingList(productType,pageable);
+
+            Long total=productList.getTotalElements();
+            int bockNum=4;
+            int nowPage=productList.getNumber()+1;
+            int startPage=Math.max(1,productList.getNumber()-bockNum);
+            int endPage=productList.getTotalPages();
+
+            model.addAttribute("total",total);
+            model.addAttribute("productList",productList);
+            model.addAttribute("nowPage",nowPage);
+            model.addAttribute("startPage",startPage);
+            model.addAttribute("endPage",endPage);
+
             return "product/productList2";
         }
         if(productType.equals("Enter")||productType.equals("enter")){
             List<ProductDto> productDtoList = productService.EnterProductListDo(productType);
             model.addAttribute("productList",productDtoList);
+
+            Page<ProductDto> productList=productService.ProductPagingList(productType,pageable);
+
+            Long total=productList.getTotalElements();
+            int bockNum=4;
+            int nowPage=productList.getNumber()+1;
+            int startPage=Math.max(1,productList.getNumber()-bockNum);
+            int endPage=productList.getTotalPages();
+
+            model.addAttribute("total",total);
+            model.addAttribute("productList",productList);
+            model.addAttribute("nowPage",nowPage);
+            model.addAttribute("startPage",startPage);
+            model.addAttribute("endPage",endPage);
 
             return "product/productList3";
         }
@@ -111,17 +132,58 @@ public class ProductController {
             List<ProductDto> productDtoList = productService.OfficeProductListDo(productType);
             model.addAttribute("productList",productDtoList);
 
+            Page<ProductDto> productList=productService.ProductPagingList(productType,pageable);
+
+            Long total=productList.getTotalElements();
+            int bockNum=4;
+            int nowPage=productList.getNumber()+1;
+            int startPage=Math.max(1,productList.getNumber()-bockNum);
+            int endPage=productList.getTotalPages();
+
+            model.addAttribute("total",total);
+            model.addAttribute("productList",productList);
+            model.addAttribute("nowPage",nowPage);
+            model.addAttribute("startPage",startPage);
+            model.addAttribute("endPage",endPage);
+
             return "product/productList4";
         }
         if(productType.equals("Marketing")||productType.equals("marketing")){
             List<ProductDto> productDtoList = productService.MarketingProductListDo(productType);
             model.addAttribute("productList",productDtoList);
 
+            Page<ProductDto> productList=productService.ProductPagingList(productType,pageable);
+
+            Long total=productList.getTotalElements();
+            int bockNum=4;
+            int nowPage=productList.getNumber()+1;
+            int startPage=Math.max(1,productList.getNumber()-bockNum);
+            int endPage=productList.getTotalPages();
+
+            model.addAttribute("total",total);
+            model.addAttribute("productList",productList);
+            model.addAttribute("nowPage",nowPage);
+            model.addAttribute("startPage",startPage);
+            model.addAttribute("endPage",endPage);
+
             return "product/productList5";
         }
         if(productType.equals("Invest")||productType.equals("invest")){
             List<ProductDto> productDtoList = productService.InvestProductListDo(productType);
             model.addAttribute("productList",productDtoList);
+            Page<ProductDto> productList=productService.ProductPagingList(productType,pageable);
+
+            Long total=productList.getTotalElements();
+            int bockNum=4;
+            int nowPage=productList.getNumber()+1;
+            int startPage=Math.max(1,productList.getNumber()-bockNum);
+            int endPage=productList.getTotalPages();
+
+            model.addAttribute("total",total);
+            model.addAttribute("productList",productList);
+            model.addAttribute("nowPage",nowPage);
+            model.addAttribute("startPage",startPage);
+            model.addAttribute("endPage",endPage);
 
             return "product/productList6";
         }
@@ -181,15 +243,15 @@ public class ProductController {
     }
 
     //상품수정을 하기위한 페이지
-//    @GetMapping("/update/{id}")
-//    public String updateView(@PathVariable("id") Long productId, Model model) {
-//
-//        ProductDto product = productService.searchProduct(productId);
-//
-//        model.addAttribute("product", product);
-//
-//        return "product/productUpdateView";
-//    }
+    @GetMapping("/update/{id}")
+    public String updateView(@PathVariable("id") Long productId, Model model) {
+
+        ProductDto product = productService.findByProduct(productId);
+
+        model.addAttribute("product", product);
+
+        return "product/productUpdateView";
+    }
 
     //상품수정 실행
     @PostMapping("/update")
@@ -198,6 +260,156 @@ public class ProductController {
         productService.productUpdate(productDto);
 
         return "redirect:/product/productList";
+    }
+
+    //각 카테고리 당 검색기능
+    @GetMapping("/productList/search")
+    public String productSearch(@RequestParam(value = "It", required = false) String productType, @RequestParam(value = "search" ,required = false) String search,
+                                @PageableDefault(page = 0,size = 36, sort = "productId",
+                                        direction = Sort.Direction.ASC) Pageable pageable,
+                                Model model){
+        List<ProductDto> productDtoList = productService.searchDo(productType,search);
+        model.addAttribute("productList",productDtoList);
+
+        Page<ProductDto> productList = productService.PagingsearchDo(productType,search, pageable);
+
+        Long total=productList.getTotalElements();
+        int bockNum=4;
+        int nowPage=productList.getNumber()+1;
+        int startPage=Math.max(1,productList.getNumber()-bockNum);
+        int endPage=productList.getTotalPages();
+
+        model.addAttribute("total",total);
+        model.addAttribute("productList", productList);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+
+        return "product/productList";
+    }
+    @GetMapping("/productList/search2")
+    public String productSearch2(@RequestParam(value = "Design", required = false) String productType, @RequestParam(value = "search2" ,required = false) String search2,
+                                 @PageableDefault(page = 0,size = 36, sort = "productId",
+                                         direction = Sort.Direction.ASC) Pageable pageable,
+                                 Model model){
+        List<ProductDto> productDtoList = productService.searchDo(productType,search2);
+        model.addAttribute("productList",productDtoList);
+
+        Page<ProductDto> productList = productService.PagingsearchDo(productType,search2, pageable);
+
+        Long total=productList.getTotalElements();
+        int bockNum=4;
+        int nowPage=productList.getNumber()+1;
+        int startPage=Math.max(1,productList.getNumber()-bockNum);
+        int endPage=productList.getTotalPages();
+
+        model.addAttribute("total",total);
+        model.addAttribute("productList", productList);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+
+        return "product/productList2";
+    }
+    @GetMapping("/productList/search3")
+    public String productSearch3(@RequestParam(value = "Enter", required = false) String productType, @RequestParam(value = "search3" ,required = false) String search3,
+                                 @PageableDefault(page = 0,size = 36, sort = "productId",
+                                         direction = Sort.Direction.ASC) Pageable pageable,
+                                 Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search3);
+        model.addAttribute("productList",productDtoList);
+
+        Page<ProductDto> productList = productService.PagingsearchDo(productType,search3, pageable);
+
+        Long total=productList.getTotalElements();
+        int bockNum=4;
+        int nowPage=productList.getNumber()+1;
+        int startPage=Math.max(1,productList.getNumber()-bockNum);
+        int endPage=productList.getTotalPages();
+
+        model.addAttribute("total",total);
+        model.addAttribute("productList", productList);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+
+        return "product/productList3";
+    }
+    @GetMapping("/productList/search4")
+    public String productSearch4(@RequestParam(value = "Office", required = false) String productType, @RequestParam(value = "search4" ,required = false) String search4,
+                                 @PageableDefault(page = 0,size = 36, sort = "productId",
+                                         direction = Sort.Direction.ASC) Pageable pageable
+            ,Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search4);
+        model.addAttribute("productList",productDtoList);
+
+        Page<ProductDto> productList = productService.PagingsearchDo(productType,search4, pageable);
+
+        Long total=productList.getTotalElements();
+        int bockNum=4;
+        int nowPage=productList.getNumber()+1;
+        int startPage=Math.max(1,productList.getNumber()-bockNum);
+        int endPage=productList.getTotalPages();
+
+        model.addAttribute("total",total);
+        model.addAttribute("productList", productList);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+
+        return "product/productList4";
+    }
+    @GetMapping("/productList/search5")
+    public String productSearch5(@RequestParam(value = "Marketing", required = false) String productType, @RequestParam(value = "search5" ,required = false) String search5,
+                                 @PageableDefault(page = 0,size = 36, sort = "productId",
+                                         direction = Sort.Direction.ASC) Pageable pageable
+            ,Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search5);
+        model.addAttribute("productList",productDtoList);
+
+        Page<ProductDto> productList = productService.PagingsearchDo(productType,search5, pageable);
+
+        Long total=productList.getTotalElements();
+        int bockNum=4;
+        int nowPage=productList.getNumber()+1;
+        int startPage=Math.max(1,productList.getNumber()-bockNum);
+        int endPage=productList.getTotalPages();
+
+        model.addAttribute("total",total);
+        model.addAttribute("productList", productList);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+
+        return "product/productList5";
+    }
+    @GetMapping("/productList/search6")
+    public String productSearch6(@RequestParam(value = "Invest", required = false) String productType, @RequestParam(value = "search6" ,required = false) String search6,
+                                 @PageableDefault(page = 0,size = 36, sort = "productId",
+                                         direction = Sort.Direction.ASC) Pageable pageable
+            , Model model){
+
+        List<ProductDto> productDtoList = productService.searchDo(productType,search6);
+        model.addAttribute("productList",productDtoList);
+
+        Page<ProductDto> productList = productService.PagingsearchDo(productType,search6, pageable);
+
+        Long total=productList.getTotalElements();
+        int bockNum=4;
+        int nowPage=productList.getNumber()+1;
+        int startPage=Math.max(1,productList.getNumber()-bockNum);
+        int endPage=productList.getTotalPages();
+
+        model.addAttribute("total",total);
+        model.addAttribute("productList", productList);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+
+        return "product/productList6";
     }
 
 }

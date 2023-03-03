@@ -4,6 +4,8 @@
 /*memberDetail*/
 .header{
   position: static; /*포지션 기본*/
+  background-color: rgb(76, 76, 201);
+
 }
 
 .container{
@@ -16,8 +18,10 @@
 
 .container .productDetail .productDetail-con{
   width: 100%;
+  /* padding: 72px 0; */
   padding: 36px 0;
   box-sizing: border-box;
+  /* header, footer 제외한 높이가 .container 높이로 설정*/
   height: calc(100vh-193px);
 
   display: flex;
@@ -26,10 +30,10 @@
 }
 
 .container .productDetail .productDetail-con .productDetail-form{
-  flex: 0 1 1000px;
-  max-height: 500px;
-  height: 800px;
-  border: 1px solid #00000034;
+  flex: 0 1 600px;
+  /* max-height: 50vh; */
+  height: 600px;
+  border: 1px solid #7566ff83;
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -38,8 +42,6 @@
   box-shadow: 1px 10px 10pX #000000;
 }
 
-
-/*밑 상품 설명 시작*/
 .container .productDetail .Desc{
   width: 100%;
   /* padding: 72px 0; */
@@ -47,36 +49,9 @@
   /* header, footer 제외한 높이가 .container 높이로 설정*/
   height: calc(100vh-193px);
 
-  white-space: normal;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.container .productDetail .Desc ul li.DescSub{
-  display:inline-block
-}
-
-/*왼쪽 메뉴바***************************************************************/
-.container .productDetail .productDetail-con .productDetail-form .left-menu{
-  flex: 1;
-  display: flex;
-}
-
-/*이미지 크기 설정*/
-.container .productDetail .productDetail-con .productDetail-form .left-menu1 img{
-  width: 500px;
-  height: 500px;
-  display: block;
-}
-.container .productDetail .productDetail-con .productDetail-form .left-menu2 img{
-  display: block;
-}
-
-/*오른쪽 메뉴바*************************************************************/
-.container .productDetail .productDetail-con .productDetail-form .right-menu{
-  flex: 1;
-
 }
 
 .container .productDetail .Desc ul li{
@@ -103,30 +78,24 @@
 }
 
 
-.container .productDetail .productDetail-con .productDetail-form .right-menu ul li.title{
-  margin: 0 0 50px 0;
-  font-weight: 600;
-  padding: 40px 0 0;
-  font-size: 25px;
-  border-top: 2px solid #222;
-  width: 550px;
+.container .productDetail .productDetail-con .productDetail-form .left-menu{
+  flex: 1;
+  display: flex;
 }
 
-.container .productDetail .productDetail-con .productDetail-form .right-menu ul li.desc{
-  margin: 0 0 50px 0;
-  line-height: 25px;
-  font-size: 18px;
-  max-width: 550px;
-  white-space: normal;
+.container .productDetail .productDetail-con .productDetail-form .left-menu1 img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.container .productDetail .productDetail-con .productDetail-form .left-menu2 img{
+  display: block;
 }
 
-.container .productDetail .productDetail-con .productDetail-form .right-menu ul li.price{
-  font-size: 20px;
-  font-weight: bold;
+.container .productDetail .productDetail-con .productDetail-form .right-menu{
+  /* background-color: rgb(76, 76, 201); */
+  flex: 1;
 }
-
-
-
 
 .container .productDetail .productDetail-con .productDetail-form .right-menu ul{
   /* background-color: rgb(157, 157, 255); */
@@ -138,7 +107,7 @@
 }
 
 .container .productDetail .productDetail-con .productDetail-form .right-menu ul li{
-  /* border: 1px solid #7566ff83; */
+  border: 1px solid #7566ff83;
   box-sizing: border-box;
   padding: 5px 10px;
 }
@@ -177,7 +146,7 @@
   line-height: 20px;
   line-height: 20px;
   padding: 5px;
-  /* border: 0px solid #7566ff83; */
+  border: 1px solid #7566ff83;
   box-sizing: border-box;
 }
 
