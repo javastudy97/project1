@@ -18,7 +18,7 @@
   width: 100%;
   padding: 36px 0;
   box-sizing: border-box;
-  height: calc(100vh-193px);
+  height: auto;
 
   display: flex;
   justify-content: center;
@@ -28,45 +28,30 @@
 .container .productDetail .productDetail-con .productDetail-form{
   flex: 0 1 1000px;
   max-height: 500px;
-  height: 800px;
-  border: 1px solid #00000034;
+  /* border: 1px solid #00000034; */
   display: flex;
   justify-content: space-between;
   gap: 10px;
   padding: 10px;
   /*x(가로) y(세로) 퍼짐 색상*/
-  box-shadow: 1px 10px 10pX #000000;
+  /* box-shadow: 1px 10px 10pX #000000; */
 }
 
 
-/*밑 상품 설명 시작*/
-.container .productDetail .Desc{
-  width: 100%;
-  /* padding: 72px 0; */
-  box-sizing: border-box;
-  /* header, footer 제외한 높이가 .container 높이로 설정*/
-  height: calc(100vh-193px);
-
-  white-space: normal;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container .productDetail .Desc ul li.DescSub{
-  display:inline-block
-}
 
 /*왼쪽 메뉴바***************************************************************/
-.container .productDetail .productDetail-con .productDetail-form .left-menu{
+.container .productDetail .productDetail-con .productDetail-form .left-menu1{
   flex: 1;
-  display: flex;
+  border: 0px solid #ff0000;
+  width: 600px;
 }
 
 /*이미지 크기 설정*/
 .container .productDetail .productDetail-con .productDetail-form .left-menu1 img{
-  width: 500px;
-  height: 500px;
+  max-width: 100%;
+  width: 500px !important;
+  height: 500px !important;
+  object-fit: cover;
   display: block;
 }
 .container .productDetail .productDetail-con .productDetail-form .left-menu2 img{
@@ -75,110 +60,46 @@
 
 /*오른쪽 메뉴바*************************************************************/
 .container .productDetail .productDetail-con .productDetail-form .right-menu{
-  flex: 1;
-
+  flex: 0.5;
+  border: 0px solid #ffff00;
+  width: 300px;
+  
+  margin-left: 60px;
+  
 }
 
-.container .productDetail .Desc ul li{
-  width: 624px;
-  flex: 0 1 600px;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.container .productDetail .productDetail-con .productDetail-form .right-menu ul{
+  width: 300px;
+  display: inline-flex;
+  flex-direction: column;
   gap: 10px;
-  padding: 10px;
-  /*x(가로) y(세로) 퍼짐 색상*/
-  box-shadow: 1px 10px 10pX #000000;
 }
 
-.container .productDetail .Desc ul li.btn2 a{
-  background-color: #7566ff83;
-  color: #ffffff;
-  flex: 1;
-  text-align: center;
-  line-height: 30px;
-  padding: 5px;
+.container .productDetail .productDetail-con .productDetail-form .right-menu ul li{
   box-sizing: border-box;
 }
-
 
 .container .productDetail .productDetail-con .productDetail-form .right-menu ul li.title{
   margin: 0 0 50px 0;
   font-weight: 600;
   padding: 40px 0 0;
-  font-size: 25px;
+  font-size: 20px;
   border-top: 2px solid #222;
-  width: 550px;
 }
 
 .container .productDetail .productDetail-con .productDetail-form .right-menu ul li.desc{
   margin: 0 0 50px 0;
   line-height: 25px;
-  font-size: 18px;
+  font-size: 14px;
   max-width: 550px;
+  word-break: keep-all;
   white-space: normal;
 }
 
 .container .productDetail .productDetail-con .productDetail-form .right-menu ul li.price{
   font-size: 20px;
   font-weight: bold;
-}
-
-
-
-
-.container .productDetail .productDetail-con .productDetail-form .right-menu ul{
-  /* background-color: rgb(157, 157, 255); */
-  width : max-content;
-  display: inline-flex;
-  flex-direction: column;
-  gap: 14px;
-  /* justify-content: space-between; */
-}
-
-.container .productDetail .productDetail-con .productDetail-form .right-menu ul li{
-  /* border: 1px solid #7566ff83; */
-  box-sizing: border-box;
-  padding: 5px 10px;
-}
-
-.container .productDetail .productDetail-con .productDetail-form .right-menu ul li.s1{
-  text-align: center;
-  font-size: 20px;
-  background-color: rgb(39, 39, 83);
-  color: #ffffff;
-  padding: 20px 0;
-}
-
-.container .productDetail .productDetail-con .productDetail-form .right-menu ul li.s2{
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-/*span의 첫번째*/
-.container .productDetail .productDetail-con .productDetail-form .right-menu ul li.s2 span:nth-child(1){
-  /* flex: 0 0 50px; */
-  /* flex: 1; */
-  width: 80px;
-  background-color: rgb(76, 76, 201);
-  color: #ffffff;
-  font-size: 12px;
-  line-height: 20px;
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-/*span의 두번째*/
-.container .productDetail .productDetail-con .productDetail-form .right-menu ul li.s2 span:nth-child(2){
-  flex: 3;
-  font-size: 12px;
-  line-height: 20px;
-  line-height: 20px;
-  padding: 5px;
-  /* border: 0px solid #7566ff83; */
-  box-sizing: border-box;
 }
 
 .container .productDetail .productDetail-con .productDetail-form .right-menu ul li.btn1{
@@ -188,9 +109,61 @@
 }
 
 .container .productDetail .productDetail-con .productDetail-form .right-menu ul li.btn1 a{
-  background-color: #7566ff83;
+  background-color: #2196f3;
   color: #ffffff;
   flex: 1;
+  text-align: center;
+  line-height: 30px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+/*밑 상품 설명 시작*/
+.container .productDetail .Desc{
+  width: 100%;
+  float: left;
+  padding: 72px 0;
+  box-sizing: border-box;
+
+  white-space: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.container .productDetail .Desc ul li.DescSub{
+  border-top: 2px solid #222;
+  display:inline-block;
+  word-break: keep-all;
+  flex: 1;
+  width: 500px;
+}
+
+/* 나중에 시간이 된다면 판매자 정보 넣을 자리 */
+.container .productDetail .Desc ul li.DescSub2{
+  border-top: 0px solid #222;
+  display:inline-block;
+  word-break: keep-all;
+  flex: 0.5;
+  width: 400px;
+}
+
+.container .productDetail .Desc ul li{
+  flex: 0 1 600px;
+  height: auto;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  padding: 20px;
+  border: 1px #000000;
+}
+
+.container .productDetail .Desc ul li.btn2 a{
+  background-color: #2196f3;
+  color: #ffffff;
+  width: 600px;
   text-align: center;
   line-height: 30px;
   padding: 5px;
@@ -206,39 +179,46 @@
 }
 
 .container .review .review-con{
-  width: 644px;
-  padding: 72px 0;
+  width: 600px;
   box-sizing: border-box;
   /* header, footer 제외한 높이가 .container 높이로 설정*/
   height: calc(100vh-193px);
 
   display: inline-block;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+}
+
+.container .review .blank{
+  border-top: 0px solid #222;
+  display:inline-block;
+  word-break: keep-all;
+  /* flex: 0.5; */
+  width: 340px;
 }
 
 .container .review .review-con h2{
   text-align: left;
   padding: 30px 20px;
   box-sizing: border-box;
-  background-color: #7566ff83;
+  background-color: #2196f3;
   color: #ffffff;
 }
 
-/* 작업 중*/
 .review-con ul {
-padding: 40px;
+padding: 20px;
 display: block;
 justify-content: center;
 align-items: center;
 }
 
-
+/*본인의 회원 번호를 입력하시오....*/
 .review-con ul li.class2 {
   display: flex;
   justify-content: space-between;
   gap: 5px;
-  width: 300px;
+  /*수정한 부분 */
+  width: 560px;
 }
 
 .review-con input {
@@ -251,7 +231,38 @@ align-items: center;
 }
 
 .review-con input[type=submit] {
-  background-color: #0000ff;
+  background-color: #2196f3;
+  color: #ffffff;
+  border: 0;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.review-list{
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.review-list table{
+  width: 100%;
+  border: 1px solid #000000;
+  border-collapse: collapse;
+}
+
+.review-list table th, td{
+  border: 1px solid #000000;
+  padding: 10px;
+}
+
+.review-con ul li textarea {
+  width: 560px;
+  height: 300px;
+}
+
+.review-con input[type=submit] {
+  background-color: #2196f3;
   color: #ffffff;
   border: 0;
   padding: 10px 20px;

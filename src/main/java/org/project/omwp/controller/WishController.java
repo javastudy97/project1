@@ -42,20 +42,6 @@ public class WishController {
 
     private final ImgRepository imgRepository;
 
-    @GetMapping("/productList")
-    public String productList(Model model){
-
-        List<ProductDto> productDtoList = productService.findAllProduct();
-
-        model.addAttribute("productDtoList",productDtoList);
-
-
-
-        return "/wish/productList";
-    }
-
-
-
 
     @GetMapping("/cart")
     public String cart(Principal principal, Model model){

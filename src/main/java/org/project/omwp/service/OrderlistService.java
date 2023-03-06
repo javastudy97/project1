@@ -169,7 +169,7 @@ public class OrderlistService {
 
     public Page<OrderlistDto> selectOrderlist(Pageable pageable) {
         Page<OrderlistEntity> orderlistEntity =
-                orderlistRepository.findAllOrders2(pageable);
+                orderlistRepository.findAllOrders(pageable);
 
         return orderlistEntity.map(OrderlistDto::orderlistDto);
     }

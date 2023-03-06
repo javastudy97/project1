@@ -15,16 +15,31 @@
   /* border: 1px solid white; */
 }
 
-.footer .chat a{
+/* .footer .chat a{
+  width: inherit;
+  height: inherit;
+} */
+
+/* .footer .chat a img{
+  width: inherit;
+  height: inherit;
+} */
+
+.footer .chat img{
   width: inherit;
   height: inherit;
 }
 
-.footer .chat a img{
-  width: inherit;
-  height: inherit;
+.footer .chat-con{
+  background-color: yellow;
+  width: 360px;
+  height: auto;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
 }
-
 
 .footer .footer-con{
   width: 100%;

@@ -245,10 +245,10 @@ public class AdminController {
 
     //    전체 주문내역
     @GetMapping("/orderList")
-    public String orderList(Model model, @PageableDefault(page = 0, size = 5, sort = "orderlist_date",
+    public String orderList(Model model, @PageableDefault(page = 0, size = 5, sort = "orderlist_id",
             direction = Sort.Direction.DESC) Pageable pageable,
                             @RequestParam(value = "type", required = false) String type,
-                            @RequestParam(value = "keyword", required = false) String keyword) {
+                            @RequestParam(value = "keyword", required = false) String keyword){
 
         int blockNum;
         int nowPage;
@@ -256,30 +256,32 @@ public class AdminController {
         int endPage;
 
         Page<OrderlistDto> orderlistDto;
+//    List<OrderlistDto> orderlistDto;
 
-        if (type != null && keyword != null) {
-            if (type.equals("orderlistId")) {
+        if(type!=null && keyword!=null){
+            if(type.equals("orderlistId")) {
 //            주문번호(ID)로 검색할 경우
                 Long orderlistId = Long.parseLong(keyword);
-                orderlistDto = orderlistService.searchOrderlistDo(orderlistId, pageable);
+                orderlistDto = orderlistService.searchOrderlistDo(orderlistId,pageable);
             } else {
-                orderlistDto = orderlistService.searchListDo(type, keyword, pageable);
+                orderlistDto = orderlistService.searchListDo(type,keyword,pageable);
             }
 
         } else {
             orderlistDto = orderlistService.selectOrderlist(pageable);
+//        orderlistDto = orderlistService.selectOrderlist();
         }
 
 
         blockNum = 100;
-        nowPage = orderlistDto.getNumber() + 1;
-        startPage = Math.max(1, orderlistDto.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
+        nowPage = orderlistDto.getNumber()+1;
+        startPage = Math.max(1,orderlistDto.getNumber()-blockNum);   // bockNum은 총 페이지수다 큰 값
         endPage = orderlistDto.getTotalPages();
 
-        model.addAttribute("nowPage", nowPage);
-        model.addAttribute("startPage", startPage);
-        model.addAttribute("endPage", endPage);
-        model.addAttribute("orderlistDto", orderlistDto);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+        model.addAttribute("orderlistDto",orderlistDto);
 
         return "admin/adminOrderList";
     }
@@ -317,7 +319,7 @@ public class AdminController {
 //     Grid 형식
     @GetMapping("/productList")
     public String productList(@PageableDefault(page = 0, size = 5, sort = "productId",
-            direction = Sort.Direction.ASC) Pageable pageable, Model model) {
+            direction = Sort.Direction.DESC) Pageable pageable, Model model) {
 
         List<ProductDto> productList = productService.productListDo();
         model.addAttribute("productList", productList);
