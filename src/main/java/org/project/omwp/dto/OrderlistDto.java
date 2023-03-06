@@ -2,6 +2,7 @@ package org.project.omwp.dto;
 
 import lombok.*;
 import org.project.omwp.entity.OrderlistEntity;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Column;
 import java.time.LocalDateTime;
@@ -30,6 +31,9 @@ public class OrderlistDto {
     private String productName;
     private int productPrice;
     private String productDesc;
+
+    private String imgNewName;
+    private int attachImg; //이미지 유무(1,0)
 
 
     public static OrderlistDto orderlistDto(OrderlistEntity orderlistEntity) {
@@ -64,6 +68,16 @@ public class OrderlistDto {
         orderlistDto.setProductName(orderlistEntity.getProductEntity().getProductName());
         orderlistDto.setProductPrice(orderlistEntity.getProductEntity().getProductPrice());
         orderlistDto.setProductDesc(orderlistEntity.getProductEntity().getProductDesc());
+        if (orderlistEntity.getProductEntity().getAttachImg() == 0){
+            orderlistDto.setAttachImg(orderlistEntity.getProductEntity().getAttachImg());
+
+        }else{ //이미지가 있을때
+            orderlistDto.setAttachImg(orderlistEntity.getProductEntity().getAttachImg());
+
+            //이미지 불러오기
+            orderlistDto.setImgNewName(orderlistEntity.getProductEntity().getImgEntities().get(0).getImgNewName());
+
+        }
 
         return orderlistDto;
     }

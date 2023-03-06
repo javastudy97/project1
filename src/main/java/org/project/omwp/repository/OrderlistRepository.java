@@ -56,4 +56,7 @@ public interface OrderlistRepository extends JpaRepository<OrderlistEntity, Long
             "inner join product p on o.product_id=p.product_id " +
             "where o.orderlist_id=:orderlistId", nativeQuery = true)
     Page<OrderlistEntity> findAllByOrderlistId(@Param("orderlistId") Long orderlistId, Pageable pageable);
+
+    @Query(value = " select o.* from member m inner join orderlist o on m.user_id=o.user_id and orderlist_status=1 order by orderlist_date desc  " , nativeQuery = true)
+    Page<OrderlistEntity> findAllOrders2(Pageable pageable);
 }

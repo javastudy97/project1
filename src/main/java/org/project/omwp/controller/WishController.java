@@ -3,7 +3,9 @@ package org.project.omwp.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.project.omwp.dto.*;
+import org.project.omwp.entity.ImgEntity;
 import org.project.omwp.entity.ProductEntity;
+import org.project.omwp.repository.ImgRepository;
 import org.project.omwp.service.MemberService;
 import org.project.omwp.service.OrderlistService;
 import org.project.omwp.service.ProductService;
@@ -15,9 +17,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -35,6 +40,8 @@ public class WishController {
 
     private final OrderlistService orderlistService;
 
+    private final ImgRepository imgRepository;
+
     @GetMapping("/productList")
     public String productList(Model model){
 
@@ -48,19 +55,7 @@ public class WishController {
     }
 
 
-    @GetMapping("/putCart/{productId}")
-    public String putCart(@PathVariable("productId") Long productId, Principal principal, Model model){
 
-        String userEmail = principal.getName();
-
-        MemberDto memberDto = memberService.findById(userEmail);
-
-        Long userId = memberDto.getUserId();
-
-        wishService.insertWish(userId, productId);
-
-        return "redirect:/wish/cart";
-    }
 
     @GetMapping("/cart")
     public String cart(Principal principal, Model model){
@@ -100,7 +95,7 @@ public class WishController {
     }
 
     @PostMapping("/orderList")
-    public String orderList(@ModelAttribute("productDto") ProductDto productDto, Principal principal, Model model){
+    public String orderList(@ModelAttribute("productDto") ProductDto productDto, Principal principal, Model model) throws IOException {
 
         String userEmail = principal.getName();
 
@@ -115,6 +110,8 @@ public class WishController {
 
         return "redirect:/wish/purchased";
     }
+
+
 
     @GetMapping("/purchased")
     public String purchased(Principal principal, Model model){
@@ -178,7 +175,38 @@ public class WishController {
 
     }
 
+    @GetMapping("/putCart/{productId}")
+    public String putCart(@PathVariable("productId") Long productId, Principal principal, Model model){
 
+        String userEmail = principal.getName();
+
+        MemberDto memberDto = memberService.findById(userEmail);
+
+        Long userId = memberDto.getUserId();
+
+        wishService.insertWish(userId, productId);
+
+        return "redirect:/wish/cart";
+    }
+
+    //상품상세 구매하기 눌렀을때
+    @GetMapping("/orderList/{productId}")
+    public String orderListInsert(@PathVariable("productId") Long productId, Principal principal, Model model, RedirectAttributes redirect) throws IOException {
+
+        String userEmail = principal.getName();
+
+        MemberDto memberDto = memberService.findById(userEmail);
+
+        Long userId = memberDto.getUserId();
+
+
+
+        orderlistService.insertOrder(userId, productId);
+
+
+
+        return "redirect:/wish/purchased";
+    }
 
 
 }

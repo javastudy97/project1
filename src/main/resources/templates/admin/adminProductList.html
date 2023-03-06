@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>prodcutList</title>
+    <link rel="stylesheet" th:href="@{/css/admin/adminProductList.css}">
+</head>
+<body>
+    <div class="container">
+        <!-- 레프트메뉴 -->
+        <div th:replace="~{fragments/common/adminLeftCon :: adminLeftConFragment}"></div>
+        <div class="right-con">
+            <!-- 어드민 헤더 -->
+            <div th:replace="~{fragments/common/adminHeader :: adminHeaderFragment}"></div>
+            <div class="bottom-header">
+                <h1>상품관리</h1>
+            </div>
+            <!-- 어드민 컨테이너 -->
+            <div class="con">
+                <!-- 회원목록 -->
+                <div class="productList">
+                    <table border="1">
+                        <tr>
+                            <!-- 회원검색 -->
+                            <th colspan="7" class="search">
+                                <form th:action="@{/productList/productSearch}" method="get">
+                                    <select name="type" id="type">
+                                        <option value="" selected>::검색기준::</option>
+                                        <option value="productId">id</option>
+                                        <option value="productName">상품명</option>
+                                        <option value="productDesc">카테고리</option>
+                                        <option value="productPrice">상품가격</option>
+                                    </select>
+                                    <input type="text" name="search" id="search">
+                                    <input type="submit" value="search">
+                                </form>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>상품이미지</th>
+                            <th>id</th>
+                            <th>productType</th>
+                            <th>productName</th>
+                            <th>productDesc</th>
+                            <th>productCreate</th>
+                            <th>productPrice</th>
+                            <th>reviewCount</th>
+                            <th>상품상세</th>
+                        </tr>
+                    <th:block th:each="product : ${productList}">
+                        <tr>
+                            <td>
+                                <span th:if="${product.attachImg==1}">
+                                    <img name="imgNewName" th:src="@{|/upload/${product.imgNewName}|}" alt="">
+                                </span>
+                                <span th:if="${product.attachImg==0}">
+                                    <img src="https://via.placeholder.com/200x200" alt="">
+                                </span>
+                            </td>
+                            <td th:text="${product.productId}"></td>
+                            <td th:text="${product.productType}"></td>
+                            <td th:text="${product.productName}"></td>
+                            <td th:text="${product.productDesc}"></td>
+                            <td th:text="${#temporals.format(product.productCreate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                            <td th:text="${product.productPrice}"></td>
+                            <td th:text="${product.reviewCount}"></td>
+                            <td><a th:href="@{|/admin/productDetail/${product.productId}|}">상세</a></td>
+                        </tr>
+                    </th:block>
+                        <!-- 페이징 -->
+                        <tr>
+                            <td colspan="76">
+                                <a th:href="${productList.first} ? '#' : @{/admin/productList(page=${productList.number-1})}">이전</a>
+                                <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
+                                    <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
+                                    <span th:unless="${page == nowPage}">
+                                        <a th:href="@{/admin/productList(page=${page-1})}" th:text="${page}"></a>
+                                    </span>
+                                </th:block>
+                                    <a th:href="${productList.last} ? '#' : @{/admin/productList(page=${productList.number+1})}">다음</a>
+                            </td>
+                        </tr>
+                    </table>
+                        <a th:href="@{/admin/productInsert}">상품추가</a>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

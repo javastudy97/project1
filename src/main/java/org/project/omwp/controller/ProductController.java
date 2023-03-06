@@ -4,8 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.project.omwp.dto.MemberDto;
 import org.project.omwp.dto.ProductDto;
 import org.project.omwp.dto.ReviewDto;
-import org.project.omwp.service.ProductService;
-import org.project.omwp.service.ReviewService;
+import org.project.omwp.service.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -18,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,37 +29,11 @@ public class ProductController {
     private final ProductService productService;
     private final ReviewService reviewService;
 
+    private final MemberService memberService;
 
-    //상품 등록시 url
-    @GetMapping("/productInsert")
-    public String insertGet(Model model){
+    private final WishService wishService;
 
-        model.addAttribute("productDto", new ProductDto());
-        return "product/productInsert";
-    }
-
-    @PostMapping("/productInsert")
-    public String insertPost(@RequestParam("imgFile") MultipartFile files, ProductDto productDto) throws IOException {
-
-        productService.insertProduct(productDto);
-//        return "redirect:/product/productList";
-        return "redirect:/";
-
-//        System.out.println(productDto.getProductDesc()+ " <<");
-
-
-    }
-
-    // 상품 목록(가져와서 뿌리기) url
-    // Grid 형식
-//    @GetMapping("/productList")
-//    public String productList(Model model) {
-//
-//        List<ProductDto> productList = productService.productListDo();
-//        model.addAttribute("productList",productList);
-//
-//        return "product/productList";
-//    }
+    private final OrderlistService orderlistService;
 
     @GetMapping("/productList")
     public String pagingList(@RequestParam("productType") String productType,
@@ -242,26 +216,6 @@ public class ProductController {
 
     }
 
-    //상품수정을 하기위한 페이지
-    @GetMapping("/update/{id}")
-    public String updateView(@PathVariable("id") Long productId, Model model) {
-
-        ProductDto product = productService.findByProduct(productId);
-
-        model.addAttribute("product", product);
-
-        return "product/productUpdateView";
-    }
-
-    //상품수정 실행
-    @PostMapping("/update")
-    public String updatePost(@ModelAttribute ProductDto productDto) {
-
-        productService.productUpdate(productDto);
-
-        return "redirect:/product/productList";
-    }
-
     //각 카테고리 당 검색기능
     @GetMapping("/productList/search")
     public String productSearch(@RequestParam(value = "It", required = false) String productType, @RequestParam(value = "search" ,required = false) String search,
@@ -411,5 +365,6 @@ public class ProductController {
 
         return "product/productList6";
     }
+
 
 }

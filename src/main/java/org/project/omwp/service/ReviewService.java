@@ -23,10 +23,10 @@ public class ReviewService {
     private final ProductRepository productRepository;
     private final ReviewRepository reviewRepository;
 
-    public Long insertReviewDo(ReviewDto reviewDto){
-        // member 테이블의 작성자 id가 있는지 확인
+    public Long insertReviewDo(ReviewDto reviewDto, String userEmail){
+        // member 테이블의 작성자 이메일이 있는지 확인
         Optional<MemberEntity> optionalReviewEntity1
-                =memberRepository.findById(reviewDto.getUserId());
+                =memberRepository.findByUserEmail(userEmail);
         // product 테이블의 상품번호가 있는지 확인
         Optional<ProductEntity> optionalReviewEntity2
                 = productRepository.findById(reviewDto.getProductId());

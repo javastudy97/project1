@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>productUpdate</title>
+    <link rel="stylesheet" th:href="@{/css/admin/adminProductUpdate.css}">
+</head>
+<body>
+<div class="container">
+    <!-- 레프트메뉴 -->
+    <div th:replace="~{fragments/common/adminLeftCon :: adminLeftConFragment}"></div>
+    <div class="right-con">
+        <!-- 어드민 헤더 -->
+        <div th:replace="~{fragments/common/adminHeader :: adminHeaderFragment}"></div>
+        <div class="bottom-header">
+            <h1>상품수정</h1>
+        </div>
+        <!-- 어드민 컨테이너 -->
+        <div class="con">
+            <!-- 상품수정페이지 -->
+            <div class="productUpdate">
+                <!-- 상품수정 -->
+                <form th:action="@{/admin/productUpdate}" method="post" enctype="multipart/form-data">
+                    <ul>
+                        <li>
+                            <label th:for="imgFile">상품이미지</label>
+                            <input type="text" name="imgNewName" th:value="${product.imgNewName}" readonly>
+                        </li>
+                        <li>
+                            <label th:for="productId">ID</label>
+                            <input type="text" name="productId" id="productId" th:value="${product.productId}" readonly>
+                        </li>
+                        <li>
+                            <input type="hidden" name="productType" th:value="${product.productType}">
+                        </li>
+                        <li>
+                            <label th:for="productName">상품명</label>
+                            <input type="text" name="productName" th:value="${product.productName}">
+                        </li>
+                        <li>
+                            <label th:for="productPrice">가격</label>
+                            <input type="text" name="productPrice" th:value="${product.productPrice}">
+                        </li>
+                        <li>
+                            <label th:for="productDesc">상품설명</label>
+                            <textarea name="productDesc" id="productDesc" cols="100" rows="30"></textarea>
+                        </li>
+                        <li>
+                            <input type="submit" value="수정완료">
+                            <a th:href="@{|/admin/productDetail/${product.productId}|}">취소</a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

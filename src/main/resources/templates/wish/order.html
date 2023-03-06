@@ -28,16 +28,22 @@
                             <th>구매하기</th>
                         </tr>
                         <tr class="tBody">
-                            <input type="text" id="productId" name="productId" th:value="${productDto.productId}" hidden="hidden">
+                            <input type="text" id="productId" name="productId" th:value="${productDto.productId}"
+                                   hidden="hidden">
                             <!--              <input type="text" id="productEmail" name="productEmail" th:value="${productDto.productEmail}" hidden="hidden">-->
-                            <input type="text" id="productName" name="productName" th:value="${productDto.productName}" hidden="hidden">
-                            <input type="text" id="productPrice" name="productPrice" th:value="${productDto.productPrice}" hidden="hidden">
-                            <td><a href="#"><img src="https://via.placeholder.com/150"></a></td>
+                            <input type="text" id="productName" name="productName" th:value="${productDto.productName}"
+                                   hidden="hidden">
+                            <input type="text" id="productPrice" name="productPrice"
+                                   th:value="${productDto.productPrice}" hidden="hidden">
+                            <td>
+                                <a href="#">
+                                </a>
+                            </td>
                             <td th:text="${productDto.productName}"></td>
                             <td th:text="${productDto.productType}"></td>
                             <td th:text="${productDto.productDesc}"></td>
                             <td th:text="${productDto.productPrice}"></td>
-                            <td> <input type="submit" value="구매하기" class="buy"> </td>
+                            <td><input type="submit" value="구매하기" class="buy"></td>
                         </tr>
 
 

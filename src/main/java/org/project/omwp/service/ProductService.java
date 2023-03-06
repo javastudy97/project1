@@ -252,8 +252,50 @@ public class ProductService {
         return ProductDtoList;
     }
 
+    //관리자 페이지용 모든 상품 리스트
+
+    public List<ProductDto> productListDo() {
+        List<ProductEntity> productEntityList = productRepository.findAll();
+        List<ProductDto> productDtoList = new ArrayList<>();
+
+        for (ProductEntity productEntity : productEntityList) {
+            productDtoList.add(ProductDto.toProductDto(productEntity));
+        }
+        return productDtoList;
+    }
+    
+    //페이징
+    public Page<ProductDto> ProductAllPagingList(Pageable pageable) {
+        Page<ProductEntity> ProductEntityList = productRepository.findAll(pageable);
+        Page<ProductDto> ProductDtoList = ProductEntityList.map(ProductDto::toProductDto);
+
+        return ProductDtoList;
+    }
+
+
+    //상품 삭제 시
+    @Transactional
+    public void productDeleteDo(Long productId) {
+        productRepository.deleteById(productId);
+    }
+
+    // 상품 수정 시
+    @Transactional
+    public void productUpdateDo(ProductDto productDto) {
+        if (productDto.getImgNewName().isEmpty()) {
+            ProductEntity productEntity = ProductEntity.toProductUpdateEntity(productDto);
+            productRepository.save(productEntity);
+        }else {
+            ProductEntity productEntity = ProductEntity.toProductUpdateEntity2(productDto);
+            productRepository.save(productEntity);
+        }
+
+    }
+
     @Transactional
     public void reviewCountUp(Long productId) {
         productRepository.upReviewCount(productId);
     }
+
+
 }

@@ -32,4 +32,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     @Query(value = "update product p set p.review_count=p.review_count+1 " +
             "where p.product_id=:productId ",nativeQuery = true)
     void upReviewCount(@Param("productId") Long productId);
+
+
+
 }

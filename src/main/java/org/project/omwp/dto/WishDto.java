@@ -4,6 +4,7 @@ import lombok.*;
 import org.project.omwp.entity.MemberEntity;
 import org.project.omwp.entity.ProductEntity;
 import org.project.omwp.entity.WishEntity;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
@@ -26,6 +27,11 @@ public class WishDto {
     private String productName;
     private String productDesc;
     private int productPrice;
+
+//    private MultipartFile imgFile;
+
+    private String imgNewName;
+    private int attachImg; //이미지 유무(1,0)
 
     public static WishDto toWishDto(WishEntity wishEntity) {
         WishDto wishDto = new WishDto();

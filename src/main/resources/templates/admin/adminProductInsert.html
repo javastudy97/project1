@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Insert</title>
+        <link rel="stylesheet" th:href="@{/css/admin/productInsert.css}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 레프트메뉴 -->
+        <div th:replace="~{fragments/common/adminLeftCon :: adminLeftConFragment}"></div>
+        <div class="right-con">
+            <!-- 어드민 헤더 -->
+            <div th:replace="~{fragments/common/adminHeader :: adminHeaderFragment}"></div>
+            <div class="bottom-header">
+                <h1>상품추가</h1>
+            </div>
+            <!-- 어드민 컨테이너 -->
+            <div class="con">
+                <!-- 회원상세 -->
+                <div class="productInsert">
+                  <!-- 회원수정 -->
+                  <form th:action="@{/admin/productInsert}" th:object="${productDto}" method="post" enctype="multipart/form-data">
+                    <ul>
+                        <li class="s2">
+                            <label th:for="productType">카테고리</label>
+                            <input type="radio" th:field="*{productType}" value="It">아이티
+                            <input type="radio" th:field="*{productType}" value="Enter">예체능
+                            <input type="radio" th:field="*{productType}" value="Design">디자인
+                            <input type="radio" th:field="*{productType}" value="Office">사무
+                            <input type="radio" th:field="*{productType}" value="Marketing">마케팅
+                            <input type="radio" th:field="*{productType}" value="Invest">재태크
+                        </li>
+                      <li>
+                        <label th:for="productName">상품명</label>
+                        <input type="text" th:field="*{productName}" placeholder="상품명을 입력하세요.">
+                      </li>
+                      <li>
+                        <label th:for="productPrice">가격</label>
+                        <input type="text" th:field="*{productPrice}" placeholder="가격을 입력하세요.">원
+                      </li>
+                      <li>
+                        <label th:for="imgFile">이미지 첨부</label> <br>
+                        <input type="file" name="imgFile">
+                      </li>
+                      <li>
+                        <label th:for="productDesc">상품설명</label> <br>
+                        <textarea name="productDesc" id="productDesc" cols="100" rows="30"></textarea>
+                      </li>
+                      <li>
+                        <input type="submit" value="추가완료">
+                      </li>
+                    </ul>
+                  </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

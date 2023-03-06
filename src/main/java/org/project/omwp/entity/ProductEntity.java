@@ -105,6 +105,26 @@ public class ProductEntity {
         productEntity.setProductDesc(productDto.getProductDesc());
         productEntity.setProductPrice(productDto.getProductPrice());
         productEntity.setReviewCount(productDto.getReviewCount());
+        System.out.println(productDto.getAttachImg()+"<<<<<<");
+        System.out.println(productDto.getAttachImg()+"<<<<<<");
+        productEntity.setAttachImg(0);
+
+        return productEntity;
+    }
+
+    public static ProductEntity toProductUpdateEntity2(ProductDto productDto){
+        ProductEntity productEntity=new ProductEntity();
+
+        // id 정보 필요 O
+        productEntity.setProductId(productDto.getProductId());
+        productEntity.setProductType(productDto.getProductType());
+        productEntity.setProductName(productDto.getProductName());
+        productEntity.setProductDesc(productDto.getProductDesc());
+        productEntity.setProductPrice(productDto.getProductPrice());
+        productEntity.setReviewCount(productDto.getReviewCount());
+        System.out.println(productDto.getAttachImg()+"<<<<<<");
+        System.out.println(productDto.getAttachImg()+"<<<<<<");
+        productEntity.setAttachImg(1);
 
         return productEntity;
     }
