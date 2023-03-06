@@ -1,6 +1,7 @@
 package org.project.omwp.dto;
 
 import lombok.*;
+import org.project.omwp.entity.ImgEntity;
 
 import javax.persistence.Column;
 
@@ -17,4 +18,11 @@ public class ImgDto {
 
     private String imgNewName;
 
+    public static ImgDto toImgDto(ImgEntity imgEntity){
+        ImgDto imgDto = new ImgDto();
+        imgDto.setImgNewName(imgEntity.getImgNewName());
+
+        return imgDto;
+
+    }
 }

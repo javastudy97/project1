@@ -1,25 +1,25 @@
 package org.project.omwp.service;
 
 import lombok.RequiredArgsConstructor;
+import org.project.omwp.dto.ImgDto;
 import org.project.omwp.dto.MemberDto;
-import org.project.omwp.entity.OrderlistEntity;
-import org.project.omwp.entity.WishEntity;
+import org.project.omwp.dto.ProductDto;
+import org.project.omwp.entity.*;
 import org.project.omwp.dto.OrderlistDto;
-import org.project.omwp.entity.MemberEntity;
-import org.project.omwp.entity.ProductEntity;
-import org.project.omwp.repository.MemberRepository;
-import org.project.omwp.repository.OrderlistRepository;
-import org.project.omwp.repository.ProductRepository;
-import org.project.omwp.repository.WishRepository;
+import org.project.omwp.repository.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +29,7 @@ public class OrderlistService {
     private final WishRepository wishRepository;
     private final ProductRepository productRepository;
     private final MemberRepository memberRepository;
+    private final ImgRepository imgRepository;
 
     public int addOrder(Long wishId) {
         WishEntity wishEntity = wishRepository.findById(wishId).get();
@@ -43,28 +44,31 @@ public class OrderlistService {
     }
 
 
-
     @Transactional
-    public OrderlistEntity insertOrder(Long userId, Long productId) {
+    public OrderlistEntity insertOrder(Long userId, Long productId) throws IOException {
 
         Optional<ProductEntity> optionalProductEntity = productRepository.findById(productId);
 
-        ProductEntity productEntity =optionalProductEntity.get();
+        ProductEntity productEntity = optionalProductEntity.get();
+
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(userId);
+        MemberEntity memberEntity = optionalMemberEntity.get();
+
+
 
         OrderlistEntity orderlistEntity = new OrderlistEntity();
 
-        Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(userId);
-
-        MemberEntity memberEntity = optionalMemberEntity.get();
-
-        orderlistEntity.setMemberEntity(memberEntity);
+        orderlistEntity.setOrderlistId(orderlistEntity.getOrderlistId());
         orderlistEntity.setProductEntity(productEntity);
-        orderlistEntity.setOrderlistCount(1);
+        orderlistEntity.setMemberEntity(memberEntity);
         orderlistEntity.setOrderlistStatus(1);
+        orderlistEntity.setOrderlistCount(1);
 
         orderlistRepository.save(orderlistEntity);
 
         return orderlistEntity;
+
+
     }
 
     public List<OrderlistDto> selectAllOrder(Long userId) {
@@ -73,7 +77,7 @@ public class OrderlistService {
 
         List<OrderlistEntity> orderlistEntityList = orderlistRepository.findAllByuserId(userId);
 
-        for(OrderlistEntity orderlistEntity : orderlistEntityList){
+        for (OrderlistEntity orderlistEntity : orderlistEntityList) {
 
             orderlistDtoList.add(OrderlistDto.toOrderlistDto(orderlistEntity));
 
@@ -84,7 +88,7 @@ public class OrderlistService {
 
     public Page<OrderlistDto> selectAllOrder2(Long userId, Pageable pageable) {
         Page<OrderlistEntity> orderlistEntities =
-                orderlistRepository.findAllByuserId2(userId,pageable);
+                orderlistRepository.findAllByuserId2(userId, pageable);
 
         return orderlistEntities.map(OrderlistDto::toOrderlistDto);
     }
@@ -111,7 +115,7 @@ public class OrderlistService {
 
         List<OrderlistEntity> orderlistEntityList = orderlistRepository.findAllCancelByUserId(userId);
 
-        for(OrderlistEntity orderlistEntity : orderlistEntityList){
+        for (OrderlistEntity orderlistEntity : orderlistEntityList) {
 
             orderlistDtoList.add(OrderlistDto.toOrderlistDto(orderlistEntity));
 
@@ -135,28 +139,28 @@ public class OrderlistService {
 
     public Page<OrderlistDto> searchOrderlistDo(Long orderlistId, Pageable pageable) {
         Page<OrderlistEntity> orderlistEntity =
-                orderlistRepository.findAllByOrderlistId(orderlistId,pageable);
+                orderlistRepository.findAllByOrderlistId(orderlistId, pageable);
 
         return orderlistEntity.map(OrderlistDto::orderlistDto);
     }
 
-//    주문내역 조회
+    //    주문내역 조회
     public Page<OrderlistDto> searchListDo(String type, String keyword, Pageable pageable) {
-        if(type.equals("productId")) {
+        if (type.equals("productId")) {
             Page<OrderlistEntity> orderlistEntity =
-                    orderlistRepository.findAllByProductId(keyword,pageable);
+                    orderlistRepository.findAllByProductId(keyword, pageable);
             return orderlistEntity.map(OrderlistDto::orderlistDto);
-        } else if(type.equals("productName")) {
+        } else if (type.equals("productName")) {
             Page<OrderlistEntity> orderlistEntity =
-                    orderlistRepository.findByProductNameContaining(keyword,pageable);
+                    orderlistRepository.findByProductNameContaining(keyword, pageable);
             return orderlistEntity.map(OrderlistDto::orderlistDto);
-        } else if(type.equals("userName")) {
+        } else if (type.equals("userName")) {
             Page<OrderlistEntity> orderlistEntity =
-                    orderlistRepository.findByUserNameContaining(keyword,pageable);
+                    orderlistRepository.findByUserNameContaining(keyword, pageable);
             return orderlistEntity.map(OrderlistDto::orderlistDto);
-        } else if(type.equals("email")) {
+        } else if (type.equals("email")) {
             Page<OrderlistEntity> orderlistEntity =
-                    orderlistRepository.findByUserEmailContaining(keyword,pageable);
+                    orderlistRepository.findByUserEmailContaining(keyword, pageable);
             return orderlistEntity.map(OrderlistDto::orderlistDto);
         }
 
@@ -165,7 +169,7 @@ public class OrderlistService {
 
     public Page<OrderlistDto> selectOrderlist(Pageable pageable) {
         Page<OrderlistEntity> orderlistEntity =
-                orderlistRepository.findAllOrders(pageable);
+                orderlistRepository.findAllOrders2(pageable);
 
         return orderlistEntity.map(OrderlistDto::orderlistDto);
     }

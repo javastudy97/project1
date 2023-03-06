@@ -29,7 +29,15 @@
           <tr th:each="orderlist:${orderlistDtoList}" class="tBody">
             <form th:action="@{cancel}" method="post" th:object="${orderlistDto}">
               <input type="text" id="orderlistId" name="orderlistId" th:value="${orderlist.orderlistId}" hidden="hidden">
-              <td><a href="#"><img src="https://via.placeholder.com/150"></a></td>
+              <td><a href="#"></a>
+                <span th:if="${orderlist.attachImg == 1}">
+                  <img th:src="@{|/upload/${orderlist.imgNewName}|}"
+                       style="width: 150px; height: 150px;" alt="img">
+                </span>
+                <span th:unless="${orderlist.attachImg == 1}">
+                  <img src="https://via.placeholder.com/150 " alt="img">
+                </span>
+              </td>
               <td th:text="${orderlist.productName}"></td>
               <td th:text="${orderlist.productType}"></td>
               <td th:text="${orderlist.productDesc}"></td>

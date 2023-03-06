@@ -19,6 +19,9 @@ public class ReviewDto {
     private LocalDateTime reviewDate;
     //리뷰 작성자 회원번호
     private Long userId;
+
+//    private String userEmail;
+
     //ProductEntity 의 product_id
     private Long productId;
     public static ReviewDto toReviewDto(ReviewEntity reviewEntity,

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>memberDetail</title>
+    <link rel="stylesheet" th:href="@{/css/admin/adminProductDetail.css}">
+</head>
+<body>
+    <div class="container">
+        <!-- 레프트메뉴 -->
+        <div th:replace="~{fragments/common/adminLeftCon :: adminLeftConFragment}"></div>
+        <div class="right-con">
+            <!-- 어드민 헤더 -->
+            <div th:replace="~{fragments/common/adminHeader :: adminHeaderFragment}"></div>
+            <div class="bottom-header">
+                <h1>상품상세</h1>
+            </div>
+            <!-- 어드민 컨테이너 -->
+            <div class="con">
+                <!-- 회원상세 -->
+                <div class="productDetail">
+                  <!-- 회원정보 -->
+                    <ul>
+                      <li>
+                        <label th:for="productId">상품번호</label>
+                        <span th:text="${product.productId}"></span>
+                      </li>
+                      <li>
+                        <label th:for="productCreate">상품등록일</label>
+                        <span th:text="${#temporals.format(product.productCreate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                      </li>
+                      <li>
+                        <label th:for="productPrice">상품가격</label>
+                        <span th:text="${product.productPrice}"></span>
+                      </li>
+                      <li>
+                        <label th:for="productName">상품명</label>
+                        <span th:text="${product.productName}"></span>
+                      </li>
+                      <li>
+                        <label th:for="productDesc">상품내용</label>
+                        <span th:text="${product.productDesc}"></span>
+                      </li>
+                      <li>
+                        <label th:for="reviewCount">리뷰 수</label>
+                        <span th:text="${product.reviewCount}"></span>
+                      </li>
+                      <li>
+                        <a th:href="@{/admin/productList}">상품목록</a>
+                        <a th:href="@{|/admin/productUpdate/${product.productId}|}">상품수정</a>
+                        <a th:href="@{|/admin/productDelete/${product.productId}|}">상품삭제</a>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

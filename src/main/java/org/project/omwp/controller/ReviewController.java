@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -21,9 +22,11 @@ public class ReviewController {
     private final ProductService productService;
 
     @PostMapping("/reviewWrite")
-    public String reviewWrite(@ModelAttribute ReviewDto reviewDto, Model model){
+    public String reviewWrite(@ModelAttribute ReviewDto reviewDto, Model model, Principal principal){
 
-        Long result = reviewService.insertReviewDo(reviewDto);
+        String userEmail = principal.getName();
+
+        Long result = reviewService.insertReviewDo(reviewDto,userEmail);
         System.out.println("userId"+reviewDto.getUserId());
         System.out.println("productId"+reviewDto.getProductId());
 

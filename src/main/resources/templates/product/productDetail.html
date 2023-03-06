@@ -45,9 +45,9 @@
                         <li class="btn1">
                             <!-- <a th:href="@{|/product/update/${product.productId}|}">Update</a> -->
                             <!-- <a href="@{|/product/delete/${product.id}|}">Delete</a>-->
-                            <a href="/product/cart/${product.id">장바구니</a>
-                            <a href="/product/buy/${product.id">구매하기</a>
-                            <a href="/product/productList">List</a>
+                            <a th:href="@{|/wish/putCart/${product.productId}|}">장바구니</a>
+                            <a th:href="@{|/wish/orderList/${product.productId}|}">구매하기</a>
+        <!--                            <a href="/product/productList">List</a>-->
                         </li>
                     </ul>
                 </div>
@@ -63,7 +63,7 @@
                     <img src="https://via.placeholder.com/600x1600" alt="상품설명">
                 </li>
                 <li class="btn2">
-                    <a href="/product/buy/${product.id">구매하기</a>
+                    <a th:href="@{|/wish/orderList/${product.productId}|}">구매하기</a>
                 </li>
             </ul>
         </div>
@@ -93,10 +93,10 @@
 
                         <input type="hidden" readonly name="productId" th:value="${product.productId}">
                         <ul>
-                            <li class="class2">
-                                <input style="line-height:20px;padding:10px; box-sizing: border-box;" name="userId"
-                                       id="userId" placeholder="본인의 회원번호를 입력하시오 본인 회원상세정보 확인">
-                            </li>
+<!--                            <li class="class2">-->
+<!--                                <input style="line-height:20px;padding:10px; box-sizing: border-box;" name="userId"-->
+<!--                                       id="userId" placeholder="본인의 회원번호를 입력하시오 본인 회원상세정보 확인">-->
+<!--                            </li>-->
                             <li>
                                 <textarea style="line-height:20px;padding:10px; box-sizing: border-box;"
                                           name="reviewContent" id="reviewContent" cols="30" rows="1"
