@@ -12,26 +12,24 @@
 
     <!-- 챗봇 -->
     <div class="chat" id="chat">
-        <!-- <a th:href="@{#}"><img th:src="@{/img/icon/chatbot.png}" alt="chat"></a> -->
         <img th:src="@{/img/icon/chatbot.png}" onclick="openChat()" alt="chat">
     </div>
     <div class="chat-con" id="chat-con">
         <!-- header -->
-        <div id="chat-header">
+        <div class="chat-header" id="chat-header">
             <span>chatbot 테스트</span>
             <span class="btn-wrap">
-                <button id="closeBtn" onclick="disconnect()">X</button>
+                <button class="closeBtn" id="closeBtn" onclick="disconnect()">X</button>
             </span>
         </div>
         <!-- content -->
-        <div id="chat-content">
+        <div class="chat-content" id="chat-content">
 
         </div>
         <!-- question 메세지 입력란 -->
-        <div id="chat-question">
-            <span class="flex class center"><i></i></span>
+        <div class="chat-question" id="chat-question">
             <input type="text" id="question" placeholder="질문을 입력하세요">
-            <button id="sendBtn" onclick="msgSend()">전송</button>
+            <!-- <button id="sendBtn" onclick="msgSend()">전송</button> -->
         </div>
     </div>
     <div class="footer-con">

@@ -158,7 +158,7 @@ public class OrderlistService {
             Page<OrderlistEntity> orderlistEntity =
                     orderlistRepository.findByUserNameContaining(keyword, pageable);
             return orderlistEntity.map(OrderlistDto::orderlistDto);
-        } else if (type.equals("email")) {
+        } else if (type.equals("userEmail")) {
             Page<OrderlistEntity> orderlistEntity =
                     orderlistRepository.findByUserEmailContaining(keyword, pageable);
             return orderlistEntity.map(OrderlistDto::orderlistDto);

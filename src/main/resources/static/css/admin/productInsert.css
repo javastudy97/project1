@@ -18,13 +18,6 @@
  }
  
  .container .right-con .top-header{
-   width: 100%;
-   height: 50px;
-   border: 1px solid red;
-   box-sizing: border-box;
- }
- 
- .container .right-con .top-header{
    display: flex;
    justify-content: flex-end;
    padding: 5px 30px;
@@ -46,29 +39,32 @@
  }
  
  .container .right-con .bottom-header{
-   width: 100%;
-   height: 100px;
-   border: 1px solid red;
-   box-sizing: border-box;
- }
- 
- .container .right-con .bottom-header h1{
-   line-height: 100%;
-   padding-left: 30px;
-   box-sizing: border-box;
- }
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid navy;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.container .right-con .bottom-header h1{
+  line-height: 100%;
+  padding-left: 30px;
+  box-sizing: border-box;
+}
  
  /* 어드민 컨테이너 */
  
  .container .right-con .con{
-   height: calc(100vh - 150px);
+   height: calc(100% - 150px);
    display: flex;
-   
+   justify-content: center;
+   align-items: center;
  }
  
  .container .right-con .con .productInsert{
    border: 1px solid navy;
-   height: 700px;
+   height: auto;
    padding: 10px;
    justify-content: center;
    align-items: center;

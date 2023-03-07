@@ -30,4 +30,5 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     // 이메일 찾기
     @Query(value = "select * from member m where m.user_name=:userName and m.user_phone=:userPhone", nativeQuery = true)
     MemberEntity findByUserNameUserPhone(@Param("userName") String userName, @Param("userPhone") String userPhone);
+
 }

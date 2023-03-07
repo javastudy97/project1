@@ -78,7 +78,7 @@ function inputTagString(text){
     //        리터럴 템플릿  ``
     // {text} 입력 텍스트
     let  message=`
-		<div class="msg user flex end" style="justify-content: right">
+		<div class="msg user flex end" id="userMsgBox" style="text-align: right">
 			<div class="message">
 				<div class="part"  style="text-align: right">
 					<p style="margin: 0">${text}</p>

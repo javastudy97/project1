@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,8 +42,7 @@ public class AdminController {
 
     //  회원목록  
     @GetMapping("/memberList")
-    public String memberList(Model model, @PageableDefault(page = 0, size = 5, sort = "userId",
-            direction = Sort.Direction.DESC)
+    public String memberList(Model model, @PageableDefault(page = 0, size = 10, sort = "userId", direction = Sort.Direction.DESC)
     Pageable pageable,
                              @RequestParam(value = "type", required = false) String type,
                              @RequestParam(value = "keyword", required = false) String keyword) {
@@ -51,6 +51,9 @@ public class AdminController {
         int nowPage;
         int startPage;
         int endPage;
+
+        System.out.println(type);
+        System.out.println(keyword);
 
         Page<MemberDto> memberDtoList;
 
@@ -63,13 +66,12 @@ public class AdminController {
             } else {
                 memberDtoList = memberService.searchListDo(type, keyword, pageable);
             }
-
         } else {
             memberDtoList = memberService.selectMembers(pageable);
         }
 
 
-        blockNum = 100;
+        blockNum = 4;
         nowPage = memberDtoList.getNumber() + 1;
         startPage = Math.max(1, memberDtoList.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
         endPage = memberDtoList.getTotalPages();
@@ -84,7 +86,12 @@ public class AdminController {
 
     //  회원검색
     @GetMapping("/memberSearch")
-    public String memberSearch() {
+    public String memberSearch(@RequestParam(value = "type", required = false) String type,
+                               @RequestParam(value = "keyword", required = false) String keyword,
+                                RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addAttribute("type",type);
+        redirectAttributes.addAttribute("keyword",keyword);
 
         return "redirect:/admin/memberList";
     }
@@ -139,7 +146,7 @@ public class AdminController {
 
     //  찜 목록
     @GetMapping("/wishList/{userId}")
-    public String wishList(@PageableDefault(page = 0, size = 5, sort = "user_id",
+    public String wishList(@PageableDefault(page = 0, size = 10, sort = "user_id",
             direction = Sort.Direction.DESC)
                            Pageable pageable,
                            @PathVariable(value = "userId") Long userId, Model model) {
@@ -156,7 +163,7 @@ public class AdminController {
             System.out.println("wishList null");
         }
 
-        blockNum = 100;
+        blockNum = 4;
         nowPage = wishDtoList.getNumber() + 1;
         startPage = Math.max(1, wishDtoList.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
         endPage = wishDtoList.getTotalPages();
@@ -210,7 +217,7 @@ public class AdminController {
     //    주문내역
     @GetMapping("/orderDetail/{userId}")
     public String orderDetail(@PathVariable(value = "userId") Long userId, Model model,
-                              @PageableDefault(page = 0, size = 5, sort = "orderlist_id",
+                              @PageableDefault(page = 0, size = 10, sort = "orderlist_id",
                                       direction = Sort.Direction.DESC)
                               Pageable pageable) {
 
@@ -227,7 +234,7 @@ public class AdminController {
             return null;
         }
 
-        blockNum = 100;
+        blockNum = 4;
         nowPage = orderlistDtoList.getNumber() + 1;
         startPage = Math.max(1, orderlistDtoList.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
         endPage = orderlistDtoList.getTotalPages();
@@ -245,7 +252,7 @@ public class AdminController {
 
     //    전체 주문내역
     @GetMapping("/orderList")
-    public String orderList(Model model, @PageableDefault(page = 0, size = 5, sort = "orderlist_id",
+    public String orderList(Model model, @PageableDefault(page = 0, size = 10, sort = "orderlist_id",
             direction = Sort.Direction.DESC) Pageable pageable,
                             @RequestParam(value = "type", required = false) String type,
                             @RequestParam(value = "keyword", required = false) String keyword){
@@ -273,7 +280,7 @@ public class AdminController {
         }
 
 
-        blockNum = 100;
+        blockNum = 4;
         nowPage = orderlistDto.getNumber()+1;
         startPage = Math.max(1,orderlistDto.getNumber()-blockNum);   // bockNum은 총 페이지수다 큰 값
         endPage = orderlistDto.getTotalPages();

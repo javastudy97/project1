@@ -25,6 +25,8 @@ public class MemberService {
         Page<MemberEntity> memberEntityList =
                 memberRepository.findAll(pageable);
 
+        System.out.println(memberEntityList.getSize()+"<<< size");
+
         return memberEntityList.map(MemberDto::toMemberDto);
     }
 
