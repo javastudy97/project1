@@ -77,7 +77,7 @@ public class WishController {
 
         wishService.deleteWish(wishId);
 
-        return "wish/order";
+        return "wish/purchased";
     }
 
     @PostMapping("/orderList")

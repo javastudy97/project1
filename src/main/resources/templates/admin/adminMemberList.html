@@ -19,23 +19,7 @@
             <div class="con">
                 <!-- 회원목록 -->
                 <div class="memberList">
-                    <table border="1">
-                        <tr>
-                            <!-- 회원검색 -->
-                            <th colspan="7" class="search">
-                                <form th:action="@{/admin/memberSearch}" method="get">
-                                    <select name="type" id="type">
-                                        <option value="" selected>::검색기준::</option>
-                                        <option value="id">id</option>
-                                        <option value="name">name</option>
-                                        <option value="email">email</option>
-                                        <option value="role">role</option>
-                                    </select>
-                                    <input type="text" name="keyword" id="keyword">
-                                    <input type="submit" value="search">
-                                </form>
-                            </th>
-                        </tr>
+                    <table>
                         <tr>
                             <th>id</th>
                             <th>name</th>
@@ -56,20 +40,34 @@
                             <td><a th:href="@{|/admin/memberDetail/${member.userId}|}">상세</a></td>
                         </tr>
                     </th:block>
-                        <!-- 페이징 -->
-                        <tr>
-                            <td colspan="76">
-                                <a th:href="${memberDtoList.first} ? '#' : @{/admin/memberList(page=${memberDtoList.number-1})}">이전</a>
-                                <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
-                                    <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
-                                    <span th:unless="${page == nowPage}">
-                                        <a th:href="@{/admin/memberList(page=${page-1})}" th:text="${page}"></a>
-                                    </span>
-                                </th:block>
-                                    <a th:href="${memberDtoList.last} ? '#' : @{/admin/memberList(page=${memberDtoList.number+1})}">다음</a>
-                            </td>
-                        </tr>
                     </table>
+                    <div class="nav">
+                        <!-- 페이징 -->
+                        <div class="page">
+                            <a th:href="${memberDtoList.first} ? '#' : @{/admin/memberList(page=${memberDtoList.number-1})}">이전</a>
+                            <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
+                                <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
+                                <span th:unless="${page == nowPage}">
+                                    <a th:href="@{/admin/memberList(page=${page-1})}" th:text="${page}"></a>
+                                </span>
+                            </th:block>
+                                <a th:href="${memberDtoList.last} ? '#' : @{/admin/memberList(page=${memberDtoList.number+1})}">다음</a>
+                        </div>
+                        <!-- 회원검색 -->
+                        <div class="search">
+                            <form th:action="@{/admin/memberSearch}" method="get">
+                                <select name="type" id="type">
+                                    <option value="" selected>::검색기준::</option>
+                                    <option value="id">id</option>
+                                    <option value="name">name</option>
+                                    <option value="email">email</option>
+                                    <option value="role">role</option>
+                                </select>
+                                <input type="text" name="keyword" id="keyword">
+                                <input type="submit" value="search">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

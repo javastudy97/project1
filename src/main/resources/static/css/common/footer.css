@@ -39,16 +39,17 @@
   right: 20px;
   display: none;
   box-shadow: 0 0 30px 0 rgb(0 0 0 / 30%);
-  padding: 10px;
+  padding: 15px;
 }
 
 .footer .chat-con .chat-header{
   display: flex;
   justify-content: space-between;
   background-color: #edf3f7;
-  padding: 10px;
+  padding: 10px 0;
   font-weight: bold;
   border: none;
+  border-bottom: 1px solid #8080806b;
 
 }
 
@@ -71,7 +72,7 @@
 .footer .chat-con .chat-content #botMsgDate{
   font-size: 15px;
   color: gray;
-  padding-bottom: 10px;
+  padding: 10px 0;
   text-align: center;
 }
 
@@ -147,9 +148,10 @@
 .footer .chat-con .chat-question{
   background-color: #edf3f7;
   padding: 10px 0;
-  padding-top: 18px;
+  padding-top: 15px;
   font-weight: bold;
   border: none;
+  border-top: 1px solid #8080806b;
   gap: 10px;
   display: flex;
 }

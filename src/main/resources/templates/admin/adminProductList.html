@@ -19,23 +19,7 @@
             <div class="con">
                 <!-- 회원목록 -->
                 <div class="productList">
-                    <table border="1">
-                        <tr>
-                            <!-- 회원검색 -->
-                            <th colspan="9" class="search">
-                                <form th:action="@{/productList/productSearch}" method="get">
-                                    <select name="type" id="type">
-                                        <option value="" selected>::검색기준::</option>
-                                        <option value="productId">id</option>
-                                        <option value="productName">상품명</option>
-                                        <option value="productDesc">카테고리</option>
-                                        <option value="productPrice">상품가격</option>
-                                    </select>
-                                    <input type="text" name="search" id="search">
-                                    <input type="submit" value="search">
-                                </form>
-                            </th>
-                        </tr>
+                    <table>
                         <tr>
                             <th>상품이미지</th>
                             <th>id</th>
@@ -67,9 +51,11 @@
                             <td><a th:href="@{|/admin/productDetail/${product.productId}|}">상세</a></td>
                         </tr>
                     </th:block>
+                    </table>
+                    <div class="nav">
                         <!-- 페이징 -->
-                        <tr>
-                            <td colspan="76">
+                        <div class="page">
+                            <div class="paging">
                                 <a th:href="${productList.first} ? '#' : @{/admin/productList(page=${productList.number-1})}">이전</a>
                                 <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
                                     <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
@@ -78,10 +64,26 @@
                                     </span>
                                 </th:block>
                                     <a th:href="${productList.last} ? '#' : @{/admin/productList(page=${productList.number+1})}">다음</a>
-                            </td>
-                        </tr>
-                    </table>
-                        <a th:href="@{/admin/productInsert}">상품추가</a>
+                            </div>
+                            <div class="add">
+                                <a th:href="@{/admin/productInsert}">상품추가</a>
+                            </div>
+                        </div>
+                        <!-- 회원검색 -->
+                        <div class="search">
+                            <form th:action="@{/productList/productSearch}" method="get">
+                                <select name="type" id="type">
+                                    <option value="" selected>::검색기준::</option>
+                                    <option value="productId">id</option>
+                                    <option value="productName">상품명</option>
+                                    <option value="productDesc">카테고리</option>
+                                    <option value="productPrice">상품가격</option>
+                                </select>
+                                <input type="text" name="search" id="search">
+                                <input type="submit" value="search">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

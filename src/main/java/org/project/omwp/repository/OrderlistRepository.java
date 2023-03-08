@@ -47,10 +47,10 @@ public interface OrderlistRepository extends JpaRepository<OrderlistEntity, Long
             "inner join product p on o.product_id=p.product_id " +
             "where m.user_email like %:userEmail%", nativeQuery = true)
     Page<OrderlistEntity> findByUserEmailContaining(@Param("userEmail") String keyword, Pageable pageable);
-    @Query(value = "select * from orderlist o " +
-            "inner join member m on o.user_id=m.user_id " +
-            "inner join product p on o.product_id=p.product_id", nativeQuery = true)
+
+    @Query(value = "select * from orderlist ", nativeQuery = true)
     Page<OrderlistEntity> findAllOrders(Pageable pageable);
+
     @Query(value = "select * from orderlist o " +
             "inner join member m on o.user_id=m.user_id " +
             "inner join product p on o.product_id=p.product_id " +
