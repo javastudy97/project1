@@ -33,6 +33,12 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
             "where p.product_id=:productId ",nativeQuery = true)
     void upReviewCount(@Param("productId") Long productId);
 
+    Page<ProductEntity> findByProductId(Long productId, Pageable pageable);
 
+    Page<ProductEntity> findByProductNameContaining(String search,Pageable pageable);
+
+    Page<ProductEntity> findByProductTypeContaining(String search, Pageable pageable);
+
+    Page<ProductEntity> findByProductPriceLike(int search, Pageable pageable);
 
 }

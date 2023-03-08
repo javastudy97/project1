@@ -35,7 +35,13 @@
                             <!--                      <input type="text" id="productType" name="productType" th:value="${wishDto.productType}" hidden="hidden">-->
                             <!--                      <input type="text" id="productName" name="productName" th:value="${wishDto.productName}" hidden="hidden">-->
                             <!--                     <input type="text" id="productPrice" name="productPrice" th:value="${wishDto.productPrice}" hidden="hidden">-->
-                            <td><a href="#"><img src="https://via.placeholder.com/150"></a></td>
+                            <td><span th:if="${wishDto.attachImg == 1}">
+                            <img th:src="@{|/upload/${wishDto.imgNewName}|}"
+                                 style="width: 150px; height: 150px;" alt="img">
+                            </span>
+                                <span th:unless="${wishDto.attachImg == 1}">
+                            <img src="https://via.placeholder.com/150 " alt="img">
+                            </span></td>
                             <td th:text="${wishDto.productName}"></td>
                             <td th:text="${wishDto.productType}"></td>
                             <td th:text="${wishDto.productDesc}"></td>

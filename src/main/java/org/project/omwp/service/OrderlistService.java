@@ -136,14 +136,6 @@ public class OrderlistService {
 
     }
 
-
-    public Page<OrderlistDto> searchOrderlistDo(Long orderlistId, Pageable pageable) {
-        Page<OrderlistEntity> orderlistEntity =
-                orderlistRepository.findAllByOrderlistId(orderlistId, pageable);
-
-        return orderlistEntity.map(OrderlistDto::orderlistDto);
-    }
-
     //    주문내역 조회
     public Page<OrderlistDto> searchListDo(String type, String keyword, Pageable pageable) {
         if (type.equals("productId")) {
@@ -167,10 +159,57 @@ public class OrderlistService {
         return null;
     }
 
+    //////////////주문 조회 및 검색 할때/////////////////////
+
+    //전체 페이지 불러오기
     public Page<OrderlistDto> selectOrderlist(Pageable pageable) {
         Page<OrderlistEntity> orderlistEntity =
                 orderlistRepository.findAllOrders(pageable);
 
         return orderlistEntity.map(OrderlistDto::orderlistDto);
     }
+
+    //주문번호 검색
+    public Page<OrderlistDto> searchOrderlistDo(Long orderlistId, Pageable pageable) {
+        Page<OrderlistEntity> orderlistEntity =
+                orderlistRepository.searchRecodeNumber(orderlistId, pageable);
+
+        return orderlistEntity.map(OrderlistDto::orderlistDto);
+    }
+
+    //상품번호 검색
+    public Page<OrderlistDto> searchProductId(Long productId, Pageable pageable) {
+        Page<OrderlistEntity> orderlistEntityPage =
+                orderlistRepository.searchRecodeNumber2(productId, pageable);
+
+        return orderlistEntityPage.map(OrderlistDto::orderlistDto);
+    }
+
+    //상품명 검색
+    public Page<OrderlistDto> searchProductName(String keyword, Pageable pageable) {
+        Page<OrderlistEntity> orderlistEntityPage =
+                orderlistRepository.searchRecodeProductName(keyword, pageable);
+
+        return orderlistEntityPage.map(OrderlistDto::orderlistDto);
+    }
+
+    //회원유저 검색
+    public Page<OrderlistDto> searchUserName(String keyword, Pageable pageable) {
+
+        Page<OrderlistEntity> orderlistEntityPage =
+                orderlistRepository.searchRecode1(keyword, pageable);
+
+        return orderlistEntityPage.map(OrderlistDto::orderlistDto);
+    }
+
+    //회원이메일검색
+    public Page<OrderlistDto> searchUserEmail(String keyword, Pageable pageable) {
+
+        Page<OrderlistEntity> orderlistEntityPage =
+                orderlistRepository.searchRecode2(keyword, pageable);
+
+        return orderlistEntityPage.map(OrderlistDto::orderlistDto);
+    }
+
+
 }
