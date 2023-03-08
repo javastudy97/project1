@@ -48,16 +48,26 @@
                             <td th:text="${wishDto.productPrice}"></td>
                             <td>   <input type="submit" value="구매하기" class="buy"> </td>
                             <td><button><a th:href="@{|/wish/deleteWish/${wishDto.wishId}|}">장바구니 제거</a></button></td>
-
-
-
                         </form>
-
                     </tr>
-
-
                 </table>
+                <div class="page">
+                    <ul>
+                        <li>
+                            <a th:href="${wishDtoList.first} ? '#' : @{/wish/cart(page=${wishDtoList.number-1})}">이전</a>
 
+                            <th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">
+                                <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1"></span>
+                                <span th:unless="${page == nowPage}">
+                                                        <a th:href="@{/wish/cart(page=${page-1})}"
+                                                           th:text="${page}"></a>
+                                                    </span>
+                            </th:block>
+
+                            <a th:href="${wishDtoList.last} ? '#' : @{/wish/cart(page=${wishDtoList.number+1})}">다음</a>
+                        </li>
+                    </ul>
+                </div>
 
             </div>
 

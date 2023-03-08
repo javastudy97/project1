@@ -15,7 +15,19 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    gap : 10px;
+    padding: 10px;
     box-sizing: border-box;
+}
+
+.container .detail .right-menu .listBox .listTable .tHeader th:nth-child(3) {
+    width: 100px;
+    height: 88px;
+}
+
+.container .detail .right-menu .listBox .listTable .tHeader th:nth-child(4) {
+    width:  700px;
+    height: 88px;
 }
 
 

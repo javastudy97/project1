@@ -98,4 +98,12 @@ public class WishService {
 
     }
 
+    // 위시리스트 페이징
+    public Page<WishDto> WishPagingList(Pageable pageable) {
+
+        Page<WishEntity> WishEntityList = wishRepository.findAll(pageable);
+        Page<WishDto> WishDtoList = WishEntityList.map(WishDto::toWishDto);
+
+        return WishDtoList;
+    }
 }
