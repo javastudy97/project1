@@ -10,6 +10,7 @@ import org.project.omwp.service.MemberService;
 import org.project.omwp.service.OrderlistService;
 import org.project.omwp.service.ProductService;
 import org.project.omwp.service.WishService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -44,7 +45,9 @@ public class WishController {
 
 
     @GetMapping("/cart")
-    public String cart(Principal principal, Model model){
+    public String cart(Principal principal, Model model,
+                       @PageableDefault(page = 0,size = 5, sort = "wishId",
+                               direction = Sort.Direction.DESC)Pageable pageable){
 
         String userEmail = principal.getName();
 
@@ -54,9 +57,24 @@ public class WishController {
 
 
 
-        List<WishDto> wishDtoList = wishService.wishList(userId);
+//        List<WishDto> wishDtoList = wishService.wishList(userId);
 
+//        model.addAttribute("wishDtoList",wishDtoList);
+
+        //위시 페이징
+        Page<WishDto> wishDtoList=wishService.WishPagingList(pageable);
+
+        Long total=wishDtoList.getTotalElements();
+        int bockNum=4;
+        int nowPage=wishDtoList.getNumber()+1;
+        int startPage=Math.max(1,wishDtoList.getNumber()-bockNum);
+        int endPage=wishDtoList.getTotalPages();
+
+        model.addAttribute("total",total);
         model.addAttribute("wishDtoList",wishDtoList);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
 
         return "wish/wishList";
     }
