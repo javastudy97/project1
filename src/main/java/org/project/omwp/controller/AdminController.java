@@ -252,10 +252,10 @@ public class AdminController {
 
     //    전체 주문내역
     @GetMapping("/orderList")
-    public String orderList(Model model, @PageableDefault(page = 0, size = 10, sort = "orderlist_id",
+    public String orderListDo(Model model, @PageableDefault(page = 0, size = 10, sort = "orderlist_id",
             direction = Sort.Direction.DESC) Pageable pageable,
-                            @RequestParam(value = "type", required = false) String type,
-                            @RequestParam(value = "keyword", required = false) String keyword){
+                              @RequestParam(value = "type", required = false) String type,
+                              @RequestParam(value = "keyword", required = false) String keyword) {
 
         int blockNum;
         int nowPage;
@@ -265,39 +265,142 @@ public class AdminController {
         Page<OrderlistDto> orderlistDto;
 //    List<OrderlistDto> orderlistDto;
 
-        if(type!=null && keyword!=null){
-            if(type.equals("orderlistId")) {
+        if (type != null && keyword != null) {
+            if (type.equals("orderlistId")) {
 //            주문번호(ID)로 검색할 경우
                 Long orderlistId = Long.parseLong(keyword);
-                orderlistDto = orderlistService.searchOrderlistDo(orderlistId,pageable);
+                orderlistDto = orderlistService.searchOrderlistDo(orderlistId, pageable);
+
+                blockNum = 4;
+                nowPage = orderlistDto.getNumber() + 1;
+                startPage = Math.max(1, orderlistDto.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
+                endPage = orderlistDto.getTotalPages();
+
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+                model.addAttribute("orderlistDto", orderlistDto);
+
+                return "admin/adminOrderList";
+
+            }
+//            else {
+//                orderlistDto = orderlistService.searchListDo(type,keyword,pageable);
+//            }
+            else if (type.equals("productId")) {
+                //상품 ID로 검색할 때
+                Long productId = Long.parseLong(keyword);
+                orderlistDto = orderlistService.searchProductId(productId, pageable);
+
+                blockNum = 4;
+                nowPage = orderlistDto.getNumber() + 1;
+                startPage = Math.max(1, orderlistDto.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
+                endPage = orderlistDto.getTotalPages();
+
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+                model.addAttribute("orderlistDto", orderlistDto);
+
+                return "admin/adminOrderList";
+            } else if (type.equals("productName")) {
+                //상품이름 으로 검색할 때
+                orderlistDto = orderlistService.searchProductName(keyword, pageable);
+
+                blockNum = 4;
+                nowPage = orderlistDto.getNumber() + 1;
+                startPage = Math.max(1, orderlistDto.getNumber() - blockNum);   // bockNum은 총 페이지수 다 큰 값
+                endPage = orderlistDto.getTotalPages();
+
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+                model.addAttribute("orderlistDto", orderlistDto);
+
+                return "admin/adminOrderList";
+            } else if (type.equals("userName")) {
+                //회원이름으로 검색할때
+                orderlistDto = orderlistService.searchUserName(keyword, pageable);
+
+                blockNum = 4;
+                nowPage = orderlistDto.getNumber() + 1;
+                startPage = Math.max(1, orderlistDto.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
+                endPage = orderlistDto.getTotalPages();
+
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+                model.addAttribute("orderlistDto", orderlistDto);
+
+                return "admin/adminOrderList";
+
+            } else if (type.equals("userEmail")) {
+                //회원이메일로 검색 할때
+                orderlistDto = orderlistService.searchUserEmail(keyword, pageable);
+
+                blockNum = 4;
+                nowPage = orderlistDto.getNumber() + 1;
+                startPage = Math.max(1, orderlistDto.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
+                endPage = orderlistDto.getTotalPages();
+
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+                model.addAttribute("orderlistDto", orderlistDto);
+
+                return "admin/adminOrderList";
+
             } else {
-                orderlistDto = orderlistService.searchListDo(type,keyword,pageable);
+                //빈공간으로 검색하거나 Type을 설정안하고 그냥 아무거나 검색할 때는 전체페이지
+                orderlistDto = orderlistService.selectOrderlist(pageable);
+//              orderlistDto = orderlistService.selectOrderlist();
+
+                blockNum = 4;
+                nowPage = orderlistDto.getNumber() + 1;
+                startPage = Math.max(1, orderlistDto.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
+                endPage = orderlistDto.getTotalPages();
+
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+                model.addAttribute("orderlistDto", orderlistDto);
+
+                return "admin/adminOrderList";
             }
 
         } else {
+            //type 또는 검색키워드가 null이거나 a태그 눌렀을 때는 전체페이지
             orderlistDto = orderlistService.selectOrderlist(pageable);
-//        orderlistDto = orderlistService.selectOrderlist();
+//          orderlistDto = orderlistService.selectOrderlist();
+
+            blockNum = 4;
+            nowPage = orderlistDto.getNumber() + 1;
+            startPage = Math.max(1, orderlistDto.getNumber() - blockNum);   // bockNum은 총 페이지수다 큰 값
+            endPage = orderlistDto.getTotalPages();
+
+            model.addAttribute("nowPage", nowPage);
+            model.addAttribute("startPage", startPage);
+            model.addAttribute("endPage", endPage);
+            model.addAttribute("orderlistDto", orderlistDto);
+
+            return "admin/adminOrderList";
         }
 
 
-        blockNum = 4;
-        nowPage = orderlistDto.getNumber()+1;
-        startPage = Math.max(1,orderlistDto.getNumber()-blockNum);   // bockNum은 총 페이지수다 큰 값
-        endPage = orderlistDto.getTotalPages();
-
-        model.addAttribute("nowPage",nowPage);
-        model.addAttribute("startPage",startPage);
-        model.addAttribute("endPage",endPage);
-        model.addAttribute("orderlistDto",orderlistDto);
-
-        return "admin/adminOrderList";
     }
 
     // 주문내역 검색
     @GetMapping("/orderSearch")
-    public String orderSearch() {
+    public String orderSearch(@RequestParam(value = "type", required = false) String type,
+                              @RequestParam(value = "keyword", required = false) String keyword,
+                              RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addAttribute("type", type);
+        redirectAttributes.addAttribute("keyword", keyword);
+
+
         return "redirect:/admin/orderList";
-    
+
 
     }
 
@@ -326,26 +429,117 @@ public class AdminController {
 //     Grid 형식
     @GetMapping("/productList")
     public String productList(@PageableDefault(page = 0, size = 5, sort = "productId",
-            direction = Sort.Direction.DESC) Pageable pageable, Model model) {
+            direction = Sort.Direction.DESC) Pageable pageable,
+                              @RequestParam(value = "type", required = false) String type,
+                              @RequestParam(value = "search", required = false) String search,
+                              Model model) {
 
-        List<ProductDto> productList = productService.productListDo();
-        model.addAttribute("productList", productList);
+        Page<ProductDto> productList2;
 
-        Page<ProductDto> productList2 = productService.ProductAllPagingList(pageable);
+        int bockNum;
+        int nowPage;
+        int startPage;
+        int endPage;
 
-        Long total = productList2.getTotalElements();
-        int bockNum = 4;
-        int nowPage = productList2.getNumber() + 1;
-        int startPage = Math.max(1, productList2.getNumber() - bockNum);
-        int endPage = productList2.getTotalPages();
+        if (type != null && search != null) {
+            if (type.equals("productId")) {
 
-        model.addAttribute("total", total);
-        model.addAttribute("productList", productList2);
-        model.addAttribute("nowPage", nowPage);
-        model.addAttribute("startPage", startPage);
-        model.addAttribute("endPage", endPage);
+                Long productId = Long.parseLong(search);
+                productList2 = productService.optionProductIdSearchPaging(productId, pageable);
 
-        return "admin/adminProductList";
+
+                bockNum = 100;
+                nowPage = productList2.getNumber() + 1;
+                startPage = Math.max(1, productList2.getNumber() - bockNum);
+                endPage = productList2.getTotalPages();
+
+                model.addAttribute("productList", productList2);
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+//
+                return "admin/adminProductList";
+            } else if (type.equals("productName")) {
+
+                productList2 = productService.optionProductNameSearch(search, pageable);
+
+                bockNum = 100;
+                nowPage = productList2.getNumber() + 1;
+                startPage = Math.max(1, productList2.getNumber() - bockNum);
+                endPage = productList2.getTotalPages();
+
+                model.addAttribute("productList", productList2);
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+
+                return "admin/adminProductList";
+            } else if (type.equals("productType")) {
+
+                productList2 = productService.optionProductTypeSearch(search, pageable);
+
+                bockNum = 100;
+                nowPage = productList2.getNumber() + 1;
+                startPage = Math.max(1, productList2.getNumber() - bockNum);
+                endPage = productList2.getTotalPages();
+
+
+                model.addAttribute("productList", productList2);
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+
+                return "admin/adminProductList";
+            } else if (type.equals("productPrice")) {
+
+                int productPrice = Integer.parseInt(search);
+                productList2 = productService.optionProductPrice(productPrice, pageable);
+
+                bockNum = 100;
+                nowPage = productList2.getNumber() + 1;
+                startPage = Math.max(1, productList2.getNumber() - bockNum);
+                endPage = productList2.getTotalPages();
+
+                model.addAttribute("productList", productList2);
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+
+                return "admin/adminProductList";
+            } else {
+
+                productList2 = productService.ProductAllPagingList(pageable);
+
+                bockNum = 100;
+                nowPage = productList2.getNumber() + 1;
+                startPage = Math.max(1, productList2.getNumber() - bockNum);
+                endPage = productList2.getTotalPages();
+
+                model.addAttribute("productList", productList2);
+                model.addAttribute("nowPage", nowPage);
+                model.addAttribute("startPage", startPage);
+                model.addAttribute("endPage", endPage);
+
+                return "admin/adminProductList";
+
+            }
+        } else {
+
+            productList2 = productService.ProductAllPagingList(pageable);
+
+            bockNum = 100;
+            nowPage = productList2.getNumber() + 1;
+            startPage = Math.max(1, productList2.getNumber() - bockNum);
+            endPage = productList2.getTotalPages();
+
+            model.addAttribute("productList", productList2);
+            model.addAttribute("nowPage", nowPage);
+            model.addAttribute("startPage", startPage);
+            model.addAttribute("endPage", endPage);
+
+            return "admin/adminProductList";
+
+        }
     }
 
     @GetMapping("/productDetail/{id}")
@@ -387,6 +581,17 @@ public class AdminController {
 
     }
 
+    //상품 검색
+    @GetMapping("/productSearch")
+    public String productSearch(@RequestParam(value = "type", required = false) String type,
+                                @RequestParam(value = "search", required = false) String search,
+                                RedirectAttributes redirectAttributes) {
 
+        redirectAttributes.addAttribute("type", type);
+        redirectAttributes.addAttribute("search", search);
+
+
+        return "redirect:/admin/productList";
+    }
 
 }

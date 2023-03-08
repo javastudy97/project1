@@ -57,4 +57,32 @@ public interface OrderlistRepository extends JpaRepository<OrderlistEntity, Long
             "where o.orderlist_id=:orderlistId", nativeQuery = true)
     Page<OrderlistEntity> findAllByOrderlistId(@Param("orderlistId") Long orderlistId, Pageable pageable);
 
+    // 관리자 페이지 검색기능
+
+    //주문번호 검색
+    @Query(value = "select * from orderlist where orderlist_id =:id ", nativeQuery = true )
+    Page<OrderlistEntity> searchRecodeNumber(@Param("id")Long orderlistId, Pageable pageable);
+
+    //상품번호 검색
+    @Query(value = "select * from orderlist where product_id =:id ", nativeQuery = true)
+    Page<OrderlistEntity> searchRecodeNumber2(@Param("id")Long productId, Pageable pageable);
+
+    //상품이름 검색
+    @Query(value = "select * from orderlist o " +
+            "inner join member m on o.user_id=m.user_id " +
+            "inner join product p on o.product_id=p.product_id " +
+            "where p.product_name like %:productName% ", nativeQuery = true)
+    Page<OrderlistEntity> searchRecodeProductName(@Param("productName") String keyword, Pageable pageable);
+
+    //회원이름 검색
+    @Query(value = "select * from orderlist o " +
+            "inner join member m on o.user_id=m.user_id " +
+            "where m.user_name like %:userName% ", nativeQuery = true)
+    Page<OrderlistEntity> searchRecode1(@Param("userName") String keyword, Pageable pageable);
+
+    //회원이메일 검색
+    @Query(value = "select * from orderlist o "+
+            "inner join member m on o.user_id=m.user_id " +
+            "where m.user_email like %:userEmail% ", nativeQuery = true)
+    Page<OrderlistEntity> searchRecode2(@Param("userEmail") String keyword, Pageable pageable);
 }

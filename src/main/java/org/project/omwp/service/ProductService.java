@@ -297,5 +297,36 @@ public class ProductService {
         productRepository.upReviewCount(productId);
     }
 
+    //관리자 상품검색(상품번호) 페이징
+    public Page<ProductDto> optionProductIdSearchPaging(Long productId ,Pageable pageable) {
+        Page<ProductEntity> ProductEntityList = productRepository.findByProductId(productId, pageable);
+        Page<ProductDto> productDtoList = ProductEntityList.map(ProductDto::toProductDto);
 
+        return productDtoList;
+    }
+
+
+    public Page<ProductDto> optionProductNameSearch(String search, Pageable pageable) {
+        Page<ProductEntity> productEntityList = productRepository.findByProductNameContaining(search, pageable);
+        Page<ProductDto> productDtoList = productEntityList.map(ProductDto::toProductDto);
+
+        return productDtoList;
+    }
+
+    public Page<ProductDto> optionProductTypeSearch(String search, Pageable pageable) {
+        Page<ProductEntity> productEntityList = productRepository.findByProductTypeContaining(search, pageable);
+        Page<ProductDto> productDtoList = productEntityList.map(ProductDto::toProductDto);
+
+        return productDtoList;
+
+    }
+
+    public Page<ProductDto> optionProductPrice(int search, Pageable pageable) {
+
+        Page<ProductEntity> productEntityList = productRepository.findByProductPriceLike(search, pageable);
+        Page<ProductDto> productDtoList = productEntityList.map(ProductDto::toProductDto);
+
+        return productDtoList;
+
+    }
 }

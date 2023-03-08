@@ -45,6 +45,16 @@ public class WishDto {
         wishDto.setProductDesc(wishEntity.getProductEntity().getProductDesc());
         wishDto.setProductPrice(wishEntity.getProductEntity().getProductPrice());
 
+        if (wishEntity.getProductEntity().getAttachImg() == 0){
+            wishDto.setAttachImg(wishEntity.getProductEntity().getAttachImg());
+
+        }else{ //이미지가 있을때
+            wishDto.setAttachImg(wishEntity.getProductEntity().getAttachImg());
+
+            //이미지 불러오기
+            wishDto.setImgNewName(wishEntity.getProductEntity().getImgEntities().get(0).getImgNewName());
+
+        }
         return wishDto;
     }
 }

@@ -71,12 +71,12 @@
                         </div>
                         <!-- 회원검색 -->
                         <div class="search">
-                            <form th:action="@{/productList/productSearch}" method="get">
+                            <form th:action="@{/admin/productSearch}" method="get">
                                 <select name="type" id="type">
                                     <option value="" selected>::검색기준::</option>
                                     <option value="productId">id</option>
                                     <option value="productName">상품명</option>
-                                    <option value="productDesc">카테고리</option>
+                                    <option value="productType">카테고리</option>
                                     <option value="productPrice">상품가격</option>
                                 </select>
                                 <input type="text" name="search" id="search">

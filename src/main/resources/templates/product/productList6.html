@@ -115,17 +115,17 @@
                 <div class="page">
                     <ul>
                         <li>
-                            <a th:href="${productList.first} ? '#' : @{/product/productList6(page=${productList.number-1})}">이전</a>
+                            <a th:href="${productList.first} ? '#' : @{/product/productList6?productType=invest&(page=${productList.number-1})}">이전</a>
 
                             <th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">
                                 <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1"></span>
                                 <span th:unless="${page == nowPage}">
-                                                        <a th:href="@{/product/productList6(page=${page-1})}"
+                                                        <a th:href="@{/product/productList6?productType=invest&(page=${page-1})}"
                                                            th:text="${page}"></a>
                                                     </span>
                             </th:block>
 
-                            <a th:href="${productList.last} ? '#' : @{/product/productList6(page=${productList.number+1})}">다음</a>
+                            <a th:href="${productList.last} ? '#' : @{/product/productList6?productType=invest&(page=${productList.number+1})}">다음</a>
                         </li>
                     </ul>
                 </div>
