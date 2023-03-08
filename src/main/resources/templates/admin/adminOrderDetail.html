@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>WishList</title>
-    <link rel="stylesheet" th:href="@{/css/admin/orderDetail.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/adminOrderDetail.css}">
 </head>
 <body>
     <div class="container">
@@ -18,8 +18,8 @@
             <!-- 어드민 컨테이너 -->
             <div class="con">
                 <!-- 주문목록 -->
-                <div class="WishList">
-                        <table border="1">
+                <div class="orderList">
+                        <table>
                             <tr>
                                 <th>주문일자</th>
                                 <th>상품번호</th>
@@ -37,21 +37,25 @@
                                 <td th:text="${order.productPrice}"></td>
                             </tr>
                         </th:block>
+                        <tr>
+                        </tr>
+                    </table>
+                    <div class="nav">
                             <!-- 페이징 -->
-                            <tr>
-                                <td colspan="76">
-                                    <a th:href="${orderlistDtoList.first} ? '#' : @{/admin/orderDetail(page=${orderlistDtoList.number-1})}">이전</a>
-                                    <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
-                                        <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
-                                        <span th:unless="${page == nowPage}">
-                                            <a th:href="@{/admin/orderDetail(page=${page-1})}" th:text="${page}"></a>
-                                        </span>
-                                    </th:block>
-                                    <a th:href="${orderlistDtoList.last} ? '#' : @{/admin/orderDetail(page=${orderlistDtoList.number+1})}">다음</a>
-                                </td>
-                            </tr>
-                        </table>
-                        <a th:href="@{|/admin/memberDetail/${memberDto.userId}|}">회원정보</a>
+                            <div class="page">
+                                <a th:href="${orderlistDtoList.first} ? '#' : @{/admin/orderDetail(page=${orderlistDtoList.number-1})}">이전</a>
+                                <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
+                                    <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
+                                    <span th:unless="${page == nowPage}">
+                                        <a th:href="@{/admin/orderDetail(page=${page-1})}" th:text="${page}"></a>
+                                    </span>
+                                </th:block>
+                                <a th:href="${orderlistDtoList.last} ? '#' : @{/admin/orderDetail(page=${orderlistDtoList.number+1})}">다음</a>
+                            </div>
+                            <div class="memberDetail">
+                                <a th:href="@{|/admin/memberDetail/${memberDto.userId}|}">회원정보</a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

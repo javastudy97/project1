@@ -20,7 +20,7 @@
                 <!-- 회원목록 -->
                 <div class="WishList">
                     <!-- 주문처리 form -->
-                        <table border="1">
+                        <table>
                             <tr>
                                 <th>상품번호</th>
                                 <th>카테고리</th>
@@ -40,21 +40,23 @@
                                 <td><button><a th:href="@{|/admin/wishDelete/${memberDto.userId}/${wish.wishId}|}">삭제</a></button></td>
                             </tr>
                         </th:block>
-                            <!-- 페이징 -->
-                            <tr>
-                                <td colspan="76">
-                                    <a th:href="${wishDtoList.first} ? '#' : @{/admin/WishList(page=${wishDtoList.number-1})}">이전</a>
-                                    <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
-                                        <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
-                                        <span th:unless="${page == nowPage}">
-                                            <a th:href="@{/admin/WishList(page=${page-1})}" th:text="${page}"></a>
-                                        </span>
-                                    </th:block>
-                                    <a th:href="${wishDtoList.last} ? '#' : @{/admin/WishList(page=${wishDtoList.number+1})}">다음</a>
-                                </td>
-                            </tr>
-                        </table>
-                        <a th:href="@{|/admin/memberDetail/${memberDto.userId}|}">회원정보</a>
+                    </table>
+                    <div class="nav">
+                        <!-- 페이징 -->
+                        <div class="page">
+                            <a th:href="${wishDtoList.first} ? '#' : @{/admin/WishList(page=${wishDtoList.number-1})}">이전</a>
+                            <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
+                                <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
+                                <span th:unless="${page == nowPage}">
+                                    <a th:href="@{/admin/WishList(page=${page-1})}" th:text="${page}"></a>
+                                </span>
+                            </th:block>
+                            <a th:href="${wishDtoList.last} ? '#' : @{/admin/WishList(page=${wishDtoList.number+1})}">다음</a>
+                        </div>
+                        <div class="memberDetail">
+                            <a th:href="@{|/admin/memberDetail/${memberDto.userId}|}">회원정보</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

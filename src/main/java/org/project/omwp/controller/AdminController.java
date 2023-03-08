@@ -490,22 +490,6 @@ public class AdminController {
                 model.addAttribute("endPage", endPage);
 
                 return "admin/adminProductList";
-            } else if (type.equals("productPrice")) {
-
-                int productPrice = Integer.parseInt(search);
-                productList2 = productService.optionProductPrice(productPrice, pageable);
-
-                bockNum = 100;
-                nowPage = productList2.getNumber() + 1;
-                startPage = Math.max(1, productList2.getNumber() - bockNum);
-                endPage = productList2.getTotalPages();
-
-                model.addAttribute("productList", productList2);
-                model.addAttribute("nowPage", nowPage);
-                model.addAttribute("startPage", startPage);
-                model.addAttribute("endPage", endPage);
-
-                return "admin/adminProductList";
             } else {
 
                 productList2 = productService.ProductAllPagingList(pageable);

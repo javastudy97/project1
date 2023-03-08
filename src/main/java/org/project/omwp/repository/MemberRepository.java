@@ -19,7 +19,7 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 
     Page<MemberEntity> findByUserEmailContaining(String keyword, Pageable pageable);
 
-    Page<MemberEntity> findByUserRoleContaining(String keyword, Pageable pageable);
+    Page<MemberEntity> findByUserRole(String keyword, Pageable pageable);
 
     Page<MemberEntity> findByUserId(Long userId, Pageable pageable);
 

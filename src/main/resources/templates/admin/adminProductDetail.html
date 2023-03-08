@@ -20,6 +20,14 @@
                 <!-- 회원상세 -->
                 <div class="productDetail">
                   <!-- 회원정보 -->
+                  <div class="img">
+                    <span th:if="${product.attachImg==1}">
+                      <img name="imgNewName" th:src="@{|/upload/${product.imgNewName}|}" style="width: 400px; height: 400px;" alt="">
+                    </span>
+                    <span th:if="${product.attachImg==0}">
+                      <img src="https://via.placeholder.com/400" alt="">
+                    </span>
+                  </div>
                     <ul>
                       <li>
                         <label th:for="productId">상품번호</label>

@@ -18,14 +18,6 @@
   height: 100%;
 }
 
-/* 
-.container .right-con .top-header{
-  width: 100%;
-  height: 50px;
-  border: 1px solid red;
-  box-sizing: border-box;
-}
-
 .container .right-con .top-header{
   display: flex;
   justify-content: flex-end;
@@ -33,7 +25,7 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-} */
+}
 
 .container .right-con .top-header .gnb > ul{
   display: flex;
@@ -50,8 +42,8 @@
 .container .right-con .bottom-header{
   width: 100%;
   height: 100px;
-  box-sizing: border-box;
   border-bottom: 1px solid navy;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
 }
@@ -68,50 +60,70 @@
   height: calc(100vh - 150px);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.container .right-con .con .productDetail{
-  border: 1px solid navy;
+.container .right-con .con .orderList{
+  width: 95%;
+  height: auto;
   padding: 10px;
   box-sizing: border-box;
+  border: 1px ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container .right-con .con .orderList table{
+  width: 100%;
+  border-top: navy 2px solid;
+}
+
+
+.container .right-con .con .orderList table tbody{
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+.container .right-con .con .orderList table tbody tr{
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 1px solid #8080806b;
 }
 
-.container .right-con .con .productDetail .img{
-  padding: 10px;
+.container .right-con .con .orderList table tbody tr:nth-child(1){
+  border: none;
+  font-weight: bold;
+}
+
+.container .right-con .con .orderList table tbody tr th{
+  width: 150px;
+  text-align: center;
+}
+
+.container .right-con .con .orderList table tbody tr td{
+  width: 150px;
+  text-align: center;
+}
+
+.nav{
+  width: 100%;
+  border-bottom: 2px solid navy;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px
+}
+
+.nav .memberDetail{
+  border: 1px solid navy;
+  padding: 5px;
   box-sizing: border-box;
 }
 
-/* .container .right-con .con .memberDetail > ul{
-} */
-
-.container .right-con .con .productDetail > ul > li{
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px;
-}
-
-.container .right-con .con .productDetail > ul > li:nth-child(7){
-  padding-top: 20px;
-}
-
-.container .right-con .con .productDetail > ul > li label{
-  background-color: navy;
-  color: white;
-  padding: 5px 10px;
-}
-
-.container .right-con .con .productDetail > ul > li span{
-  border: 1px solid navy;
-  flex: 8;
-  padding: 5px 10px;
-}
-
-.container .right-con .con .productDetail > ul > li a{
-  border: 1px solid navy;
-  padding: 5px 10px;
+.nav .memberDetail a{
+  color: navy;
 }

@@ -40,10 +40,6 @@ public class MemberService {
             Page<MemberEntity> memberEntityList =
                     memberRepository.findByUserEmailContaining(keyword,pageable);
             return memberEntityList.map(MemberDto::toMemberDto);
-        } else if(type.equals("role")) {
-            Page<MemberEntity> memberEntityList =
-                    memberRepository.findByUserRoleContaining(keyword,pageable);
-            return memberEntityList.map(MemberDto::toMemberDto);
         }
 
         return null;

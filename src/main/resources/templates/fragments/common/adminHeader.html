@@ -7,12 +7,18 @@
     <div class="top-header">
         <div class="gnb">
             <ul>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/member/detail}">
-                    <img th:src="@{/img/icon/member.png}" alt="member">회원정보
-                </a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">
-                    <img th:src="@{/img/icon/logout.png}" alt="logout">로그아웃
-                </a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/member/detail}">
+                        <img th:src="@{/img/icon/member.png}" alt="member">
+                        <span>회원정보</span>
+                    </a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}">
+                        <img th:src="@{/img/icon/logout.png}" alt="logout">
+                        <span style="color: red;">로그아웃</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
