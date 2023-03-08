@@ -114,11 +114,22 @@ input{
     background-color: #e1e1e1;
 }
 
+/* SNS로그인 */
+.snsLogin{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  align-items: center;
+}
+
 /* google 로그인 */
 .google-img{
-  width: 310px;
-  height: 50px;
+  width: 300px;
+  height: 40px;
   display: flex;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
 }
 
 /* .google{
@@ -134,8 +145,8 @@ input{
 
 /* naver 로그인 */
 .naver-img{
-  width: 310px;
-  height: 50px;
+  width: 300px;
+  height: 40px;
   display: flex;
 }
 
@@ -150,6 +161,13 @@ input{
   align-items: center;
   background-color: #03C75A;
 } */
+
+/* kakao 로그인 */
+.kakao-img{
+  width: 300px;
+  height: 40px;
+  display: flex;
+}
 
 /* 로그인 버튼 */
 #loginBtn{

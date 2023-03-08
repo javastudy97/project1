@@ -1,19 +1,10 @@
-const userName = document.querySelector('.userName');
-const userPhone = document.querySelector('.userPhone');
-const findEmailForm = document.querySelector('#findEmail-form');
-const findBtn = document.querySelector('#findBtn');
-
-// 자동 하이픈
-const autoHyphen = (target) => {
-    target.value = target.value
-    .replace(/[^0-9]/g, '')
-    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
-    .replace(/(\-{1,2})$/g, "");
-}
+const userName = document.querySelector('#userName');
+const userPhone = document.querySelector('#userPhone');
+const findEmailForm = document.querySelector('.findEmailForm');
+const findBtn = document.querySelector('.findBtn');
 
 /* 유효성 검사 */
 
-/*
 findBtn.addEventListener('click', function(event){
 
     event.preventDefault();
@@ -32,4 +23,15 @@ findBtn.addEventListener('click', function(event){
 
     findEmailForm.submit();
 });
-*/
+
+
+// 자동 하이픈
+const autoHyphen = (target) => {
+    target.value = target.value
+    .replace(/[^0-9]/g, '')
+    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+    .replace(/(\-{1,2})$/g, "");
+}
+
+
+

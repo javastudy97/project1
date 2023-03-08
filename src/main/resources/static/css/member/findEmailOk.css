@@ -81,7 +81,7 @@
 }
 
 /* 실패시 해당하는 아이디 찾기 버튼 */
-.findEmailBtn{
+.findBtn{
   width: 300px;
   height: 40px;
   border: 1px solid #cccccc;
@@ -92,9 +92,10 @@
   color: #ffffff;
   text-align: center;
   cursor: pointer;
+  line-height: 30px;
 }
 
-.findEmailBtn:hover{
+.findBtn:hover{
   background-color: #1970b7;
 }
 
@@ -109,6 +110,7 @@
   background-color: #33e713;
   color: #ffffff;
   text-align: center;
+  line-height: 30px;
 }
 
 .signUpBtn:hover{
@@ -127,6 +129,7 @@
   color: #ffffff;
   text-align: center;
   cursor: pointer;
+  line-height: 30px;
 }
 
 .loginBtn:hover{
@@ -144,6 +147,7 @@
   background-color: #33e713;
   color: #ffffff;
   text-align: center;
+  line-height: 30px;
 }
 
 .homeBtn:hover{

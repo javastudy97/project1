@@ -93,7 +93,7 @@ input{
 }
 
 /* 검색 버튼 */
-#findBtn{
+.findBtn{
   background-color: #2196f3;
   cursor: pointer;
   color: #ffffff;
@@ -114,6 +114,7 @@ input{
   background-color: #33e713;
   color: #ffffff;
   text-align: center;
+  line-height: 30px;
 }
 
 .cancelBtn:hover{

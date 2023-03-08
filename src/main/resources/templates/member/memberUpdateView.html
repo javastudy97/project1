@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>updateView</title>
     <link rel="stylesheet" th:href="@{/css/member/memberUpdateView.css}">
+    <script th:src="@{/js/member/memberUpdateView.js}" defer></script>
 </head>
 <body>
 <div th:replace="~{fragments/common/header :: headerFragment}"></div>
@@ -15,7 +16,7 @@
 
         <div class="right-menu">
             <div class="detail-form">
-                <form th:action="@{/member/update}" method="post" th:object="${memberDto}">
+                <form th:action="@{/member/update}" method="post" th:object="${memberDto}" class="updateForm">
                     <ul>
                         <li class="s1">회원수정</li>
                         <label for="userId"></label>
@@ -30,12 +31,17 @@
                         </li>
                         <li class="s2">
                             <span>전화번호</span>
-                            <input type="text" name="userPhone" id="userPhone">
+                            <input type="text" name="userPhone" id="userPhone" maxlength="13" oninput="autoHyphen(this)">
                         </li>
                         <li class="s2">
                             <span>비밀번호</span>
                             <input type="password" name="userPw" id="userPw">
                         </li>
+
+                        <li>
+                            <input type="hidden" name="userRole" id="userRole" th:value="${memberDto.userRole}">
+                        </li>
+
                         <li class="s3">
                             <input type="submit" value="수정하기" class="s3Sub">  <!--class="s3Sub"-->
                         </li>

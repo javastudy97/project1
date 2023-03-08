@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
-    <script th:src="@{/js/member/findEmail.js}" defer></script>
     <link rel="stylesheet" th:href="@{/css/member/findEmail.css}">
+    
 </head>
 <body>
 <div th:replace="~{fragments/common/header :: headerFragment}"></div>
@@ -12,7 +12,7 @@
 <div class="container">
     <div class="findEmail">
         <div class="findEmail-con">
-            <form th:action="@{/member/findEmailOk}" method="get" id="findEmailForm">
+            <form th:action="@{/member/findEmailOk}" method="get" class="findEmailForm">
                 <div class="findEmail-form">
                     <ul>
                         <li>이메일 찾기</li>
@@ -29,7 +29,7 @@
                         <br>
 
                         <li class="s2">
-                            <input type="submit" value="찾기" id="findBtn">
+                            <input type="submit" value="찾기" class="findBtn">
                             <a th:href="@{/member/login}" class="cancelBtn">뒤로</a><br>
                         </li>
                     </ul>
@@ -40,5 +40,8 @@
 </div>
 
 <div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+
+<script th:src="@{/js/member/findEmail.js}" defer></script>
 </body>
+
 </html>
