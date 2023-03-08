@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
-    <script th:src="@{/js/member/findEmail.js}" defer></script>
     <link rel="stylesheet" th:href="@{/css/member/findEmailOk.css}">
 </head>
 <body>
@@ -17,7 +16,7 @@
                         <li>
                             <th:block>
                                 <span th:if="${memberDto}==null">등록된 사용자가 없습니다</span>
-                                <a th:if="${memberDto}==null" th:href="@{/member/findEmail}" class="findEmailBtn">아이디 찾기</a>
+                                <a th:if="${memberDto}==null" th:href="@{/member/findEmail}" class="findBtn">이메일 찾기</a>
                                 <a th:if="${memberDto}==null" th:href="@{/member/signUp}" class="signUpBtn">회원가입</a>
                             </th:block>
                         </li>

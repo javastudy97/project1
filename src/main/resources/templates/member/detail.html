@@ -32,7 +32,7 @@
                     </li>
                     <li class="s2">
                         <span>가입날짜</span>
-                        <span th:text="${memberDto.userCreate}"> </span>
+                        <span th:text="${#temporals.format(memberDto.userCreate, 'yyyy-MM-dd HH:mm:ss')}"> </span>
                     </li>
                     <!--                <li th:if="${memberDto.updateTime != null}" class="s2">-->
                     <!--                    <span>수정날짜</span>-->

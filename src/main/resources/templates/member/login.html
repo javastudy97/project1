@@ -35,7 +35,7 @@
                         </li>
 
                         <div class="sideMenu">
-                            <a th:href="@{/member/findEmail}">아이디 찾기</a><br>
+                            <a th:href="@{/member/findEmail}">이메일 찾기</a><br>
                             <div class="line"></div>
                             <a th:href="@{/member/signUp}">회원가입</a>
                         </div>
@@ -44,24 +44,29 @@
 
                 <br>
 
+
                 <div class="snsLogin">
+
+                    
+                <div class="kakao">
+                    <li>
+                        <a th:href="@{/oauth2/authorization/kakao}"><img th:src=@{/img/kakao.png} alt="naver" class="kakao-img"></a>
+                    </li>
+                </div>
+
                     <div class="google">
                         <li>
                             <a th:href="@{/oauth2/authorization/google}"><img th:src=@{/img/google.png} alt="google" class="google-img"></a>
                         </li>
                     </div>
 
-                    <div class="naver">
-                        <li>
-                            <a th:href="@{/oauth2/authorization/naver}"><img th:src=@{/img/naver.png} alt="naver" class="naver-img"></a>
-                        </li>
-                    </div>
+                <div class="naver">
+                    <li>
+                        <a th:href="@{/oauth2/authorization/naver}"><img th:src=@{/img/naver.png} alt="naver" class="naver-img"></a>
+                    </li>
+                </div>
 
-                    <div class="naver">
-                        <li>
-                            <a th:href="@{/oauth2/authorization/kakao}"><img th:src=@{/img/kakao.png} alt="naver" class="naver-img"></a>
-                        </li>
-                    </div>
+
                 </div>
             </form>
 

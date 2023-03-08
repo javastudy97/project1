@@ -36,7 +36,7 @@
                       </li>
                       <li>
                         <label th:for="userPhone">Phone</label>
-                        <input type="text" name="userPhone" th:value="${memberDto.userPhone}">
+                        <input type="text" name="userPhone" th:value="${memberDto.userPhone}" maxlength="13" oninput="autoHyphen(this)">
                       </li>
                       <li>
                         <label th:for="userRole">role</label>

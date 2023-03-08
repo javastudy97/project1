@@ -59,7 +59,7 @@ public class MemberService {
     @Transactional
     public int memberUpdateDo(MemberDto memberDto) {
         Long id =
-                memberRepository.save(MemberEntity.toMemberEntityUpdate(memberDto)).getUserId();
+                memberRepository.save(MemberEntity.toMemberEntityUpdate(memberDto,passwordEncoder)).getUserId();
 
         if (id==null) {
             return 0;

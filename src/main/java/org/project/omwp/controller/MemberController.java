@@ -6,8 +6,6 @@ import org.project.omwp.checked.CheckUserEmail;
 import org.project.omwp.checked.CheckUserName;
 import org.project.omwp.dto.MemberDto;
 import org.project.omwp.service.MemberService;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,6 +62,7 @@ public class MemberController {
         return "member/login";
     }
 
+    // 회원정보 상세
     @GetMapping("/detail")
     public String detail(Principal principal,Model model){
 
@@ -76,6 +75,7 @@ public class MemberController {
         return "member/detail";
     }
 
+    // 회원정보 수정 페이지 이동
     @GetMapping("/update")
     public String update(Principal principal,Model model){
 
@@ -88,6 +88,7 @@ public class MemberController {
         return "member/memberUpdateView";
     }
 
+    // 회원정보 수정 완료
     @PostMapping("/update")
     public String update(@ModelAttribute MemberDto memberDto){
 
@@ -99,6 +100,7 @@ public class MemberController {
     }
 
 
+    // 회원삭제페이지 이동
     @GetMapping("/delete")
     public String delete(Principal principal,Model model){
 
@@ -111,6 +113,7 @@ public class MemberController {
         return "member/delete";
     }
 
+    // 회원정보 삭제
     @PostMapping("/delete")
     public String delete(@ModelAttribute MemberDto memberDto){
 
