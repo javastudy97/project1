@@ -60,15 +60,14 @@
   height: calc(100vh - 150px);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .container .right-con .con .memberList{
-  width: auto;
+  width: 95%;
   height: auto;
   padding: 10px;
   box-sizing: border-box;
-  border: 1px ;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -92,6 +91,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
   border-top: 1px solid #8080806b;
 }
 
@@ -102,13 +102,11 @@
 
 .container .right-con .con .memberList table tbody tr th{
   width: 150px;
-  padding: 5px;
   text-align: center;
 }
 
 .container .right-con .con .memberList table tbody tr td{
   width: 150px;
-  padding: 5px;
   text-align: center;
 }
 

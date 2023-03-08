@@ -27,14 +27,27 @@
 .header .top-header .gnb1 > ul{
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  gap: 10px;
 }
 
-.header .top-header .gnb1>ul>li img{
-  width: 16px;
-  height: 16px;
+.header .top-header .gnb1>ul>li{
+  display: flex;
+  align-items: center;
+}
+
+.header .top-header .gnb1>ul>li a{
+  display: flex;
+  gap: 3px;
+}
+
+.header .top-header .gnb1>ul>li a img{
+  width: 18px;
+  height: 18px;
+}
+
+.header .top-header .gnb1>ul>li a span{
+  font-size: 15px;
   font-weight: bold;
-  line-height: 100%;
 }
 
 .header .bottom-header{
