@@ -42,7 +42,7 @@
                             <td th:text="${order.userPhone}"></td>
                             <td th:text="${order.productId}"></td>
                             <td th:text="${order.productType}"></td>
-                            <td><a th:href="@{#}" th:text="${order.productName}"></a></td>
+                            <td><a th:href="@{|/admin/productDetail/${order.productId}|}" th:text="${order.productName}"></a></td>
                             <td th:text="${order.productPrice}"></td>
                         </tr>
                     </th:block>
