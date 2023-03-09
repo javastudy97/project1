@@ -43,7 +43,7 @@
                         </li>
                         <li>
                             <label th:for="productDesc">상품설명</label>
-                            <textarea name="productDesc" id="productDesc" cols="100" rows="30"></textarea>
+                            <textarea name="productDesc" id="productDesc" th:text="${product.productDesc}" th:value="${product.productDesc}" cols="100" rows="30"></textarea>
                         </li>
                         <li>
                             <input type="submit" value="수정완료">

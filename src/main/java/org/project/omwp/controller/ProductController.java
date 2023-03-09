@@ -366,5 +366,29 @@ public class ProductController {
         return "product/productList6";
     }
 
+    @GetMapping("/productList/searchAll")
+    public String productSearchAll(@RequestParam(value = "search", required = false) String search,
+                                   @PageableDefault(page = 0,size = 36, sort = "productId",
+                                           direction = Sort.Direction.DESC) Pageable pageable
+            , Model model){
+
+        Page<ProductDto> productList = productService.ProductAllSearch(search, pageable);
+
+
+        Long total=productList.getTotalElements();
+        int bockNum=4;
+        int nowPage=productList.getNumber()+1;
+        int startPage=Math.max(1,productList.getNumber()-bockNum);
+        int endPage=productList.getTotalPages();
+
+        model.addAttribute("total",total);
+        model.addAttribute("productList", productList);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+
+        return "product/productListAll";
+    }
+
 
 }

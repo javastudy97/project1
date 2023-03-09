@@ -60,8 +60,8 @@
                 <li><a th:href="@{/product/productList(productType=invest)}">재테크</a></li>
             </ul>
         </div>
-        <form action="#" th:action="@{#}">
-            <input type="search">
+        <form th:action="@{/product/productList/searchAll}">
+            <input type="search" name="search" id="search">
             <input type="submit" value="검색">
         </form>
     </div>
