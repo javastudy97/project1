@@ -60,6 +60,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   padding: 30px;
  }
  
  .container .right-con .con .productInsert{
@@ -68,6 +69,7 @@
    padding: 10px;
    justify-content: center;
    align-items: center;
+   margin-top: 40px;
  }
  
  /* .container .right-con .con .productInsert > ul{

@@ -21,37 +21,7 @@
   flex: 0 1 1600px;
 }
 
-/* 옆 메뉴바 */
-.container .productList .left-menu{
-  width: 250px;
-  border: 0px solid #ff0000;
-  padding: 30px;
-}
 
-.container .productList .left-menu h2{
-  font-size: 22px;
-  font-weight: 500;
-  text-align: center;
-  border-bottom: 2px solid #2196f3;
-  padding-bottom: 16px;
-}
-
-.container .productList .left-menu ul{
-  padding: 20px;
-  text-align: left;
-}
-
-.container .productList .left-menu ul img{
-  object-fit: contain;
-}
-
-.container .productList .left-menu ul h3{
-  padding: 10px;
-}
-
-.container .productList .left-menu ul li{
-  
-}
 
 /* 옆 메뉴바 끝*/
 

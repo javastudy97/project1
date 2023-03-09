@@ -329,4 +329,12 @@ public class ProductService {
         return productDtoList;
 
     }
+
+    public Page<ProductDto> ProductAllSearch(String search ,Pageable pageable) {
+
+        Page<ProductEntity> productEntityList = productRepository.findByProductNameContaining(search, pageable);
+        Page<ProductDto> productDtoList = productEntityList.map(ProductDto::toProductDto);
+
+        return productDtoList;
+    }
 }
