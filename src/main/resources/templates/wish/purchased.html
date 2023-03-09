@@ -48,8 +48,24 @@
               <!--            <span th:if="${#temporals.format(calendars.createNow(), 'yyyyMMddHHmm') - #temporals.format(orderlist.orderlistDate, 'yyyyMMddHHmm') < -10}">10분지남</span>-->
             </form>
           </tr>
-
         </table>
+        <div class="page">
+          <ul>
+            <li>
+              <a th:href="${orderlistDtoList.first} ? '#' : @{/wish/purchased(page=${orderlistDtoList.number-1})}">이전</a>
+
+              <th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">
+                <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1"></span>
+                <span th:unless="${page == nowPage}">
+                                                        <a th:href="@{/wish/purchased(page=${page-1})}"
+                                                           th:text="${page}"></a>
+                                                    </span>
+              </th:block>
+
+              <a th:href="${orderlistDtoList.last} ? '#' : @{/wish/purchased(page=${orderlistDtoList.number+1})}">다음</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

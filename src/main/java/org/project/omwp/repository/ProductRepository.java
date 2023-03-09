@@ -41,4 +41,6 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     Page<ProductEntity> findByProductPriceLike(int search, Pageable pageable);
 
+    // 구매내역 페이징
+    Page<ProductEntity> findAll(Pageable pageable);
 }

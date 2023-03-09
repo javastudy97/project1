@@ -18,6 +18,13 @@
     box-sizing: border-box;
 }
 
+.container .detail .right-menu .listBox .listTable .tHeader th:nth-child(3) {
+    width: 100px;
+}
+
+.container .detail .right-menu .listBox .listTable .tHeader th:nth-child(4) {
+    width:  700px;
+}
 
 
 
