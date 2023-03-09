@@ -118,7 +118,9 @@ public class WishController {
 
 
     @GetMapping("/purchased")
-    public String purchased(Principal principal, Model model){
+    public String purchased(Principal principal, Model model,
+                            @PageableDefault(page = 0,size = 5, sort = "orderlistId",
+                                    direction = Sort.Direction.DESC)Pageable pageable){
 
         String userEmail = principal.getName();
 
@@ -126,9 +128,24 @@ public class WishController {
 
         Long userId = memberDto.getUserId();
 
-        List<OrderlistDto> orderlistDtoList = orderlistService.selectAllOrder(userId);
+//        List<OrderlistDto> orderlistDtoList = orderlistService.selectAllOrder(userId);
+//
+//        model.addAttribute("orderlistDtoList",orderlistDtoList);
 
+        //구매내역 페이징
+        Page<OrderlistDto> orderlistDtoList=orderlistService.OrderlistDtoList(pageable);
+
+        Long total=orderlistDtoList.getTotalElements();
+        int bockNum=4;
+        int nowPage=orderlistDtoList.getNumber()+1;
+        int startPage=Math.max(1,orderlistDtoList.getNumber()-bockNum);
+        int endPage=orderlistDtoList.getTotalPages();
+
+        model.addAttribute("total",total);
         model.addAttribute("orderlistDtoList",orderlistDtoList);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
 
         return "wish/purchased";
 

@@ -211,5 +211,12 @@ public class OrderlistService {
         return orderlistEntityPage.map(OrderlistDto::orderlistDto);
     }
 
+    // 구매내역 페이징
+    public Page<OrderlistDto> OrderlistDtoList(Pageable pageable) {
 
+        Page<OrderlistEntity>  orderlistEntity= orderlistRepository.findAll(pageable);
+        Page<OrderlistDto> orderlistDto = orderlistEntity.map(OrderlistDto::toOrderlistDto);
+
+        return orderlistDto;
+    }
 }

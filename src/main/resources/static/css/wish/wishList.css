@@ -20,12 +20,10 @@
 
 .container .detail .right-menu .listBox .listTable .tHeader th:nth-child(3) {
     width: 100px;
-    height: 88px;
 }
 
 .container .detail .right-menu .listBox .listTable .tHeader th:nth-child(4) {
     width:  700px;
-    height: 88px;
 }
 
 
