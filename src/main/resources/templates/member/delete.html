@@ -15,13 +15,16 @@
 
         <div class="right-menu">
             <div class="detail-form">
+                <h2>Member Delete</h2>
+                <br>
+                <p>회원탈퇴 페이지입니다.</p>
                 <form th:action="@{/member/delete}" method="post" th:object="${memberDto}">
                     <ul>
                         <li class="s1">회원탈퇴</li>
                         <label for="userId"></label>
                         <input type="hidden" name="userId" id="userId" th:value="${memberDto.userId}">
                         <li class="s2">
-                            <label for="userEmail">email</label>
+                            <span for="userEmail">email</span>
                             <input type="email" name="userEmail" id="userEmail" th:value="${memberDto.userEmail}" readonly>
                         </li>
                         <li class="s2">

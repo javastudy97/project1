@@ -16,13 +16,16 @@
 
         <div class="right-menu">
             <div class="detail-form">
+                <h2>Member Update</h2>
+                <br>
+                <p>회원정보 수정 페이지입니다.</p>
                 <form th:action="@{/member/update}" method="post" th:object="${memberDto}" class="updateForm">
                     <ul>
                         <li class="s1">회원수정</li>
                         <label for="userId"></label>
                         <input type="hidden" name="userId" id="userId" th:value="${memberDto.userId}">
                         <li class="s2">
-                            <label for="userEmail">email</label>
+                            <span for="userEmail">email</span>
                             <input type="email" name="userEmail" id="userEmail" th:value="${memberDto.userEmail}" readonly>
                         </li>
                         <li class="s2">

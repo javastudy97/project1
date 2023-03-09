@@ -45,7 +45,7 @@ h2{
 .container .detail .right-menu .detail-form ul li.s1{
 
     font-size: 20px;
-    border-bottom: #cccccc 3px solid;
+    border-bottom: #cccccc 2px solid;
     padding-bottom: 5px;
     box-sizing: border-box;
     font-weight: bold;
@@ -71,7 +71,7 @@ h2{
     justify-content: right;
     align-items: center;
     box-sizing: border-box;
-    border-top: #cccccc 3px solid;
+    border-top: #cccccc 2px solid;
     padding-top: 15px;
     gap: 10px;
 

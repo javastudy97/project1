@@ -19,13 +19,12 @@
         <table border="0" class="listTable">
           <tr class="tHeader">
 
-            <th>상품</th>
+            <th>상품이미지</th>
             <th>상품명</th>
             <th>상품타입</th>
             <th>상품정보</th>
             <th>상품가격</th>
             <th>구매날짜</th>
-            <th>취소내역</th>
 
           </tr>
           <tr th:each="orderlist:${orderlistDtoList}" class="tBody">
@@ -46,8 +45,7 @@
               <td th:text="${orderlist.productType}"></td>
               <td th:text="${orderlist.productDesc}"></td>
               <td th:text="${orderlist.productPrice}"></td>
-              <td th:text="${#temporals.format(orderlist.orderlistDate, 'yyyy년MM월dd일 HH시mm분')}" ></td>
-              <td>   <input type="submit" value="삭제" class="delete"> </td>
+              <td th:text="${#temporals.format(orderlist.orderlistDate, 'yyyy-MM-dd HH:mm:ss')}" ></td>
               <!--            <span th:if="${#temporals.format(calendars.createNow(), 'yyyyMMddHHmm') - #temporals.format(orderlist.orderlistDate, 'yyyyMMddHHmm') < -10}">10분지남</span>-->
             </form>
           </tr>

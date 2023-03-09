@@ -17,7 +17,7 @@
 
         <table border="0" class="listTable">
           <tr class="tHeader">
-            <th>상품</th>
+            <th>상품이미지</th>
             <th>상품명</th>
             <th>상품타입</th>
             <th>상품정보</th>
@@ -43,7 +43,7 @@
               <td th:text="${orderlist.productType}"></td>
               <td th:text="${orderlist.productDesc}"></td>
               <td th:text="${orderlist.productPrice}"></td>
-              <td th:text="${#temporals.format(orderlist.orderlistDate, 'yyyy년MM월dd일 HH시mm분')}" ></td>
+              <td th:text="${#temporals.format(orderlist.orderlistDate, 'yyyy-MM-dd HH:mm:ss')}" ></td>
               <td>   <input type="submit" value="취소하기" class="delete"> </td>
               <!--            <span th:if="${#temporals.format(calendars.createNow(), 'yyyyMMddHHmm') - #temporals.format(orderlist.orderlistDate, 'yyyyMMddHHmm') < -10}">10분지남</span>-->
             </form>

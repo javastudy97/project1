@@ -25,16 +25,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-right: 2px solid #cccccc;
 }
 
 .container .detail .right-menu .detail-form ul li.s2 span{
-     flex: 2;
+    flex: 1;
     text-align: center;
     padding: 5px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+    box-sizing: border-box;
+    border-right: 2px solid #cccccc;
 }
+
 
 .container .detail .right-menu .detail-form ul li.s2 input{
     flex: 3;

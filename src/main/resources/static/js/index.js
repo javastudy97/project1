@@ -7,6 +7,7 @@ const itemLi = document.querySelectorAll('.item-con>ul>li');
 let i = -1;
 
 function autoGallery(){
+  // i가 갤러리 이미지 총 갯수에 도달할 경우 시작번호(0)로 세팅
   if(i>=galleryLi.length-1){
     i=-1;
   }
@@ -31,9 +32,10 @@ function autoGallery(){
   })
 
 }
-
+// 3초마다 autoGallery 함수 실행
 let setIn = setInterval(autoGallery,3000);
 
+// 즉시실행 함수 (페이지 로드시 바로 실행)
 (function(){
   autoGallery();
 })()

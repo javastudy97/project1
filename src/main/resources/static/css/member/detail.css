@@ -17,7 +17,6 @@
     justify-content: space-between;
 }
 
-
 .container .detail .right-menu .detail-form ul li.s2 span:nth-child(1){
     flex: 1;
     text-align: center;
@@ -25,9 +24,10 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    border-right: 3px solid #cccccc;
     box-sizing: border-box;
+    border-right: 2px solid #cccccc;
 }
+
 
 .container .detail .right-menu .detail-form ul li.s2 span:nth-child(2){
     flex: 3;
