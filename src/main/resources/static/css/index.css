@@ -42,7 +42,7 @@
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  gap: 120px;
+  gap: 50px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -57,11 +57,22 @@
   font-weight: bold;
 }
 
+.container .section .hot-con .hot-right .product{
+  width: 500px;
+}
+
+.container .section .hot-con .hot-right .product a{
+  display: flex;
+  gap: 30px;
+}
+
 .container .section .hot-con .hot-right .product a .product-name{
-  padding-top: 10px;
   box-sizing: border-box;
   color: white;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .container .section .hot-con .hot-right .product a .product-name h3{
@@ -157,10 +168,14 @@
 
 #arrow-left{
   background: url(../img/icon/arrow-left.png) no-repeat 50%/cover;
+  opacity: 0.7;
+  filter: invert(1);
 }
 
 #arrow-right{
   background: url(../img/icon/arrow-right.png) no-repeat 50%/cover;
+  opacity: 0.7;
+  filter: invert(1);
 }
 
 /* item */

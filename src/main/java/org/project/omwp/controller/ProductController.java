@@ -37,7 +37,7 @@ public class ProductController {
 
     @GetMapping("/productList")
     public String pagingList(@RequestParam("productType") String productType,
-                             @PageableDefault(page = 0,size = 36, sort = "productId",
+                             @PageableDefault(page = 0,size = 8, sort = "productId",
                                      direction = Sort.Direction.DESC) Pageable pageable,
                              Model model){
 

@@ -25,10 +25,6 @@
                             <!-- <span>상품명</span> -->
                             <span th:text="${product.productName}"></span>
                         </li>
-                        <li class="desc">
-                            <!-- <span>상품설명</span> -->
-                            <span th:text="${product.productDesc}"></span><br>
-                        </li>
                         <li class="price">
                             <!-- <span>상품가격</span> -->
                             <span th:text="${product.productPrice}"></span>
@@ -59,9 +55,9 @@
                 <li class="DescSub">
                     <span th:text="${product.productDesc}"></span>
                 </li>
-                <li>
+                <!-- <li>
                     <img src="https://via.placeholder.com/600x1600" alt="상품설명">
-                </li>
+                </li> -->
                 <li class="btn2">
                     <a th:href="@{|/wish/orderList/${product.productId}|}">구매하기</a>
                 </li>
