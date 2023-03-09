@@ -60,11 +60,10 @@
                         <div class="paging">
                             <a th:href="${productList.first} ? '#' : @{/admin/productList(page=${productList.number-1})}">이전</a>
                             <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
-                                <span th:if="${page == nowPage}" th:text="${page}"
-                                      style="background-color: yellow;"></span>
+                                <span th:if="${page == nowPage}" th:text="${page}" style="background-color: yellow;"></span>
                                 <span th:unless="${page == nowPage}">
-                                        <a th:href="@{/admin/productList(page=${page-1})}" th:text="${page}"></a>
-                                    </span>
+                                    <a th:href="@{/admin/productList(page=${page-1})}" th:text="${page}"></a>
+                                </span>
                             </th:block>
                             <a th:href="${productList.last} ? '#' : @{/admin/productList(page=${productList.number+1})}">다음</a>
                         </div>
