@@ -2,6 +2,8 @@
 .footer{
   width: 100%;
   background-color: black;
+  padding: 0 100px;
+  box-sizing: border-box;
 }
 
 /* 챗봇 */
@@ -13,16 +15,6 @@
   right: 20px;
   cursor: pointer;
 }
-
-/* .footer .chat a{
-  width: inherit;
-  height: inherit;
-} */
-
-/* .footer .chat a img{
-  width: inherit;
-  height: inherit;
-} */
 
 .footer .chat img{
   width: inherit;
@@ -170,19 +162,50 @@
 .footer .footer-con{
   width: 100%;
   display: flex;
-  justify-content: center;
-}
-
-.footer .footer-con .addr{
-  flex: 0 0 1600px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  color: grey;
-  padding: 50px 0;
+  justify-content: space-between;
+  gap: 100px;
+  padding: 0 30px;
   box-sizing: border-box;
 }
 
-.footer .footer-con .addr p{
+.footer .footer-con .logo{
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-con .logo a img{
+  width: 170px;
+  height: 60px;
+}
+
+.footer .footer-con .content{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer .footer-con .content .addr{
+  width: 100%;
+  color: grey;
+  padding: 50px 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .footer-con .content .addr .p{
   padding: 0 50px;
+}
+
+.footer .footer-con .content .addr .sns{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.footer .footer-con .content .addr .sns img{
+  width: 48px;
+  height: 48px;
+  filter: invert(0.9);
 }
