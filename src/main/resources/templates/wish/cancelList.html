@@ -25,6 +25,7 @@
             <th>상품정보</th>
             <th>상품가격</th>
             <th>구매날짜</th>
+            <th>주문취소</th>
 
           </tr>
           <tr th:each="orderlist:${orderlistDtoList}" class="tBody">
@@ -46,6 +47,7 @@
               <td th:text="${orderlist.productDesc}"></td>
               <td th:text="${orderlist.productPrice}"></td>
               <td th:text="${#temporals.format(orderlist.orderlistDate, 'yyyy-MM-dd HH:mm:ss')}" ></td>
+              <td><input type="submit" value="취소하기"></td>
               <!--            <span th:if="${#temporals.format(calendars.createNow(), 'yyyyMMddHHmm') - #temporals.format(orderlist.orderlistDate, 'yyyyMMddHHmm') < -10}">10분지남</span>-->
             </form>
           </tr>
