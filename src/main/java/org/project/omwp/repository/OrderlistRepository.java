@@ -20,9 +20,8 @@ public interface OrderlistRepository extends JpaRepository<OrderlistEntity, Long
     List<OrderlistEntity> findAllCancelByUserId(@Param("userId") Long userId);
 
     @Query(value = "select * from orderlist o " +
-            "inner join product p on o.product_id=p.product_id " +
             "where o.user_id=:userId", nativeQuery = true)
-    Page<OrderlistEntity> findAllByuserId2(@Param("userId") Long userId, Pageable pageable);
+    Page<OrderlistEntity> findAllByuserId2(Long userId, Pageable pageable);
 
     @Query(value = "select * from orderlist o " +
             "inner join member m on o.user_id=m.user_id " +

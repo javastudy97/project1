@@ -119,7 +119,7 @@ public class WishController {
 
     @GetMapping("/purchased")
     public String purchased(Principal principal, Model model,
-                            @PageableDefault(page = 0,size = 5, sort = "orderlistId",
+                            @PageableDefault(page = 0,size = 5, sort = "orderlist_id",
                                     direction = Sort.Direction.DESC)Pageable pageable){
 
         String userEmail = principal.getName();
@@ -133,7 +133,7 @@ public class WishController {
 //        model.addAttribute("orderlistDtoList",orderlistDtoList);
 
         //구매내역 페이징
-        Page<OrderlistDto> orderlistDtoList=orderlistService.OrderlistDtoList(pageable);
+        Page<OrderlistDto> orderlistDtoList=orderlistService.OrderlistDtoList(userId,pageable);
 
         Long total=orderlistDtoList.getTotalElements();
         int bockNum=4;
